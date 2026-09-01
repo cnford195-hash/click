@@ -1921,10 +1921,9 @@
 
 
 
-
-
-
-        /* كلاس النص المتدرج */
+        /* ============================
+   الأساسيات
+============================ */
         .dark-text-gradient {
             -webkit-background-clip: text;
             background-clip: text;
@@ -1935,10 +1934,12 @@
             color: #cbd5e1;
         }
 
+        /* ============================
+   Swiper – الحاوية والسلايدات
+============================ */
         .swiper {
             padding: 1rem 0.25rem;
             overflow: hidden;
-            /* ✅ hidden بدل visible عشان يمنع سكرول أفقي غير مرغوب على الموبايل */
             width: 100%;
         }
 
@@ -1946,15 +1947,18 @@
             align-items: stretch;
         }
 
-        /* ✅ لا تفرض width هنا خالص — سيبها لـ Swiper JS يحسبها حسب slidesPerView */
         .swiper-slide {
+            box-sizing: border-box;
             height: auto;
             flex-shrink: 0;
             display: flex;
             justify-content: center;
+            padding: 0 6px;
         }
 
-        /* ✅ الكارت نفسه ياخد كل عرض السلايد المحسوب من Swiper */
+        /* ============================
+   الكارت نفسه
+============================ */
         .service-card {
             width: 100%;
             max-width: 350px;
@@ -1977,7 +1981,9 @@
             fill: none;
         }
 
-        /* تنسيق قائمة التسويق */
+        /* ============================
+   قائمة التسويق
+============================ */
         .marketing-list li {
             position: relative;
             padding-right: 15px;
@@ -1995,7 +2001,43 @@
             background: linear-gradient(90deg, var(--icon-gradient-start), var(--icon-gradient-end));
         }
 
-        /* ✅ ضبط المحتوى الداخلي فقط (من غير أي width overrides) */
+        /* ============================
+   شاشات متوسطة (تابلت وأعلى)
+============================ */
+        @media (min-width: 640px) {
+            .swiper-slide {
+                padding: 0 12px;
+            }
+        }
+
+        /* ============================
+   شاشات ديسكتوب
+============================ */
+        @media (min-width: 1024px) {
+            .swiper-slide {
+                padding: 0 18px;
+            }
+
+            .service-card {
+                max-width: 380px;
+                /* ✅ كارت أكبر */
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .swiper-slide {
+                padding: 0 24px;
+            }
+
+            .service-card {
+                max-width: 400px;
+                /* ✅ كارت أكبر على الشاشات الكبيرة */
+            }
+        }
+
+        /* ============================
+   موبايل (768px وأقل)
+============================ */
         @media (max-width: 768px) {
 
             .swiper-button-next,
@@ -2021,6 +2063,9 @@
             }
         }
 
+        /* ============================
+   موبايل صغير (480px وأقل)
+============================ */
         @media (max-width: 480px) {
             .service-card h3 {
                 font-size: 0.9rem;
@@ -2709,7 +2754,6 @@
 
 
 
-
     <!-- تعريف التدرجات اللونية للاستخدام في الـ SVG -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
@@ -2748,8 +2792,7 @@
 
                         <!-- بطاقة 01: برمجة مواقع شركات -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2780,8 +2823,7 @@
 
                         <!-- بطاقة 02: تصميم مواقع كاملة -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2812,8 +2854,7 @@
 
                         <!-- بطاقة 03: تصميم QR Menu -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2846,8 +2887,7 @@
 
                         <!-- بطاقة 04: استضافة مواقع -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2880,8 +2920,7 @@
 
                         <!-- بطاقة 05: أنظمة CRM -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2911,10 +2950,9 @@
                             </div>
                         </div>
 
-                        <!-- بطاقة 06: التسويق الإلكتروني (تحتوي على قائمة) -->
+                        <!-- بطاقة 06: التسويق الإلكتروني -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2948,8 +2986,7 @@
 
                         <!-- بطاقة 07: قسم المونتاج -->
                         <div class="swiper-slide">
-                            <div
-                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                            <div class="service-card relative flex min-h-[384px] w-full flex-col items-center pt-12">
                                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
                                     preserveAspectRatio="none">
                                     <path
@@ -2983,7 +3020,6 @@
             </div>
         </div>
     </section>
-
 
 
 
@@ -3360,14 +3396,13 @@
             })();
 
 
-
-
         const swiper = new Swiper('.mySwiper', {
             slidesPerView: 1.15,
             centeredSlides: true,
-            spaceBetween: 10,
+            spaceBetween: 0,
             grabCursor: true,
             loop: true,
+            rtl: true,
             autoplay: {
                 delay: 3500,
                 disableOnInteraction: false,
@@ -3382,36 +3417,37 @@
                 prevEl: '.swiper-button-prev',
             },
             breakpoints: {
-
                 0: {
                     slidesPerView: 1.15,
                     centeredSlides: true,
-                    spaceBetween: 10,
+                    spaceBetween: 0,
                 },
                 480: {
                     slidesPerView: 1.4,
                     centeredSlides: true,
-                    spaceBetween: 12,
+                    spaceBetween: 0,
                 },
-
                 640: {
                     slidesPerView: 2,
                     centeredSlides: false,
-                    spaceBetween: 60,
+                    spaceBetween: 0,
                 },
                 1024: {
-                    slidesPerView: 3,
+                    slidesPerView: 2.5,   // ✅ قللت العدد عشان الكروت تبان أكبر
                     centeredSlides: false,
-                    spaceBetween: 90,
+                    spaceBetween: 0,
                 },
                 1280: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,     // ✅ بدل 4
                     centeredSlides: false,
-                    spaceBetween: 200,
+                    spaceBetween: 0,
                 }
             }
         });
 
+        window.addEventListener('load', () => {
+            swiper.update();
+        });
 
 
 
