@@ -1,0 +1,2936 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Solutions | حلول رقمية مبتكرة</title>
+
+    <!-- Matching the live site: Almarai for Arabic UI text, Poppins for the Latin logo wordmark -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#22c9e0',
+                        'light-text': '#ffffff',
+                        'muted-foreground': 'rgba(255,255,255,0.65)',
+                        'surface-background': '#0a0e1a',
+                        destructive: '#ef4444',
+                        ring: '#22c9e0'
+                    },
+                    borderRadius: {
+                        DEFAULT: '0.375rem'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==================== Base reset (minimal, non-intrusive) ==================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+            height: 100vh;
+        }
+
+        html, body, * {
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        /* ==================== Stars background (data-v-4fc8ba02) ==================== */
+        .absolute[data-v-4fc8ba02],
+        [data-v-4fc8ba02]:host {
+            contain: layout style
+        }
+
+        .stars-layer[data-v-4fc8ba02] {
+            animation: starTwinkle-4fc8ba02 9s ease-in-out infinite;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: .7;
+            will-change: transform, opacity
+        }
+
+        .stars-layer[data-v-4fc8ba02],
+        .stars-layer[data-v-4fc8ba02]:after,
+        .stars-layer[data-v-4fc8ba02]:before {
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute
+        }
+
+        .stars-layer[data-v-4fc8ba02]:after,
+        .stars-layer[data-v-4fc8ba02]:before {
+            content: "";
+            top: -2%;
+            right: -2%;
+            bottom: -2%;
+            left: -2%;
+            opacity: .45;
+            pointer-events: none;
+            will-change: transform, opacity, filter
+        }
+
+        .stars-layer--far[data-v-4fc8ba02] {
+            animation-duration: 18s;
+            opacity: .45;
+            transform: translateZ(0)
+        }
+
+        .stars-layer--mid[data-v-4fc8ba02] {
+            animation-delay: .6s;
+            animation-duration: 24s;
+            opacity: .7;
+            transform: translateZ(0)
+        }
+
+        .stars-layer--near[data-v-4fc8ba02] {
+            animation-delay: 1.1s;
+            animation-duration: 36s;
+            opacity: .9;
+            transform: translateZ(0)
+        }
+
+        .stars-layer--far[data-v-4fc8ba02] {
+            animation-delay: 0s, 0s;
+            animation-direction: normal, alternate;
+            animation-duration: 10s, 26s;
+            animation-iteration-count: infinite, infinite;
+            animation-name: starTwinkle-4fc8ba02, starFloatFar-4fc8ba02;
+            animation-timing-function: ease-in-out, ease-in-out
+        }
+
+        .stars-layer--mid[data-v-4fc8ba02] {
+            animation-delay: 1.2s, .6s;
+            animation-direction: normal, alternate;
+            animation-duration: 11s, 32s;
+            animation-iteration-count: infinite, infinite;
+            animation-name: starTwinkle-4fc8ba02, starFloatMid-4fc8ba02;
+            animation-timing-function: ease-in-out, ease-in-out
+        }
+
+        .stars-layer--near[data-v-4fc8ba02] {
+            animation-delay: 2.1s, 1.4s;
+            animation-direction: normal, alternate;
+            animation-duration: 12s, 38s;
+            animation-iteration-count: infinite, infinite;
+            animation-name: starTwinkle-4fc8ba02, starFloatNear-4fc8ba02;
+            animation-timing-function: ease-in-out, ease-in-out
+        }
+
+        .stars-layer--far[data-v-4fc8ba02]:before {
+            animation: starSparkle-4fc8ba02 7.5s ease-in-out .8s infinite, starFloatFar-4fc8ba02 28s ease-in-out .6s infinite alternate
+        }
+
+        .stars-layer--far[data-v-4fc8ba02]:after {
+            animation: starSparkle-4fc8ba02 8.5s ease-in-out 1.4s infinite, starFloatFar-4fc8ba02 30s ease-in-out 1s infinite alternate
+        }
+
+        .stars-layer--mid[data-v-4fc8ba02]:before {
+            animation: starSparkle-4fc8ba02 7s ease-in-out .3s infinite, starFloatMid-4fc8ba02 34s ease-in-out .8s infinite alternate
+        }
+
+        .stars-layer--mid[data-v-4fc8ba02]:after {
+            animation: starSparkle-4fc8ba02 8s ease-in-out 1.1s infinite, starFloatMid-4fc8ba02 36s ease-in-out 1.2s infinite alternate
+        }
+
+        .stars-layer--near[data-v-4fc8ba02]:before {
+            animation: starSparkle-4fc8ba02 6.5s ease-in-out .6s infinite, starFloatNear-4fc8ba02 40s ease-in-out 1.4s infinite alternate
+        }
+
+        .stars-layer--near[data-v-4fc8ba02]:after {
+            animation: starSparkle-4fc8ba02 7.2s ease-in-out 1.3s infinite, starFloatNear-4fc8ba02 42s ease-in-out 1.8s infinite alternate
+        }
+
+        .stars-theme-light .stars-layer--far[data-v-4fc8ba02] {
+            background-image: radial-gradient(.9px .9px at 3% 7%, rgba(0, 0, 0, .45) 50%, transparent 52%), radial-gradient(.9px .9px at 8% 26%, rgba(0, 0, 0, .4) 50%, transparent 52%), radial-gradient(.9px .9px at 15% 78%, rgba(0, 0, 0, .38) 50%, transparent 52%), radial-gradient(.9px .9px at 22% 42%, rgba(0, 0, 0, .42) 50%, transparent 52%), radial-gradient(.9px .9px at 29% 13%, rgba(0, 0, 0, .4) 50%, transparent 52%), radial-gradient(.9px .9px at 35% 56%, rgba(0, 0, 0, .42) 50%, transparent 52%), radial-gradient(.9px .9px at 41% 88%, rgba(0, 0, 0, .38) 50%, transparent 52%), radial-gradient(.9px .9px at 48% 34%, rgba(0, 0, 0, .42) 50%, transparent 52%), radial-gradient(.9px .9px at 53% 9%, rgba(0, 0, 0, .4) 50%, transparent 52%), radial-gradient(.9px .9px at 59% 49%, rgba(0, 0, 0, .42) 50%, transparent 52%), radial-gradient(.9px .9px at 65% 73%, rgba(0, 0, 0, .38) 50%, transparent 52%), radial-gradient(.9px .9px at 71% 22%, rgba(0, 0, 0, .42) 50%, transparent 52%), radial-gradient(.9px .9px at 77% 60%, rgba(0, 0, 0, .4) 50%, transparent 52%), radial-gradient(.9px .9px at 83% 84%, rgba(0, 0, 0, .4) 50%, transparent 52%), radial-gradient(.9px .9px at 90% 31%, rgba(0, 0, 0, .42) 50%, transparent 52%), radial-gradient(.9px .9px at 96% 12%, rgba(0, 0, 0, .4) 50%, transparent 52%)
+        }
+
+        .stars-theme-light .stars-layer--mid[data-v-4fc8ba02] {
+            background-image: radial-gradient(1.2px 1.2px at 6% 18%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 12% 68%, rgba(0, 0, 0, .55) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 18% 38%, rgba(0, 0, 0, .58) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 24% 9%, rgba(0, 0, 0, .55) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 31% 51%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 37% 82%, rgba(0, 0, 0, .55) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 44% 27%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 50% 5%, rgba(0, 0, 0, .55) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 56% 44%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 62% 72%, rgba(0, 0, 0, .55) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 68% 20%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 74% 58%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 80% 86%, rgba(0, 0, 0, .55) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 86% 33%, rgba(0, 0, 0, .6) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 92% 11%, rgba(0, 0, 0, .55) 50%, transparent 52%)
+        }
+
+        .stars-theme-light .stars-layer--near[data-v-4fc8ba02] {
+            background-image: radial-gradient(1.6px 1.6px at 5% 62%, rgba(0, 0, 0, .65) 50%, transparent 52%), radial-gradient(1.8px 1.8px at 14% 24%, rgba(0, 0, 0, .7) 50%, transparent 52%), radial-gradient(1.7px 1.7px at 23% 48%, rgba(0, 0, 0, .65) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 33% 12%, rgba(0, 0, 0, .7) 50%, transparent 52%), radial-gradient(1.8px 1.8px at 41% 69%, rgba(0, 0, 0, .68) 50%, transparent 52%), radial-gradient(1.7px 1.7px at 52% 36%, rgba(0, 0, 0, .7) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 61% 9%, rgba(0, 0, 0, .68) 50%, transparent 52%), radial-gradient(1.9px 1.9px at 69% 54%, rgba(0, 0, 0, .7) 50%, transparent 52%), radial-gradient(1.7px 1.7px at 78% 80%, rgba(0, 0, 0, .65) 50%, transparent 52%), radial-gradient(1.8px 1.8px at 87% 28%, rgba(0, 0, 0, .7) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 94% 6%, rgba(0, 0, 0, .68) 50%, transparent 52%)
+        }
+
+        .stars-theme-dark .stars-layer--far[data-v-4fc8ba02] {
+            background-image: radial-gradient(.9px .9px at 3% 7%, rgba(160, 190, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 8% 26%, rgba(200, 220, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 15% 78%, rgba(220, 235, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 22% 42%, rgba(175, 200, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 29% 13%, rgba(190, 210, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 35% 56%, rgba(200, 220, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 41% 88%, rgba(220, 235, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 48% 34%, rgba(175, 200, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 53% 9%, rgba(190, 210, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 59% 49%, rgba(200, 220, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 65% 73%, rgba(220, 235, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 71% 22%, rgba(175, 200, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 77% 60%, rgba(190, 210, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 83% 84%, rgba(200, 220, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 90% 31%, rgba(220, 235, 255, .55) 50%, transparent 52%), radial-gradient(.9px .9px at 96% 12%, rgba(175, 200, 255, .55) 50%, transparent 52%)
+        }
+
+        .stars-theme-dark .stars-layer--mid[data-v-4fc8ba02] {
+            background-image: radial-gradient(1.2px 1.2px at 6% 18%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 12% 68%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 18% 38%, hsla(0, 0%, 100%, .85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 24% 9%, hsla(0, 0%, 100%, .85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 31% 51%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 37% 82%, hsla(0, 0%, 100%, .85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 44% 27%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 50% 5%, hsla(0, 0%, 100%, .85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 56% 44%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 62% 72%, hsla(0, 0%, 100%, .85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 68% 20%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 74% 58%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 80% 86%, hsla(0, 0%, 100%, .85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 86% 33%, hsla(0, 0%, 100%, .9) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 92% 11%, hsla(0, 0%, 100%, .85) 50%, transparent 52%)
+        }
+
+        .stars-theme-dark .stars-layer--near[data-v-4fc8ba02] {
+            background-image: radial-gradient(1.6px 1.6px at 5% 62%, rgba(255, 245, 225, .95) 50%, transparent 52%), radial-gradient(1.8px 1.8px at 14% 24%, hsla(0, 0%, 100%, .95) 50%, transparent 52%), radial-gradient(1.7px 1.7px at 23% 48%, rgba(255, 248, 235, .95) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 33% 12%, hsla(0, 0%, 100%, .95) 50%, transparent 52%), radial-gradient(1.8px 1.8px at 41% 69%, rgba(255, 245, 225, .95) 50%, transparent 52%), radial-gradient(1.7px 1.7px at 52% 36%, hsla(0, 0%, 100%, .95) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 61% 9%, rgba(255, 248, 235, .95) 50%, transparent 52%), radial-gradient(1.9px 1.9px at 69% 54%, hsla(0, 0%, 100%, .95) 50%, transparent 52%), radial-gradient(1.7px 1.7px at 78% 80%, rgba(255, 245, 225, .95) 50%, transparent 52%), radial-gradient(1.8px 1.8px at 87% 28%, hsla(0, 0%, 100%, .95) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 94% 6%, rgba(255, 248, 235, .95) 50%, transparent 52%)
+        }
+
+        @keyframes starTwinkle-4fc8ba02 {
+
+            0%,
+            to {
+                opacity: .65
+            }
+
+            40% {
+                opacity: .92
+            }
+
+            60% {
+                opacity: .8
+            }
+        }
+
+        @keyframes starSparkle-4fc8ba02 {
+
+            0%,
+            to {
+                filter: brightness(1) saturate(1);
+                opacity: .45
+            }
+
+            50% {
+                filter: brightness(1.25) saturate(1.05);
+                opacity: .7
+            }
+        }
+
+        @keyframes starFloatFar-4fc8ba02 {
+            0% {
+                transform: translateZ(0) scale(1)
+            }
+
+            25% {
+                transform: translate3d(10px, -6px, 0) scale(1.005)
+            }
+
+            50% {
+                transform: translate3d(4px, 8px, 0) scale(1)
+            }
+
+            75% {
+                transform: translate3d(-8px, 2px, 0) scale(.995)
+            }
+
+            to {
+                transform: translateZ(0) scale(1)
+            }
+        }
+
+        @keyframes starFloatMid-4fc8ba02 {
+            0% {
+                transform: translateZ(0) scale(1)
+            }
+
+            25% {
+                transform: translate3d(14px, -10px, 0) scale(1.004)
+            }
+
+            50% {
+                transform: translate3d(6px, 12px, 0) scale(1)
+            }
+
+            75% {
+                transform: translate3d(-12px, 4px, 0) scale(.996)
+            }
+
+            to {
+                transform: translateZ(0) scale(1)
+            }
+        }
+
+        @keyframes starFloatNear-4fc8ba02 {
+            0% {
+                transform: translateZ(0) scale(1)
+            }
+
+            25% {
+                transform: translate3d(18px, -12px, 0) scale(1.003)
+            }
+
+            50% {
+                transform: translate3d(8px, 16px, 0) scale(1)
+            }
+
+            75% {
+                transform: translate3d(-16px, 6px, 0) scale(.997)
+            }
+
+            to {
+                transform: translateZ(0) scale(1)
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .stars-layer[data-v-4fc8ba02] {
+                animation: none;
+                opacity: .5
+            }
+        }
+
+        /* ==================== Hero grid (data-v-9fa9fe81) ==================== */
+        .hero-grid[data-v-9fa9fe81] {
+            left: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            width: 100%;
+            z-index: 0
+        }
+
+        .hero-grid.is-top[data-v-9fa9fe81] {
+            top: var(--header-height)
+        }
+
+        .hero-grid.is-bottom[data-v-9fa9fe81] {
+            bottom: -50px
+        }
+
+        @media screen and (max-width: 1024px) {
+            .hero-grid.is-bottom[data-v-9fa9fe81] {
+                bottom: 80px
+            }
+        }
+
+        .hero-grid-top[data-v-9fa9fe81] {
+            height: 202px;
+            position: relative;
+            width: 100%
+        }
+
+        .hero-grid.is-top .hero-grid-top[data-v-9fa9fe81] {
+            margin-bottom: 85px
+        }
+
+        .hero-grid.is-bottom .hero-grid-top[data-v-9fa9fe81] {
+            margin-top: 85px
+        }
+
+        .lazy-background-image[data-v-9fa9fe81] {
+            transition: opacity 1s cubic-bezier(.6, .6, 0, 1)
+        }
+
+        .lazy-background-image-maskImage[data-v-9fa9fe81] {
+            -webkit-mask-image: var(--background-image);
+            mask-image: var(--background-image)
+        }
+
+        .hero-grid-top-animation[data-v-9fa9fe81] {
+            height: 100%;
+            left: 0;
+            -webkit-mask-position: center top;
+            mask-position: center top;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: 100% auto;
+            mask-size: 100% auto;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1
+        }
+
+        .hero-grid-top-animation div[data-v-9fa9fe81] {
+            animation: gridAnimation-9fa9fe81 18s cubic-bezier(.62, .62, .28, .67) infinite;
+            background: linear-gradient(180deg, #b7a4fb00, #2ccde6 100%, #1ac4de, #00bcd5, #00b4cb, #00abc2, #8562ff00);
+            background: linear-gradient(180deg, #b7a4fb00, #2ccde6 100%, #1ac4de, color(xyz 0.3 0.409 0.694), color(xyz 0.268 0.369 0.635), color(xyz 0.239 0.331 0.58), #8562ff00);
+            height: 200px;
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 1
+        }
+
+        .hero-grid.is-top .hero-grid-top-animation div[data-v-9fa9fe81] {
+            animation-delay: 0s;
+            animation-direction: normal
+        }
+
+        .hero-grid.is-bottom .hero-grid-top-animation div[data-v-9fa9fe81] {
+            animation-delay: 1.8s;
+            animation-direction: reverse
+        }
+
+        @keyframes gridAnimation-9fa9fe81 {
+            0% {
+                transform: translateY(-202px)
+            }
+
+            10% {
+                transform: translateY(202px)
+            }
+
+            70% {
+                transform: translateY(202px)
+            }
+
+            80% {
+                transform: translateY(-202px)
+            }
+
+            to {
+                transform: translateY(-202px)
+            }
+        }
+
+        /* ==================== Clients marquee (data-v-89521b90) ==================== */
+        .marquee-container[data-v-89521b90] {
+            -webkit-mask: linear-gradient(
+
+90deg, transparent, #000 10%, #000 90%, transparent);
+            mask: linear-gradient(
+
+90deg, transparent, #000 10%, #000 90%, transparent);
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .marquee-content[data-v-89521b90] {
+            gap: 2rem;
+            will-change: transform
+        }
+
+        .logo-item[data-v-89521b90],
+        .marquee-content[data-v-89521b90] {
+            align-items: center;
+            display: flex
+        }
+
+        .logo-item[data-v-89521b90] {
+            flex: 0 0 var(--logo-width, 210px);
+            height: 100px;
+            justify-content: center;
+            transform: translateY(30px);
+        }
+
+        /* ==================== Client brand wordmarks (like the image) ==================== */
+        .client-brand[data-v-89521b90] {
+            align-items: center;
+            color: #ffffff;
+            cursor: default;
+            display: flex;
+            justify-content: center;
+            opacity: .72;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .client-brand[data-v-89521b90]:hover {
+            opacity: 1;
+        }
+
+        .client-brand[data-v-89521b90] img {
+            flex: 0 0 auto;
+            width: 185px;
+            height: 88px;
+            opacity: .78;
+            object-fit: contain;
+            display: block;
+            filter: brightness(0) invert(1) contrast(1.2);
+            transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .client-brand[data-v-89521b90]:hover img {
+            opacity: 1;
+            filter: brightness(0) invert(1) contrast(1.35);
+            transform: scale(1.03);
+        }
+
+        .client-brand[data-v-89521b90]:hover .brand-name {
+            color: #ffffff;
+        }
+
+        .client-brand[data-v-89521b90] .brand-name {
+            font-family: 'Poppins', system-ui, sans-serif;
+            line-height: 1;
+            display: inline-block;
+            transform: translateY(.5px);
+        }
+
+        @media (max-width: 767px) {
+            .marquee-container[data-v-89521b90] {
+                --logo-width: 170px;
+                -webkit-mask: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+                mask: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+            }
+
+            .marquee-content[data-v-89521b90] {
+                gap: 1.2rem;
+            }
+
+            .logo-item[data-v-89521b90] {
+                flex: 0 0 var(--logo-width, 170px);
+                height: 84px;
+                transform: translateY(10px);
+            }
+
+            .client-brand[data-v-89521b90] img {
+                width: 155px;
+                height: 72px;
+                opacity: .86;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee-container[data-v-89521b90] {
+                --logo-width: 140px;
+            }
+
+            .logo-item[data-v-89521b90] {
+                height: 72px;
+                transform: translateY(8px);
+            }
+
+            .client-brand[data-v-89521b90] img {
+                width: 130px;
+                height: 60px;
+            }
+        }
+
+        .marquee-content[data-v-89521b90]:hover {
+            animation-play-state: paused
+        }
+
+        .marquee-ltr[data-v-89521b90] {
+            animation: marquee-ltr-89521b90 100s linear infinite
+        }
+
+        .marquee-rtl[data-v-89521b90] {
+            animation: marquee-rtl-89521b90 100s linear infinite
+        }
+
+        @keyframes marquee-ltr-89521b90 {
+            0% {
+                transform: translate(0)
+            }
+
+            to {
+                transform: translate(calc((var(--logo-width, 200px) + 2rem)*var(--logo-count)*-1))
+            }
+        }
+
+        @keyframes marquee-rtl-89521b90 {
+            0% {
+                transform: translate(0)
+            }
+
+            to {
+                transform: translate(calc((var(--logo-width, 200px) + 2rem)*var(--logo-count)))
+            }
+        }
+
+        /* ==================== Tabs / scroll fade (data-v-0a8c3d38) ==================== */
+        .tabs-gradient-border[data-v-0a8c3d38] {
+            background: linear-gradient(var(--surface-background), var(--surface-background)) padding-box, var(--tabs-border-gradient) border-box;
+            border: 1px solid transparent;
+            border-radius: var(--ws-rounded, .375rem);
+            position: relative
+        }
+
+        .scroll-fade-left[data-v-0a8c3d38] {
+            -webkit-mask: linear-gradient(90deg, transparent, #000 4%, #000);
+            mask: linear-gradient(90deg, transparent, #000 4%, #000)
+        }
+
+        .scroll-fade-right[data-v-0a8c3d38] {
+            -webkit-mask: linear-gradient(90deg, #000, #000 96%, transparent);
+            mask: linear-gradient(90deg, #000, #000 96%, transparent)
+        }
+
+        .scroll-fade-both-horizontal[data-v-0a8c3d38] {
+            -webkit-mask: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+            mask: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent)
+        }
+
+        .scroll-fade-left-rtl[data-v-0a8c3d38] {
+            -webkit-mask: linear-gradient(270deg, transparent, #000 4%, #000);
+            mask: linear-gradient(270deg, transparent, #000 4%, #000)
+        }
+
+        .scroll-fade-right-rtl[data-v-0a8c3d38] {
+            -webkit-mask: linear-gradient(270deg, #000, #000 96%, transparent);
+            mask: linear-gradient(270deg, #000, #000 96%, transparent)
+        }
+
+        .scroll-fade-both-horizontal-rtl[data-v-0a8c3d38] {
+            -webkit-mask: linear-gradient(270deg, transparent, #000 4%, #000 96%, transparent);
+            mask: linear-gradient(270deg, transparent, #000 4%, #000 96%, transparent)
+        }
+
+        .tab-content-enter-active[data-v-0a8c3d38],
+        .tab-content-leave-active[data-v-0a8c3d38] {
+            transition: all .3s ease-in-out
+        }
+
+        .tab-content-enter-from[data-v-0a8c3d38] {
+            opacity: 0;
+            transform: translateY(16px)
+        }
+
+        .tab-content-leave-to[data-v-0a8c3d38] {
+            opacity: 0;
+            transform: translateY(-16px)
+        }
+
+        .tab-content-enter-to[data-v-0a8c3d38],
+        .tab-content-leave-from[data-v-0a8c3d38] {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        /* ==================== Design tokens & classes not covered by default Tailwind ==================== */
+        :root {
+            --header-height: 80px;
+        }
+
+        html,
+        body {
+            background: #0a0e1a;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        .font-logo {
+            font-family: 'Poppins', system-ui, sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        p, span, div, a, li, button,
+        input, textarea, select, option, label,
+        .text-sm, .text-base, .text-lg, .text-xl, .text-2xl,
+        .leading-relaxed, .leading-normal,
+        .nav-link,
+        .nav-lang,
+        .site-header,
+        .site-footer,
+        .section-title,
+        .service-card,
+        .feature-card,
+        .project-card,
+        .testimonial-card {
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        /* ==================== Site header / nav bar ==================== */
+        .site-header {
+            position: sticky;
+            inset-inline: 0;
+            top: 0;
+            z-index: 50;
+            height: var(--header-height);
+            background: rgba(11, 17, 29, 0.08);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .site-header.scrolled {
+            background: rgba(11, 17, 29, 0.18);
+            border-bottom-color: rgba(34, 201, 224, 0.14);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .site-header .header-inner {
+            max-width: 1280px;
+            height: 100%;
+            margin-inline: auto;
+            padding-inline: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* =============================================================
+   === NEW ▼ CLICK SOLUTIONS LOGO MARK (Advanced ornamentation) ===
+   ============================================================= */
+        .logo-mark {
+            direction: ltr;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background:
+                radial-gradient(circle at 28% 22%, rgba(34, 201, 224, .22), transparent 55%),
+                linear-gradient(135deg, rgba(34, 201, 224, .14) 0%, rgba(34, 201, 224, .03) 100%);
+            border: 1.5px solid rgba(34, 201, 224, .45);
+            box-shadow:
+                0 0 24px -6px rgba(34, 201, 224, .4),
+                inset 0 1px 0 rgba(255, 255, 255, .1),
+                inset 0 0 18px rgba(34, 201, 224, .06);
+            transition: all .35s cubic-bezier(.16, 1, .3, 1);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        /* Inner radial glow */
+        .logo-mark::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 35% 35%, rgba(34, 201, 224, .15), transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Bottom gradient accent line */
+        .logo-mark::after {
+            content: "";
+            position: absolute;
+            bottom: 3px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(34, 201, 224, .7), transparent);
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .logo-mark:hover {
+            border-color: rgba(34, 201, 224, .75);
+            box-shadow:
+                0 0 36px -4px rgba(34, 201, 224, .55),
+                inset 0 1px 0 rgba(255, 255, 255, .12),
+                inset 0 0 22px rgba(34, 201, 224, .1);
+            transform: translateY(-1px);
+        }
+
+        /* CS letters container */
+        .logo-cs {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            letter-spacing: -1.5px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .cs-c {
+            color: #22c9e0;
+            text-shadow: 0 0 14px rgba(34, 201, 224, .5);
+            position: relative;
+        }
+
+        .cs-s {
+            color: #ffffff;
+            margin-left: -1px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, .15);
+        }
+
+        /* Decorative dots — corner accents */
+        .logo-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: #22c9e0;
+            z-index: 2;
+        }
+
+        .dot-tl {
+            top: 5px;
+            left: 5px;
+            width: 4px;
+            height: 4px;
+            box-shadow: 0 0 8px rgba(34, 201, 224, .7);
+            animation: logoDotPulse 3s ease-in-out infinite;
+        }
+
+        .dot-br {
+            bottom: 5px;
+            right: 5px;
+            width: 4px;
+            height: 4px;
+            box-shadow: 0 0 8px rgba(34, 201, 224, .7);
+            animation: logoDotPulse 3s ease-in-out 1.5s infinite;
+        }
+
+        .dot-tr {
+            top: 7px;
+            right: 7px;
+            width: 2.5px;
+            height: 2.5px;
+            opacity: .45;
+            animation: logoDotPulse 4s ease-in-out .8s infinite;
+        }
+
+        .dot-bl {
+            bottom: 7px;
+            left: 7px;
+            width: 2.5px;
+            height: 2.5px;
+            opacity: .45;
+            animation: logoDotPulse 4s ease-in-out 2.3s infinite;
+        }
+
+        @keyframes logoDotPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 6px rgba(34, 201, 224, .5);
+            }
+
+            50% {
+                opacity: .5;
+                box-shadow: 0 0 12px rgba(34, 201, 224, .9);
+            }
+        }
+
+        .dot-tr,
+        .dot-bl {
+            animation-name: logoDotPulseSubtle;
+        }
+
+        @keyframes logoDotPulseSubtle {
+
+            0%,
+            100% {
+                opacity: .45;
+            }
+
+            50% {
+                opacity: .15;
+            }
+        }
+
+        /* ==================== Wordmark & tagline ==================== */
+        .logo-word {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            line-height: 1;
+            color: #ffffff;
+            letter-spacing: .5px;
+            /* 3D Layered / Stacked text effect */
+            text-shadow:
+                1px 1px 0 #bdc3c7,
+                2px 2px 0 #95a5a6,
+                3px 3px 0 #7f8c8d,
+                4px 4px 0 #6c7a89,
+                5px 5px 0 #566473,
+                6px 6px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo-word span {
+            color: #22c9e0;
+            text-shadow:
+                1px 1px 0 #1eb6cc,
+                2px 2px 0 #1a9fb3,
+                3px 3px 0 #168899,
+                4px 4px 0 #12717f,
+                5px 5px 0 #0d5a65,
+                6px 6px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo-tagline {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, .55);
+            margin-top: 6px;
+            /* Increased spacing to prevent overlap with the 3D shadow */
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: rgb(255 255 255 / 65%);
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            white-space: nowrap;
+            transition: color .2s ease;
+        }
+
+        .nav-link:hover {
+            color: #22c9e0;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+        }
+
+        .nav-icon-btn {
+            color: rgba(255, 255, 255, .9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color .2s ease;
+            cursor: pointer;
+            background: none;
+            border: 0;
+            padding: 0;
+        }
+
+        .nav-icon-btn svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .nav-icon-btn:hover {
+            color: #22c9e0;
+        }
+
+        .nav-lang {
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: rgba(255, 255, 255, .92);
+            cursor: pointer;
+        }
+
+        .lang-toast {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 220px;
+            max-width: 320px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(10, 14, 26, 0.82);
+            border: 1px solid rgba(34, 201, 224, 0.28);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.36), 0 0 26px rgba(34, 201, 224, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #f5fbff;
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateX(24px) scale(0.96);
+            pointer-events: none;
+            transition: opacity 0.28s ease, transform 0.28s ease;
+        }
+
+        .lang-toast.show {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        .lang-toast::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c9e0, #7ae3ff);
+            box-shadow: 0 0 10px rgba(34, 201, 224, 0.8);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links-text {
+                display: none;
+            }
+
+            .nav-icon-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            :root {
+                --header-height: 72px;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .site-header .header-inner {
+                padding-inline: 0.8rem;
+            }
+
+            .site-header .header-inner > a {
+                min-width: 0;
+            }
+
+            .site-header .header-inner > a svg {
+                width: 200px;
+                height: auto;
+                display: block;
+            }
+
+            .nav-lang {
+                display: none;
+            }
+
+            .nav-icon-btn {
+                width: 48px;
+                height: 48px;
+            }
+
+            .nav-icon-btn svg {
+                width: 48px;
+                height: 48px;
+                display: block;
+            }
+
+            .hero-content-wrapper {
+                padding-top: calc(var(--header-height) + 1.2rem) !important;
+            }
+
+            .hero-content-wrapper h1 {
+                font-size: clamp(1.65rem, 6vw, 2.75rem) !important;
+                line-height: 1.3 !important;
+                letter-spacing: -0.03em !important;
+                max-width: 560px !important;
+            }
+
+            .text-muted-foreground {
+                padding-top: 1rem !important;
+                padding-bottom: 1.35rem !important;
+                max-width: 290px !important;
+                font-size: 0.96rem !important;
+                line-height: 1.8 !important;
+            }
+
+            .glow-bar[data-v-c2dae020] {
+                width: 210px !important;
+                height: 32px !important;
+                filter: blur(26px) !important;
+            }
+
+            .hero-content-wrapper a.mx-auto {
+                width: min(100%, 260px) !important;
+            }
+
+            .hero-content-wrapper button[data-slot="button"] {
+                width: 100% !important;
+                justify-content: center !important;
+                padding-inline: 1rem !important;
+                font-size: 0.96rem !important;
+                height: 3rem !important;
+            }
+
+            .marquee-section {
+                padding-top: 3.3rem !important;
+                padding-bottom: 0.35rem !important;
+            }
+
+            .marquee-container[data-v-89521b90] {
+                -webkit-mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+                mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+            }
+
+            .logo-item[data-v-89521b90] {
+                flex-basis: 150px !important;
+                height: 52px !important;
+            }
+
+            .client-brand[data-v-89521b90] {
+                gap: 0.4rem !important;
+            }
+
+            .client-brand[data-v-89521b90] svg {
+                width: 17px !important;
+                height: 17px !important;
+            }
+
+            .client-brand[data-v-89521b90] .brand-name {
+                font-size: 11px !important;
+                letter-spacing: 0.12em !important;
+            }
+
+            .side-menu {
+                width: min(88vw, 360px);
+            }
+
+            .side-menu-header {
+                padding: 16px 16px 12px;
+            }
+
+            .side-menu-body,
+            .side-menu-services {
+                margin-inline: 0;
+                padding-inline: 16px;
+            }
+
+            .side-menu-link,
+            .side-accordion-toggle {
+                padding: 11px 12px;
+                border-radius: 12px;
+            }
+
+            .side-link-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .side-link-title {
+                font-size: 13.5px;
+            }
+
+            .side-link-sub {
+                font-size: 10.75px;
+            }
+
+            .side-menu-footer {
+                padding: 16px 16px 22px;
+            }
+
+            .side-menu-cta {
+                font-size: 13.5px;
+                padding: 12px 14px;
+            }
+
+            .social-btn {
+                width: 34px;
+                height: 34px;
+            }
+        }
+
+        .-mt-header {
+            margin-top: calc(var(--header-height) * -1);
+        }
+
+        /* Hero deep-space gradient background used by the section itself */
+        .bg-gradient-odd {
+            background:
+                radial-gradient(60% 50% at 50% 0%, rgba(34, 201, 224, .10), transparent 60%),
+                linear-gradient(180deg, #05070d 0%, #0a0e1a 55%, #0a0e1a 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* =============================================================
+   === SAME TEXT GRADIENT AS YOUR REFERENCE CODE ===
+   ============================================================= */
+        .dark-text-gradient {
+            background: var(--color-gradient-text, linear-gradient(90deg, oklch(68.3% 0 0), oklch(100% 0 0) 50%, oklch(68.3% 0 0)));
+            color: #484848;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            display: inline-block;
+            --gradient-text: linear-gradient(90deg, oklch(68.3% 0 0), oklch(100% 0 0) 50%, oklch(68.3% 0 0));
+        }
+
+        /* =============================================================
+   === GLOW BAR - EXACTLY AS ORIGINAL ===
+   ============================================================= */
+        .glow-bar[data-v-c2dae020] {
+            background: #00bed780;
+            border-radius: 9999px;
+            box-shadow: 0 0 47px 10px #00bed7, inset 0 0 4px 4px #00bed7;
+            filter: blur(74px);
+            height: 53px;
+            opacity: .6;
+            position: absolute;
+            width: 460px;
+            z-index: -1;
+        }
+
+        /* =============================================================
+   === ONLY THE MAIN TITLE MOVED HIGHER ===
+   ============================================================= */
+        #hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        /* Only move the h1 title higher */
+        .hero-content-wrapper h1 {
+            /* margin-top: -9rem !important; */
+        }
+
+        /* Keep everything else in the same position */
+        .hero-content-wrapper {
+            padding-top: 1.5rem;
+            padding-bottom: 0;
+        }
+
+        .text-muted-foreground {
+            padding-bottom: 3.5rem !important;
+            padding-top: 2.5rem !important;
+        }
+
+        .marquee-section {
+            padding-top: 8.8rem !important;
+            padding-bottom: 0.5rem !important;
+            /* margin-top: 15.25rem; */
+        }
+
+        .py-\[50px\] {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+
+        /* =============================================================
+   === NEW ▼ SERVICES MEGA DROPDOWN (Navbar) ===
+   ============================================================= */
+        .nav-item-dropdown {
+            position: relative;
+        }
+
+        button.nav-link {
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        /* underline indicator for nav links */
+        .nav-link {
+            position: relative;
+            font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            right: 0;
+            height: 2px;
+            width: 0;
+            background: #22c9e0;
+            border-radius: 2px;
+            transition: width .3s ease;
+        }
+
+        .nav-link:hover::after,
+        .site-header.services-open .nav-dropdown-trigger::after {
+            width: 100%;
+        }
+
+        .dropdown-chevron {
+            transition: transform .35s ease;
+        }
+
+        .site-header.services-open .dropdown-chevron {
+            transform: rotate(180deg);
+        }
+
+        .site-header.services-open .nav-dropdown-trigger {
+            color: #22c9e0;
+        }
+
+        .services-mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            padding: 14px 16px 22px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+        }
+
+        .site-header.services-open .services-mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition: opacity .3s ease, transform .3s cubic-bezier(.16, 1, .3, 1), visibility 0s;
+        }
+
+        .services-mega-panel {
+            pointer-events: auto;
+            max-width: 1080px;
+            margin-inline: auto;
+            background: rgba(12, 17, 30, .97);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(34, 201, 224, .18);
+            border-radius: 18px;
+            box-shadow: 0 30px 70px -18px rgba(0, 0, 0, .7), 0 0 70px -25px rgba(34, 201, 224, .3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .services-mega-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(34, 201, 224, .75) 50%, transparent);
+            z-index: 1;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .mega-col {
+            padding: 20px 18px 18px;
+            min-width: 0;
+        }
+
+        .mega-col+.mega-col {
+            border-right: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .mega-col-header {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #22c9e0;
+            font-weight: 700;
+            font-size: 13.5px;
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .mega-col-header svg {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+        }
+
+        .mega-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 8px 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: background .22s ease;
+        }
+
+        .mega-item:hover {
+            background: rgba(34, 201, 224, .07);
+        }
+
+        .mega-item-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            color: #93a7bd;
+            transition: all .25s ease;
+        }
+
+        .mega-item:hover .mega-item-icon {
+            background: rgba(34, 201, 224, .13);
+            border-color: rgba(34, 201, 224, .4);
+            color: #22c9e0;
+            box-shadow: 0 0 18px rgba(34, 201, 224, .18);
+        }
+
+        .mega-item-body {
+            flex: 1;
+            min-width: 0;
+            display: block;
+        }
+
+        .mega-item-title {
+            display: block;
+            color: #fff;
+            font-size: 13.5px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .mega-item-desc {
+            display: block;
+            color: rgba(255, 255, 255, .48);
+            font-size: 11.5px;
+            line-height: 1.45;
+            margin-top: 1px;
+        }
+
+        .mega-item-arrow {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            color: #22c9e0;
+            opacity: 0;
+            transform: translateX(5px);
+            transition: all .25s ease;
+        }
+
+        .mega-item:hover .mega-item-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mega-promo {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, rgba(34, 201, 224, .13), rgba(34, 201, 224, .03));
+            border: 1px solid rgba(34, 201, 224, .22);
+        }
+
+        .mega-promo-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .mega-promo-title svg {
+            width: 15px;
+            height: 15px;
+            color: #22c9e0;
+            flex-shrink: 0;
+        }
+
+        .mega-promo-text {
+            color: rgba(255, 255, 255, .55);
+            font-size: 11.5px;
+            line-height: 1.6;
+            margin: 6px 0 9px;
+        }
+
+        .mega-promo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #22c9e0;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: gap .2s ease;
+        }
+
+        .mega-promo-link:hover {
+            gap: 9px;
+        }
+
+        .mega-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px 22px;
+            background: rgba(255, 255, 255, .02);
+            border-top: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .mega-footer-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, .65);
+            font-size: 13px;
+        }
+
+        .mega-footer-text svg {
+            width: 17px;
+            height: 17px;
+            color: #22c9e0;
+            flex-shrink: 0;
+        }
+
+        .mega-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 20px;
+            border-radius: 10px;
+            background: #22c9e0;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all .25s ease;
+        }
+
+        .mega-cta:hover {
+            background: #35d4ea;
+            box-shadow: 0 8px 24px rgba(34, 201, 224, .35);
+            transform: translateY(-1px);
+        }
+
+        /* columns entrance animation */
+        .site-header.services-open .mega-col {
+            animation: megaColIn .45s cubic-bezier(.16, 1, .3, 1) both;
+        }
+
+        .site-header.services-open .mega-col:nth-child(2) {
+            animation-delay: .07s;
+        }
+
+        .site-header.services-open .mega-col:nth-child(3) {
+            animation-delay: .14s;
+        }
+
+        @keyframes megaColIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* responsive mega grid */
+        @media (max-width: 1080px) {
+            .mega-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mega-grid .mega-col--systems {
+                grid-column: 1 / -1;
+                border-right: 0;
+                border-top: 1px solid rgba(255, 255, 255, .06);
+            }
+
+            .mega-col--systems .mega-items {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 6px;
+            }
+        }
+
+        /* =============================================================
+   === NEW ▼ SIDE MENU (3-dots drawer) ===
+   ============================================================= */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .side-menu-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 7, 14, .62);
+            -webkit-backdrop-filter: blur(7px);
+            backdrop-filter: blur(7px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .4s ease, visibility 0s linear .4s;
+            z-index: 90;
+        }
+
+        .side-menu-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .4s ease;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: min(400px, 92vw);
+            background: linear-gradient(180deg, #0d1424 0%, #090d18 100%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transform: translateX(-105%);
+            transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+            box-shadow: 30px 0 80px rgba(0, 0, 0, .55);
+        }
+
+        .side-menu.open {
+            transform: translateX(0);
+        }
+
+        .side-menu::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(34, 201, 224, .55) 50%, transparent);
+        }
+
+        .side-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .side-menu::-webkit-scrollbar-thumb {
+            background: rgba(34, 201, 224, .25);
+            border-radius: 4px;
+        }
+
+        .side-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px 14px;
+        }
+
+        .side-menu-close {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .04);
+            color: rgba(255, 255, 255, .85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .side-menu-close:hover {
+            color: #22c9e0;
+            border-color: rgba(34, 201, 224, .5);
+            background: rgba(34, 201, 224, .08);
+            transform: rotate(90deg);
+        }
+
+        .side-menu-body {
+            padding: 8px 20px 4px;
+        }
+
+        .side-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .06);
+            background: rgba(255, 255, 255, .025);
+            text-decoration: none;
+            transition: background .25s ease, border-color .25s ease;
+        }
+
+        .side-menu-link:hover {
+            background: rgba(34, 201, 224, .07);
+            border-color: rgba(34, 201, 224, .35);
+        }
+
+        .side-link-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(34, 201, 224, .1);
+            border: 1px solid rgba(34, 201, 224, .22);
+            color: #22c9e0;
+            transition: all .25s ease;
+        }
+
+        .side-menu-link:hover .side-link-icon,
+        .side-accordion-toggle:hover .side-link-icon {
+            background: rgba(34, 201, 224, .2);
+            box-shadow: 0 0 18px rgba(34, 201, 224, .28);
+        }
+
+        .side-link-body {
+            flex: 1;
+            min-width: 0;
+            display: block;
+        }
+
+        .side-link-title {
+            display: block;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14.5px;
+        }
+
+        .side-link-sub {
+            display: block;
+            color: rgba(255, 255, 255, .48);
+            font-size: 11.5px;
+            margin-top: 2px;
+        }
+
+        .side-link-arrow {
+            flex-shrink: 0;
+            color: rgba(255, 255, 255, .3);
+            transition: all .25s ease;
+        }
+
+        .side-menu-link:hover .side-link-arrow {
+            color: #22c9e0;
+            transform: translateX(-3px);
+        }
+
+        .side-menu-divider {
+            height: 1px;
+            margin: 16px 20px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .14), transparent);
+        }
+
+        /* services accordion inside side menu */
+        .side-menu-services {
+            margin: 0 20px;
+        }
+
+        .side-accordion-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .06);
+            background: rgba(255, 255, 255, .025);
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            text-align: right;
+            transition: background .25s ease, border-color .25s ease;
+        }
+
+        .side-accordion-toggle:hover {
+            background: rgba(34, 201, 224, .07);
+            border-color: rgba(34, 201, 224, .35);
+        }
+
+        .acc-chevron {
+            flex-shrink: 0;
+            color: rgba(255, 255, 255, .4);
+            transition: transform .35s ease, color .35s ease;
+        }
+
+        .side-menu-services.open .acc-chevron {
+            transform: rotate(180deg);
+            color: #22c9e0;
+        }
+
+        .side-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .5s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .side-menu-services.open .side-accordion-content {
+            max-height: 640px;
+        }
+
+        .side-accordion-inner {
+            padding: 10px 6px 12px;
+        }
+
+        .side-services-group-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(34, 201, 224, .9);
+            padding: 10px 10px 5px;
+        }
+
+        .side-service-link {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 10px;
+            border-radius: 9px;
+            color: rgba(255, 255, 255, .72);
+            font-size: 13px;
+            text-decoration: none;
+            transition: all .2s ease;
+        }
+
+        .side-service-link::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(34, 201, 224, .45);
+            flex-shrink: 0;
+            transition: background .2s ease, box-shadow .2s ease;
+        }
+
+        .side-service-link:hover {
+            color: #fff;
+            background: rgba(34, 201, 224, .08);
+            padding-right: 15px;
+        }
+
+        .side-service-link:hover::before {
+            background: #22c9e0;
+            box-shadow: 0 0 8px rgba(34, 201, 224, .8);
+        }
+
+        .side-menu-footer {
+            margin-top: auto;
+            padding: 20px 20px 26px;
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            background: rgba(255, 255, 255, .015);
+        }
+
+        .side-menu-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 13px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #26d3ea 0%, #12aecd 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 14.5px;
+            text-decoration: none;
+            box-shadow: 0 10px 28px -6px rgba(34, 201, 224, .45);
+            transition: all .25s ease;
+        }
+
+        .side-menu-cta:hover {
+            filter: brightness(1.07);
+            box-shadow: 0 14px 34px -6px rgba(34, 201, 224, .55);
+        }
+
+        .side-menu-socials {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, .1);
+            background: rgba(255, 255, 255, .03);
+            color: rgba(255, 255, 255, .6);
+            transition: all .25s ease;
+        }
+
+        .social-btn:hover {
+            color: #22c9e0;
+            border-color: rgba(34, 201, 224, .5);
+            background: rgba(34, 201, 224, .08);
+            transform: translateY(-3px);
+        }
+
+        /* staggered entrance animation */
+        @keyframes sideItemIn {
+            from {
+                opacity: 0;
+                transform: translateX(-26px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .side-menu.open .anim-item {
+            animation: sideItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
+        }
+
+        .side-menu.open .anim-item.d1 {
+            animation-delay: .07s;
+        }
+
+        .side-menu.open .anim-item.d2 {
+            animation-delay: .15s;
+        }
+
+        .side-menu.open .anim-item.d3 {
+            animation-delay: .23s;
+        }
+
+        .side-menu.open .anim-item.d4 {
+            animation-delay: .31s;
+        }
+
+        .side-menu.open .anim-item.d5 {
+            animation-delay: .39s;
+        }
+
+
+
+
+
+
+
+
+
+
+        /* ============================================================= */
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <!-- ============================================================
+         NEW ▼ CLICK SOLUTIONS LOGO (Header) - using the SVG logo
+         ============================================================ -->
+            <a href="/" class="flex items-center gap-3" style="text-decoration:none; color: #fff;">
+
+                <svg width="165" height="24" viewBox="0 0 165 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-auto">
+                    <g clip-path="url(#clip0_451_1815)">
+                        <path d="M21.43 19.66 A10 10 0 1 1 21.43 4.34" stroke="#00BED7" stroke-width="6" fill="none"
+                            stroke-linecap="round"></path>
+                        <path
+                            d="M36.2199 7.18888C36.2202 7.7808 36.4192 8.35544 36.7848 8.82049C37.1505 9.28554 37.6616 9.614 38.2361 9.7531H41.9148L45.4732 9.75919L47.5209 9.76244L48.2998 9.76386C49.9021 9.8546 51.4264 10.4864 52.624 11.5562C53.8216 12.626 54.6219 14.0706 54.8943 15.6544C55.1666 17.2382 54.8951 18.8677 54.1238 20.2771C53.3525 21.6864 52.1271 22.7925 50.6475 23.4148C51.1718 22.5453 51.4908 21.5674 51.5803 20.5557C51.6697 19.5439 51.5272 18.5251 51.1637 17.5769C51.1625 17.5721 51.1609 17.5673 51.159 17.5627C50.7758 16.5973 50.1118 15.7694 49.2531 15.1865C48.3943 14.6037 47.3804 14.2927 46.343 14.294H38.7947C37.2956 14.2813 35.839 13.7935 34.6339 12.9005C33.4287 12.0075 32.537 10.7552 32.0866 9.3232C31.6362 7.89125 31.6502 6.35323 32.1267 4.92977C32.6032 3.50631 33.5177 2.27056 34.7389 1.39978C34.7391 1.39862 34.7397 1.39755 34.7405 1.39673C35.8214 0.624977 37.0974 0.173358 38.4225 0.0935008L39.2671 0.0918775L46.0616 0.0811214L49.4211 0.0825403L53.8003 0.0811214H55.0548V0.138979L54.2868 2.64514C54.1163 3.20155 53.7769 3.69092 53.3157 4.04518C52.8546 4.39945 52.2947 4.601 51.7139 4.62181H51.5166L45.4761 4.62343H38.2311C37.6572 4.76353 37.147 5.0926 36.7823 5.55786C36.4175 6.02311 36.2194 6.59757 36.2197 7.18908"
+                            fill="#00BED7"></path>
+                        <path
+                            d="M51.1631 17.5766C51.1963 17.661 51.2267 17.7467 51.2555 17.8331C51.2263 17.7469 51.1947 17.6612 51.1631 17.5766Z"
+                            fill="#00BED7"></path>
+                        <path
+                            d="M27.684 19.9683C27.684 20.6005 27.4968 21.2186 27.146 21.7443C26.7953 22.27 26.2967 22.6797 25.7135 22.9216C25.1302 23.1636 24.4884 23.2269 23.8691 23.1035C23.2499 22.9802 22.6812 22.6757 22.2347 22.2287C21.7883 21.7816 21.4843 21.212 21.3611 20.5919C21.238 19.9719 21.3012 19.3291 21.5428 18.745C21.7844 18.1609 22.1935 17.6616 22.7185 17.3104C23.2434 16.9591 23.8606 16.7717 24.4919 16.7717C25.3385 16.7717 26.1504 17.1084 26.749 17.7079C27.3477 18.3074 27.684 19.1205 27.684 19.9683Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M48.1459 19.9683C48.1459 20.6005 47.9587 21.2186 47.6079 21.7443C47.2572 22.27 46.7586 22.6797 46.1754 22.9216C45.5921 23.1636 44.9503 23.2269 44.3311 23.1035C43.7119 22.9802 43.1431 22.6757 42.6967 22.2287C42.2502 21.7816 41.9462 21.212 41.8231 20.5919C41.6999 19.9719 41.7631 19.3291 42.0047 18.745C42.2463 18.1609 42.6555 17.6616 43.1804 17.3104C43.7053 16.9591 44.3225 16.7717 44.9538 16.7717C45.8004 16.7717 46.6123 17.1084 47.211 17.7079C47.8096 18.3074 48.1459 19.1205 48.1459 19.9683Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M38.0639 19.9683C38.0639 20.6005 37.8767 21.2186 37.5259 21.7442C37.1752 22.2699 36.6767 22.6797 36.0934 22.9216C35.5101 23.1636 34.8683 23.2269 34.2491 23.1035C33.6299 22.9802 33.0611 22.6758 32.6147 22.2288C32.1683 21.7817 31.8642 21.2121 31.741 20.5921C31.6179 19.972 31.6811 19.3293 31.9226 18.7451C32.1642 18.161 32.5733 17.6618 33.0982 17.3105C33.6231 16.9592 34.2403 16.7717 34.8716 16.7717C35.7182 16.7717 36.5302 17.1084 37.1288 17.7079C37.7275 18.3074 38.0638 19.1205 38.0639 19.9683Z"
+                            fill="currentColor"></path>
+                        <text x="150" y="11.6" font-family="Arial, Helvetica, sans-serif" font-weight="500"
+                            font-size="14.5" letter-spacing="0" fill="currentColor">Click Solutions</text>
+                        <path
+                            d="M65.2876 17.4644C65.2841 17.4689 65.2795 17.4726 65.2744 17.4753C65.2693 17.4779 65.2637 17.4795 65.2579 17.4798C65.2522 17.4801 65.2464 17.4792 65.2411 17.4771C65.2357 17.475 65.2308 17.4718 65.2268 17.4676C65.2085 17.454 65.1915 17.4404 65.1755 17.427C65.1507 17.4113 65.1268 17.3942 65.1039 17.3759C65.0431 17.3326 64.9823 17.2946 64.9263 17.2597C64.7853 17.1852 64.6348 17.13 64.4791 17.0955C64.3824 17.0751 64.2842 17.0625 64.1855 17.0579H64.0252C63.9954 17.0581 63.9658 17.0604 63.9364 17.0648L63.8958 17.0681L63.8553 17.0715C63.741 17.0852 63.6288 17.1125 63.521 17.1527C63.4113 17.1928 63.3121 17.257 63.2307 17.3407C63.1467 17.4263 63.0867 17.5324 63.0565 17.6485L63.0464 17.6964C63.0421 17.7121 63.0398 17.7282 63.0395 17.7444C63.0336 17.7759 63.0302 17.8079 63.0293 17.84L63.0259 17.8913V17.9116L63.0293 17.9391L63.0326 17.9973L63.0395 18.0379L63.0429 18.0582L63.0498 18.0824L63.0634 18.1267C63.0672 18.1421 63.0729 18.1571 63.0804 18.1711L63.0906 18.1914L63.1009 18.2154L63.1248 18.256L63.1487 18.2966L63.1658 18.3169L63.1795 18.3372C63.1887 18.3506 63.1989 18.3632 63.2102 18.375C63.3098 18.4806 63.425 18.5705 63.5516 18.6415C63.689 18.7183 63.8303 18.7879 63.9749 18.85L64.0329 18.874L64.0909 18.9014L64.2036 18.9528L64.4256 19.0553C64.5834 19.1244 64.7362 19.2044 64.883 19.2947C65.0353 19.3881 65.1732 19.5032 65.2925 19.6364C65.4149 19.7779 65.4987 19.9487 65.5358 20.1321L65.5496 20.2006C65.5536 20.2231 65.5558 20.2459 65.5562 20.2688L65.5597 20.3372L65.5631 20.3715V20.4091L65.5597 20.4671L65.5562 20.4943V20.5287L65.5459 20.5971L65.5358 20.6655C65.5026 20.8387 65.4289 21.0015 65.3207 21.1406C65.2173 21.2738 65.0857 21.3825 64.9355 21.4587C64.7992 21.5273 64.6547 21.5778 64.5055 21.609L64.4544 21.6193L64.3996 21.6262C64.3661 21.6343 64.3318 21.6388 64.2972 21.6398L64.1949 21.65L64.0957 21.6536L64.0481 21.6569H63.9933L63.9045 21.6536C63.8749 21.6532 63.8453 21.6509 63.8159 21.6467L63.7681 21.6433L63.7202 21.6364C63.4195 21.6027 63.129 21.5072 62.8667 21.356C62.8054 21.3197 62.7473 21.2821 62.6926 21.2431C62.6494 21.2137 62.6085 21.1822 62.5697 21.1509C62.5448 21.1306 62.5221 21.1103 62.5014 21.0929C62.4961 21.0889 62.4918 21.0837 62.4889 21.0778C62.4859 21.0718 62.4844 21.0653 62.4844 21.0587C62.4844 21.052 62.4859 21.0455 62.4889 21.0395C62.4918 21.0336 62.4961 21.0284 62.5014 21.0244L62.6689 20.8673C62.6728 20.8625 62.6777 20.8586 62.6833 20.856C62.6889 20.8533 62.695 20.852 62.7012 20.852C62.7074 20.852 62.7135 20.8533 62.7191 20.856C62.7247 20.8586 62.7296 20.8625 62.7335 20.8673L62.7741 20.9012C62.8068 20.9293 62.841 20.9556 62.8765 20.98C62.9248 21.0145 62.975 21.0464 63.0267 21.0756C63.1647 21.1565 63.3127 21.2186 63.467 21.2604C63.5621 21.2879 63.6591 21.3082 63.7571 21.3213L63.7949 21.3249L63.8324 21.3282C63.8606 21.3327 63.8891 21.335 63.9177 21.3351L64.0065 21.3385H64.0234L64.0436 21.3351H64.088L64.1734 21.3318L64.262 21.3249C64.2871 21.3228 64.3167 21.3193 64.3508 21.3146L64.3952 21.3044L64.443 21.2975C64.5627 21.273 64.6785 21.2328 64.7877 21.1779C64.8982 21.1238 64.9952 21.0454 65.0715 20.9487C65.1499 20.8462 65.2037 20.7269 65.2286 20.6001L65.2353 20.5557L65.2422 20.5077C65.2447 20.4989 65.2459 20.4897 65.2456 20.4805V20.4531L65.2491 20.3949V20.3472L65.2456 20.2958C65.2454 20.2787 65.2442 20.2616 65.2422 20.2446L65.2353 20.2207L65.2321 20.1967C65.2044 20.0639 65.1433 19.9403 65.0545 19.8378C64.8401 19.6202 64.5833 19.4491 64.3001 19.3351L64.0712 19.2325L63.9619 19.1779L63.9108 19.154L63.8528 19.13C63.6973 19.0636 63.5457 18.9883 63.3987 18.9044C63.2456 18.816 63.1064 18.7054 62.9855 18.5762C62.9698 18.56 62.955 18.5429 62.9413 18.525L62.9211 18.4976L62.9008 18.4702C62.8688 18.42 62.845 18.3802 62.829 18.3506L62.8155 18.3163L62.8017 18.2856C62.7918 18.2647 62.7839 18.243 62.7779 18.2206L62.7577 18.1557L62.7508 18.1181L62.7439 18.0838L62.7303 18.0121V17.9541L62.7269 17.9267V17.8924V17.8239C62.729 17.7898 62.7336 17.7466 62.7404 17.6942C62.7426 17.6759 62.746 17.6556 62.7508 17.6333L62.7678 17.5724C62.8081 17.4039 62.8945 17.25 63.0172 17.128C63.1305 17.0167 63.2652 16.9295 63.4131 16.8717C63.5452 16.8221 63.6828 16.7887 63.8229 16.7725L63.8739 16.7692L63.925 16.7656C63.9556 16.7615 63.9864 16.7593 64.0173 16.7589H64.1093L64.2017 16.7623C64.5043 16.7712 64.8003 16.852 65.0654 16.9982C65.1267 17.0309 65.186 17.0674 65.2428 17.1075C65.2859 17.1345 65.328 17.1642 65.3691 17.1966C65.3829 17.2102 65.4044 17.2297 65.434 17.2546C65.4393 17.2586 65.4436 17.2638 65.4465 17.2697C65.4495 17.2757 65.451 17.2822 65.451 17.2889C65.451 17.2955 65.4495 17.302 65.4465 17.308C65.4436 17.3139 65.4393 17.3191 65.434 17.3231L65.2876 17.4644Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M69.9003 21.225C69.6582 20.9826 69.5076 20.6636 69.4739 20.3225C69.4403 19.9813 69.5259 19.639 69.716 19.3539C69.9061 19.0688 70.189 18.8585 70.5166 18.7589C70.8442 18.6592 71.1961 18.6764 71.5124 18.8074C71.8288 18.9385 72.09 19.1753 72.2516 19.4775C72.4131 19.7798 72.4651 20.1288 72.3985 20.465C72.332 20.8013 72.1511 21.1041 71.8867 21.3219C71.6222 21.5396 71.2906 21.6587 70.9482 21.6591C70.7533 21.6618 70.5598 21.6248 70.3796 21.5501C70.1995 21.4755 70.0364 21.3649 69.9003 21.225ZM70.1255 19.3549C69.9368 19.545 69.8197 19.7947 69.794 20.0615C69.7684 20.3283 69.8359 20.5958 69.9849 20.8184C70.134 21.041 70.3555 21.205 70.6117 21.2825C70.868 21.36 71.1431 21.3462 71.3903 21.2435C71.6375 21.1407 71.8416 20.9554 71.9677 20.719C72.0939 20.4826 72.1343 20.2097 72.0822 19.9468C72.0301 19.6839 71.8886 19.4472 71.6819 19.2769C71.4752 19.1067 71.2159 19.0134 70.9482 19.013C70.795 19.0104 70.6429 19.0393 70.5013 19.0982C70.3598 19.157 70.2318 19.2444 70.1255 19.3549Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M76.1159 19.0027C76.1094 19.0037 76.1027 19.0031 76.0965 19.0011C76.0902 18.9991 76.0845 18.9956 76.0799 18.9909C76.0752 18.9863 76.0717 18.9806 76.0696 18.9744C76.0675 18.9682 76.0669 18.9615 76.0678 18.955V18.7292C76.0669 18.7227 76.0675 18.7161 76.0696 18.7098C76.0717 18.7036 76.0752 18.6979 76.0799 18.6932C76.0845 18.6886 76.0902 18.6851 76.0965 18.683C76.1027 18.681 76.1094 18.6804 76.1159 18.6813H77.2662C77.2727 18.6804 77.2793 18.681 77.2855 18.6831C77.2917 18.6852 77.2973 18.6887 77.302 18.6933C77.3066 18.698 77.3101 18.7037 77.3121 18.7099C77.3142 18.7161 77.3148 18.7227 77.3138 18.7292V18.955C77.3148 18.9615 77.3142 18.9681 77.3121 18.9743C77.3101 18.9806 77.3066 18.9862 77.302 18.9909C77.2974 18.9955 77.2917 18.999 77.2855 19.001C77.2793 19.0031 77.2727 19.0037 77.2662 19.0027H76.1159ZM76.4674 21.6591C76.4376 21.6591 76.4228 21.6433 76.4228 21.6112V17.6457C76.4195 17.486 76.4572 17.3282 76.5323 17.1872C76.5984 17.0616 76.701 16.9591 76.8266 16.8931C76.9522 16.8272 77.0948 16.8011 77.2356 16.8181C77.3816 16.834 77.5212 16.8869 77.641 16.972C77.6474 16.9748 77.6529 16.9791 77.657 16.9846C77.6612 16.9901 77.6639 16.9966 77.6649 17.0034C77.6659 17.0102 77.6652 17.0172 77.6627 17.0236C77.6603 17.0301 77.6562 17.0358 77.651 17.0403L77.5145 17.2216C77.5116 17.2273 77.5074 17.2322 77.5023 17.2359C77.4971 17.2397 77.4911 17.2422 77.4848 17.2432C77.4785 17.2442 77.4721 17.2437 77.466 17.2417C77.4599 17.2398 77.4544 17.2364 77.4499 17.2319C77.3848 17.1801 77.3067 17.1472 77.2242 17.1369C77.1417 17.1267 77.0579 17.1394 76.9821 17.1736C76.9005 17.2202 76.8343 17.2898 76.7918 17.3737C76.7493 17.4576 76.7323 17.5522 76.7429 17.6457V21.6112C76.7439 21.6177 76.7433 21.6243 76.7412 21.6305C76.7392 21.6368 76.7357 21.6424 76.7311 21.6471C76.7265 21.6517 76.7208 21.6553 76.7146 21.6573C76.7084 21.6594 76.7018 21.66 76.6953 21.6591H76.4674Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M82.4297 21.4437C82.4501 21.4708 82.4467 21.4925 82.4194 21.5089C82.2858 21.6043 82.1262 21.6567 81.962 21.6591C81.8576 21.6598 81.7545 21.6352 81.6616 21.5874C81.5387 21.5257 81.4374 21.4279 81.3715 21.307C81.3016 21.1731 81.2663 21.0238 81.2689 20.8728V19.0131H80.8559C80.8494 19.014 80.8428 19.0134 80.8366 19.0113C80.8304 19.0092 80.8247 19.0057 80.82 19.001C80.8154 18.9964 80.8119 18.9907 80.8098 18.9845C80.8078 18.9783 80.8072 18.9716 80.8081 18.9651V18.7367C80.8071 18.7302 80.8077 18.7236 80.8097 18.7173C80.8118 18.7111 80.8153 18.7054 80.82 18.7007C80.8246 18.6961 80.8303 18.6926 80.8365 18.6905C80.8428 18.6884 80.8494 18.6879 80.8559 18.6888H81.2689L81.2656 17.8444C81.2647 17.8379 81.2653 17.8313 81.2673 17.8251C81.2694 17.8188 81.2729 17.8132 81.2775 17.8085C81.2821 17.8039 81.2878 17.8004 81.294 17.7983C81.3002 17.7962 81.3068 17.7956 81.3133 17.7965H81.5422C81.5487 17.7956 81.5553 17.7962 81.5615 17.7983C81.5677 17.8004 81.5733 17.8039 81.578 17.8085C81.5826 17.8132 81.5861 17.8188 81.5881 17.8251C81.5902 17.8313 81.5908 17.8379 81.5898 17.8444V18.6888H82.0577C82.0642 18.6879 82.0708 18.6885 82.0771 18.6906C82.0833 18.6927 82.0889 18.6962 82.0935 18.7008C82.0982 18.7055 82.1016 18.7111 82.1037 18.7174C82.1057 18.7236 82.1063 18.7302 82.1054 18.7367V18.9657C82.1063 18.9722 82.1057 18.9788 82.1036 18.9851C82.1015 18.9913 82.098 18.9969 82.0934 19.0016C82.0888 19.0062 82.0832 19.0097 82.077 19.0118C82.0708 19.0139 82.0642 19.0145 82.0577 19.0137H81.5898V20.8734C81.58 20.9578 81.5951 21.0432 81.6334 21.119C81.6717 21.1948 81.7314 21.2577 81.8051 21.2997C81.8733 21.3318 81.9492 21.344 82.024 21.3349C82.0988 21.3259 82.1696 21.296 82.2282 21.2486C82.233 21.2445 82.2385 21.2416 82.2445 21.2399C82.2505 21.2382 82.2568 21.2378 82.263 21.2388C82.2691 21.2398 82.275 21.242 82.2802 21.2455C82.2854 21.2489 82.2898 21.2534 82.2931 21.2587L82.4297 21.4437Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M89.2414 18.7164C89.2441 18.7069 89.25 18.6986 89.2582 18.693C89.2663 18.6875 89.2762 18.6849 89.286 18.6858H89.5293C89.5371 18.6859 89.5448 18.6878 89.5519 18.6913C89.5589 18.6948 89.565 18.6999 89.5698 18.7061C89.5742 18.7118 89.5768 18.7187 89.5774 18.7259C89.578 18.7331 89.5765 18.7403 89.5731 18.7467L88.5626 21.6297C88.5599 21.6391 88.554 21.6474 88.5459 21.653C88.5378 21.6586 88.528 21.6612 88.5182 21.6603H88.3441C88.3343 21.6612 88.3245 21.6586 88.3165 21.653C88.3084 21.6474 88.3025 21.6391 88.2999 21.6297L87.4772 19.1511L86.651 21.6297C86.6483 21.6392 86.6424 21.6474 86.6342 21.653C86.6261 21.6586 86.6163 21.6612 86.6064 21.6603H86.4359C86.4261 21.6612 86.4163 21.6586 86.4082 21.653C86.4001 21.6474 86.3942 21.6391 86.3915 21.6297L85.3778 18.7467C85.3758 18.7397 85.3754 18.7323 85.3767 18.7252C85.378 18.718 85.3809 18.7112 85.3851 18.7053C85.3894 18.6995 85.395 18.6946 85.4014 18.6912C85.4079 18.6879 85.415 18.686 85.4222 18.6858H85.6655C85.6753 18.6849 85.6851 18.6875 85.6932 18.6931C85.7013 18.6987 85.7072 18.707 85.7099 18.7164L86.5395 21.0992L87.3111 18.7164C87.3138 18.7069 87.3196 18.6987 87.3277 18.6931C87.3357 18.6875 87.3455 18.6849 87.3553 18.6858H87.5986C87.6084 18.6849 87.6182 18.6875 87.6263 18.6931C87.6344 18.6987 87.6403 18.707 87.643 18.7164L88.4179 21.0992L89.2414 18.7164Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M94.9533 21.6591C94.9475 21.6597 94.9417 21.659 94.9361 21.6573C94.9306 21.6555 94.9254 21.6527 94.9209 21.6489C94.9165 21.6451 94.9129 21.6405 94.9103 21.6352C94.9076 21.63 94.9061 21.6243 94.9057 21.6185C94.885 21.4544 94.8691 21.3005 94.8581 21.1568C94.797 21.2427 94.7246 21.3198 94.6428 21.386C94.5035 21.5001 94.3401 21.5808 94.1649 21.6219C93.9797 21.663 93.7884 21.6676 93.6015 21.6355C93.4991 21.6182 93.4001 21.5847 93.3081 21.5363C93.2102 21.4838 93.1251 21.4103 93.0588 21.3211C92.9423 21.1446 92.8905 20.9333 92.912 20.7229C92.9195 20.6167 92.9485 20.5131 92.9973 20.4184C93.0449 20.325 93.1125 20.2433 93.1954 20.1792C93.3375 20.0697 93.5017 19.9926 93.6767 19.9535C93.8225 19.9193 93.971 19.8977 94.1205 19.8887C94.2412 19.8818 94.3641 19.8806 94.4893 19.885C94.5392 19.885 94.5906 19.8875 94.6428 19.892C94.677 19.892 94.7202 19.8944 94.7725 19.8989L94.8238 19.9023C94.8192 19.5535 94.7532 19.3142 94.6257 19.1844C94.5503 19.1202 94.4628 19.0716 94.3685 19.0417C94.2741 19.0117 94.1747 19.001 94.0761 19.01C93.9004 19.0079 93.7262 19.0416 93.564 19.1091C93.5085 19.1336 93.4549 19.1621 93.4036 19.1946C93.3852 19.2061 93.3671 19.2185 93.3489 19.2321C93.3353 19.2437 93.3229 19.254 93.3114 19.263C93.3076 19.2673 93.3029 19.2708 93.2976 19.2731C93.2924 19.2755 93.2867 19.2767 93.281 19.2767C93.2752 19.2767 93.2695 19.2755 93.2643 19.2731C93.259 19.2708 93.2543 19.2673 93.2505 19.263L93.0799 19.1091C93.074 19.1051 93.0693 19.0997 93.066 19.0935C93.0627 19.0873 93.061 19.0803 93.061 19.0732C93.061 19.0662 93.0627 19.0592 93.066 19.053C93.0693 19.0468 93.074 19.0414 93.0799 19.0374C93.0957 19.0238 93.1127 19.01 93.1309 18.9968C93.1536 18.9785 93.1778 18.9603 93.2029 18.942C93.268 18.8978 93.3364 18.8589 93.4077 18.8257C93.618 18.7312 93.8462 18.6834 94.0767 18.6858C94.2015 18.6697 94.3282 18.6792 94.4491 18.7138C94.5701 18.7484 94.6827 18.8073 94.7802 18.887C94.8776 18.9666 94.9579 19.0653 95.0159 19.1771C95.074 19.2888 95.1087 19.4112 95.118 19.5369C95.1351 19.6466 95.1442 19.7575 95.1451 19.8686V20.2036C95.143 20.2812 95.1419 20.3495 95.1419 20.4087C95.1419 20.5887 95.1521 20.8006 95.1725 21.0445C95.186 21.2224 95.2054 21.4092 95.2307 21.6051C95.2352 21.6418 95.2191 21.6599 95.1828 21.6599L94.9533 21.6591ZM94.6872 20.8728C94.7379 20.7788 94.7769 20.6789 94.8033 20.5753L94.8203 20.5104L94.8169 20.4078L94.8203 20.3088V20.2097L94.7486 20.2028C94.6529 20.1937 94.5642 20.188 94.4824 20.1855C94.364 20.1834 94.2491 20.1857 94.1377 20.1924C94.0067 20.1996 93.8764 20.2179 93.7485 20.2473C93.6175 20.275 93.494 20.331 93.3868 20.4113C93.337 20.4513 93.2965 20.5017 93.2681 20.559C93.2398 20.6163 93.2243 20.6791 93.2228 20.743C93.2111 20.8804 93.246 21.0177 93.3219 21.1326C93.4055 21.2374 93.5269 21.305 93.6599 21.3207C93.8032 21.3482 93.9506 21.347 94.0935 21.3172C94.2246 21.2878 94.3479 21.2307 94.4552 21.1497C94.5505 21.0741 94.6293 20.9799 94.6872 20.8728Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M100.332 18.7164C100.338 18.7169 100.345 18.7189 100.351 18.7223C100.356 18.7257 100.361 18.7304 100.365 18.736C100.369 18.7417 100.371 18.7481 100.372 18.7548C100.372 18.7614 100.372 18.7682 100.369 18.7745L100.325 18.9978C100.324 19.0041 100.322 19.0102 100.319 19.0156C100.316 19.0211 100.312 19.0258 100.306 19.0294C100.301 19.0329 100.295 19.0353 100.289 19.0364C100.283 19.0374 100.276 19.0371 100.27 19.0354C100.229 19.0285 100.186 19.0251 100.144 19.0252C99.9188 19.0256 99.7027 19.1153 99.5434 19.2749C99.384 19.4344 99.2943 19.6507 99.2938 19.8763V21.613C99.2938 21.6451 99.279 21.6609 99.2494 21.6609H99.021C99.0145 21.6619 99.0078 21.6613 99.0016 21.6592C98.9953 21.6572 98.9897 21.6537 98.985 21.649C98.9804 21.6444 98.9769 21.6387 98.9748 21.6324C98.9727 21.6262 98.9721 21.6195 98.9731 21.613V18.73C98.9722 18.7235 98.9728 18.7169 98.9749 18.7107C98.977 18.7045 98.9805 18.6988 98.9851 18.6942C98.9897 18.6896 98.9954 18.6861 99.0016 18.684C99.0079 18.682 99.0145 18.6814 99.021 18.6823H99.2494C99.279 18.6823 99.2938 18.6982 99.2938 18.73V19.0721C99.4012 18.9536 99.5326 18.8593 99.6792 18.7957C99.8258 18.732 99.9843 18.7003 100.144 18.7028C100.207 18.7027 100.27 18.7073 100.332 18.7164Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M103.867 21.2248C103.726 21.0886 103.615 20.9248 103.54 20.7437C103.464 20.5626 103.427 20.368 103.43 20.1719C103.426 19.9768 103.461 19.7827 103.533 19.6013C103.605 19.4199 103.713 19.255 103.85 19.1162C103.981 18.9804 104.139 18.8726 104.313 18.7991C104.487 18.7257 104.674 18.6882 104.863 18.6888C105.052 18.6895 105.239 18.7282 105.413 18.8029C105.587 18.8775 105.744 18.9864 105.874 19.1231C106.008 19.2577 106.113 19.4178 106.184 19.594C106.255 19.7701 106.29 19.9587 106.287 20.1486V20.2239C106.288 20.2296 106.287 20.2353 106.285 20.2406C106.284 20.246 106.281 20.251 106.277 20.2552C106.273 20.2593 106.268 20.2627 106.263 20.265C106.258 20.2672 106.252 20.2684 106.247 20.2684L103.796 20.4838C103.856 20.701 103.978 20.896 104.146 21.0452C104.315 21.1945 104.523 21.2914 104.746 21.3244C104.969 21.3573 105.196 21.3248 105.401 21.2308C105.605 21.1368 105.778 20.9853 105.898 20.7948C105.901 20.7888 105.905 20.7834 105.91 20.7791C105.914 20.7748 105.92 20.7716 105.927 20.77C105.933 20.7683 105.94 20.7681 105.946 20.7694C105.952 20.7708 105.958 20.7735 105.963 20.7776L106.161 20.8905C106.167 20.8934 106.173 20.8976 106.177 20.9028C106.181 20.9081 106.184 20.9141 106.186 20.9207C106.187 20.9272 106.188 20.934 106.186 20.9406C106.185 20.9472 106.182 20.9534 106.178 20.9589C106.044 21.1733 105.857 21.3499 105.636 21.4717C105.416 21.5961 105.168 21.6609 104.915 21.6597C104.72 21.6629 104.527 21.626 104.346 21.5513C104.166 21.4766 104.003 21.3657 103.867 21.2254M104.076 19.3383C103.971 19.4478 103.888 19.577 103.833 19.7184C103.778 19.8598 103.751 20.0107 103.755 20.1624L105.957 19.9709C105.932 19.7041 105.807 19.4569 105.605 19.2807C105.4 19.0998 105.134 19.0033 104.861 19.0106C104.714 19.007 104.568 19.0343 104.433 19.0908C104.298 19.1473 104.176 19.2318 104.076 19.3387"
+                            fill="currentColor"></path>
+                        <path
+                            d="M114.899 21.6522C114.892 21.6531 114.886 21.6526 114.879 21.6505C114.873 21.6484 114.868 21.6449 114.863 21.6403C114.858 21.6356 114.855 21.6299 114.853 21.6237C114.851 21.6174 114.85 21.6108 114.851 21.6043V16.808C114.85 16.8015 114.851 16.7949 114.853 16.7887C114.855 16.7825 114.859 16.7768 114.863 16.7722C114.868 16.7676 114.873 16.7641 114.88 16.762C114.886 16.76 114.892 16.7594 114.899 16.7603H115.128C115.157 16.7603 115.172 16.7763 115.172 16.808V21.6045C115.172 21.6366 115.157 21.6524 115.128 21.6524L114.899 21.6522ZM118.282 19.3685H114.851V19.0437H118.282V19.3685ZM118.009 21.6591C118.003 21.6601 117.996 21.6595 117.99 21.6575C117.983 21.6554 117.978 21.6519 117.973 21.6473C117.968 21.6426 117.965 21.6369 117.963 21.6306C117.961 21.6244 117.96 21.6177 117.961 21.6112V16.8147C117.96 16.8081 117.961 16.8015 117.963 16.7952C117.965 16.789 117.968 16.7833 117.973 16.7787C117.978 16.774 117.983 16.7705 117.99 16.7685C117.996 16.7664 118.003 16.7658 118.009 16.7668H118.238C118.267 16.7668 118.282 16.783 118.282 16.8147V21.6112C118.282 21.6432 118.267 21.6591 118.238 21.6591H118.009Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M122.627 21.225C122.385 20.9826 122.234 20.6636 122.201 20.3225C122.167 19.9813 122.252 19.639 122.443 19.3539C122.633 19.0688 122.916 18.8585 123.243 18.7589C123.571 18.6592 123.923 18.6764 124.239 18.8074C124.555 18.9385 124.817 19.1753 124.978 19.4775C125.14 19.7798 125.192 20.1288 125.125 20.465C125.059 20.8013 124.878 21.1041 124.613 21.3219C124.349 21.5396 124.017 21.6587 123.675 21.6591C123.48 21.6618 123.286 21.6248 123.106 21.5501C122.926 21.4755 122.763 21.3649 122.627 21.225ZM122.852 19.3549C122.663 19.545 122.546 19.7947 122.521 20.0615C122.495 20.3283 122.562 20.5958 122.711 20.8184C122.861 21.041 123.082 21.205 123.338 21.2825C123.595 21.36 123.87 21.3462 124.117 21.2435C124.364 21.1407 124.568 20.9554 124.694 20.719C124.82 20.4826 124.861 20.2097 124.809 19.9468C124.757 19.6839 124.615 19.4472 124.408 19.2769C124.202 19.1067 123.942 19.0134 123.675 19.013C123.522 19.0104 123.369 19.0393 123.228 19.0982C123.086 19.157 122.958 19.2444 122.852 19.3549Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M131.197 18.6781C131.203 18.6771 131.21 18.6777 131.216 18.6797C131.222 18.6818 131.228 18.6853 131.232 18.6899C131.237 18.6945 131.241 18.7002 131.243 18.7064C131.245 18.7126 131.245 18.7193 131.244 18.7258V21.6112C131.245 21.6177 131.245 21.6243 131.243 21.6306C131.241 21.6368 131.237 21.6425 131.233 21.6472C131.228 21.6518 131.222 21.6553 131.216 21.6574C131.21 21.6595 131.203 21.66 131.197 21.6591H130.971C130.965 21.66 130.958 21.6594 130.952 21.6573C130.946 21.6552 130.94 21.6517 130.935 21.6471C130.931 21.6424 130.927 21.6368 130.925 21.6305C130.923 21.6243 130.923 21.6177 130.924 21.6112V21.249L130.91 21.266L130.896 21.2829C130.693 21.5026 130.413 21.6361 130.114 21.6558L130.056 21.6591H129.995L129.93 21.6522L129.869 21.6455C129.785 21.6341 129.703 21.6123 129.624 21.5805C129.462 21.5191 129.317 21.4207 129.2 21.2932C129.079 21.1676 128.989 21.0155 128.937 20.849C128.909 20.7684 128.892 20.6844 128.886 20.5993C128.883 20.5791 128.882 20.5587 128.882 20.5384C128.88 20.5191 128.878 20.4997 128.878 20.4803V19.5976C128.876 19.2946 128.875 19.0428 128.875 18.8421V18.7258C128.874 18.7193 128.875 18.7127 128.877 18.7064C128.879 18.7002 128.883 18.6946 128.887 18.6899C128.892 18.6853 128.898 18.6818 128.904 18.6797C128.91 18.6777 128.917 18.6771 128.923 18.6781H129.152C129.181 18.6781 129.196 18.6939 129.196 18.7258V19.5976C129.196 19.6479 129.195 19.706 129.193 19.772V20.4797C129.193 20.5161 129.194 20.5469 129.196 20.5719C129.2 20.6346 129.211 20.6965 129.23 20.7564C129.269 20.8785 129.335 20.9906 129.421 21.0847C129.508 21.1791 129.616 21.2517 129.736 21.2967C129.794 21.3199 129.855 21.3371 129.917 21.3481L129.961 21.355L130.005 21.3582H130.097C130.214 21.3519 130.328 21.3217 130.432 21.2695C130.525 21.2233 130.61 21.1607 130.681 21.0847C130.742 21.0197 130.793 20.9459 130.831 20.8659C130.862 20.8053 130.885 20.741 130.9 20.6746C130.904 20.6494 130.908 20.6245 130.91 20.5993C130.912 20.5892 130.913 20.579 130.913 20.5686L130.917 20.5483V20.4935L130.924 20.3534V18.726C130.923 18.7195 130.923 18.7129 130.925 18.7066C130.927 18.7004 130.931 18.6947 130.936 18.6901C130.94 18.6855 130.946 18.682 130.952 18.6799C130.958 18.6779 130.965 18.6773 130.971 18.6783L131.197 18.6781Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M136.492 19.1834C136.484 19.1921 136.472 19.1974 136.46 19.198C136.448 19.1986 136.436 19.1946 136.427 19.1869C136.407 19.1689 136.385 19.1528 136.362 19.1387C136.337 19.1194 136.31 19.1024 136.281 19.0878C136.205 19.0469 136.123 19.017 136.038 18.9989C135.985 18.9891 135.931 18.9823 135.878 18.9785H135.789C135.772 18.9787 135.754 18.9799 135.737 18.9822H135.717L135.697 18.9857C135.635 18.9921 135.574 19.0071 135.516 19.0301C135.46 19.0493 135.41 19.0821 135.369 19.1255C135.327 19.1666 135.297 19.2188 135.284 19.2762L135.277 19.2999L135.274 19.3241C135.271 19.3466 135.27 19.3647 135.27 19.3755L135.267 19.4027V19.3992L135.27 19.4096V19.4573L135.277 19.4776C135.277 19.4835 135.279 19.4894 135.281 19.495L135.287 19.5188L135.294 19.5391L135.304 19.5594L135.315 19.5797L135.328 19.6L135.345 19.6203L135.362 19.6406C135.415 19.6961 135.476 19.7433 135.543 19.7807C135.603 19.815 135.682 19.8546 135.782 19.9003L135.817 19.9139L135.854 19.9309L135.919 19.962L136.049 20.0164C136.141 20.0591 136.231 20.1071 136.318 20.1602C136.413 20.2181 136.499 20.2908 136.571 20.3756C136.651 20.4642 136.705 20.5728 136.728 20.6899L136.738 20.7345C136.74 20.7492 136.741 20.764 136.742 20.7788L136.745 20.8194V20.9006C136.743 20.913 136.742 20.9256 136.742 20.9382L136.735 20.9826L136.728 21.0269C136.708 21.1351 136.663 21.2372 136.596 21.325C136.53 21.4129 136.444 21.4841 136.346 21.533C136.262 21.5763 136.172 21.6075 136.079 21.6254C135.997 21.6419 135.914 21.6522 135.83 21.6561H135.765L135.714 21.6528C135.7 21.6528 135.682 21.6516 135.659 21.6494H135.629L135.601 21.6461C135.538 21.6368 135.468 21.6232 135.393 21.6055C135.284 21.5731 135.178 21.5284 135.079 21.4721C135.034 21.4488 134.99 21.4216 134.949 21.3909C134.92 21.368 134.892 21.3467 134.867 21.3261C134.862 21.3221 134.857 21.3167 134.854 21.3105C134.85 21.3042 134.849 21.2973 134.849 21.2902C134.849 21.2832 134.85 21.2762 134.854 21.27C134.857 21.2637 134.862 21.2583 134.867 21.2543L135.031 21.0969C135.035 21.0921 135.04 21.0882 135.045 21.0854C135.051 21.0826 135.057 21.081 135.063 21.0807C135.069 21.0804 135.075 21.0814 135.081 21.0836C135.087 21.0859 135.092 21.0893 135.096 21.0937C135.113 21.1103 135.131 21.1251 135.151 21.1379C135.179 21.1591 135.209 21.1785 135.24 21.196C135.315 21.2386 135.395 21.2719 135.478 21.2951C135.53 21.3095 135.583 21.3209 135.636 21.3294L135.656 21.3328H135.676C135.692 21.3349 135.708 21.336 135.724 21.3361L135.775 21.3395H135.795L135.819 21.3361C135.885 21.3351 135.95 21.3294 136.014 21.319C136.078 21.3061 136.14 21.2843 136.198 21.2543C136.256 21.2275 136.307 21.187 136.345 21.1364C136.384 21.0857 136.41 21.0264 136.42 20.9635L136.424 20.9396L136.427 20.9193C136.43 20.9092 136.431 20.8988 136.43 20.8884V20.8541L136.434 20.844L136.43 20.8304V20.8076C136.43 20.7984 136.429 20.7892 136.427 20.7802L136.424 20.7565C136.41 20.6896 136.379 20.6272 136.335 20.5752C136.216 20.4558 136.074 20.3616 135.918 20.2982L135.785 20.2402L135.72 20.2095L135.693 20.1957L135.659 20.1823C135.566 20.1418 135.476 20.0961 135.389 20.0452C135.294 19.9914 135.208 19.9234 135.133 19.8436C135.123 19.8331 135.114 19.8216 135.106 19.8093L135.078 19.7754C135.062 19.7503 135.047 19.724 135.034 19.6967L135.014 19.656C135.008 19.643 135.003 19.6294 135 19.6154C134.99 19.5852 134.982 19.5544 134.976 19.5233L134.97 19.4752V19.4445L134.966 19.4274V19.4L134.97 19.3594C134.97 19.3332 134.972 19.307 134.976 19.2811L134.983 19.2405L134.993 19.1998C135.02 19.0924 135.076 18.9942 135.154 18.9156C135.226 18.8445 135.312 18.7887 135.406 18.7516C135.488 18.7221 135.573 18.7017 135.659 18.6907H135.693L135.724 18.6874C135.742 18.6851 135.76 18.6838 135.778 18.6835H135.891C135.961 18.6873 136.031 18.6965 136.099 18.7112C136.211 18.7363 136.319 18.7765 136.42 18.8305C136.459 18.8508 136.495 18.8728 136.53 18.8957C136.555 18.914 136.58 18.9333 136.605 18.9536C136.614 18.9609 136.624 18.969 136.632 18.9777C136.638 18.9814 136.642 18.9865 136.646 18.9925C136.649 18.9985 136.651 19.0052 136.651 19.012C136.651 19.0189 136.649 19.0256 136.646 19.0316C136.642 19.0376 136.638 19.0427 136.632 19.0464L136.492 19.1834Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M140.717 21.2248C140.576 21.0886 140.464 20.9248 140.389 20.7437C140.314 20.5626 140.277 20.368 140.28 20.1719C140.275 19.9768 140.31 19.7827 140.382 19.6013C140.454 19.4199 140.562 19.255 140.699 19.1162C140.831 18.9804 140.989 18.8726 141.163 18.7991C141.337 18.7257 141.524 18.6882 141.713 18.6888C141.902 18.6895 142.089 18.7282 142.263 18.8029C142.436 18.8775 142.593 18.9864 142.724 19.1231C142.858 19.2577 142.963 19.4178 143.034 19.594C143.105 19.7701 143.14 19.9587 143.137 20.1486V20.2239C143.137 20.2296 143.137 20.2353 143.135 20.2406C143.133 20.246 143.13 20.251 143.126 20.2552C143.123 20.2593 143.118 20.2627 143.113 20.265C143.108 20.2672 143.102 20.2684 143.096 20.2684L140.645 20.4838C140.705 20.701 140.827 20.896 140.996 21.0452C141.165 21.1945 141.373 21.2914 141.596 21.3244C141.818 21.3573 142.046 21.3248 142.25 21.2308C142.455 21.1368 142.628 20.9853 142.748 20.7948C142.75 20.7888 142.754 20.7834 142.759 20.7791C142.764 20.7748 142.77 20.7716 142.776 20.77C142.783 20.7683 142.789 20.7681 142.796 20.7694C142.802 20.7708 142.808 20.7735 142.813 20.7776L143.011 20.8905C143.017 20.8934 143.022 20.8976 143.027 20.9028C143.031 20.9081 143.034 20.9141 143.035 20.9207C143.037 20.9272 143.037 20.934 143.036 20.9406C143.035 20.9472 143.032 20.9534 143.028 20.9589C142.894 21.1733 142.707 21.3499 142.485 21.4717C142.266 21.5962 142.017 21.661 141.765 21.6597C141.57 21.6629 141.376 21.626 141.196 21.5513C141.016 21.4766 140.853 21.3657 140.717 21.2254M140.925 19.3383C140.82 19.4478 140.738 19.577 140.683 19.7184C140.628 19.8598 140.601 20.0107 140.604 20.1624L142.806 19.9709C142.782 19.7041 142.656 19.4569 142.455 19.2807C142.249 19.0997 141.983 19.0033 141.71 19.0106C141.564 19.0069 141.418 19.0343 141.283 19.0908C141.147 19.1473 141.026 19.2318 140.925 19.3387"
+                            fill="currentColor"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_451_1815">
+                            <rect width="151" height="23.9208" fill="currentColor" transform="translate(0 0.0396042)">
+                            </rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+
+            </a>
+            <!-- Nav (leftmost group) -->
+            <nav class="flex items-center" style="gap:2.5rem;">
+                <div class="nav-links nav-links-text">
+
+                    <!-- ▼ NEW: Services dropdown trigger -->
+                    <div class="nav-item-dropdown">
+                        <button type="button" class="nav-link nav-dropdown-trigger" id="servicesBtn"
+                            aria-haspopup="true" aria-expanded="false">
+                            خدماتنا
+                            <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <a href="/projects" class="nav-link">مشاريعنا</a>
+                    <a href="/about" class="nav-link">من نحن</a>
+                </div>
+
+                <div class="nav-icons">
+                    <button type="button" class="nav-lang" aria-label="English">EN</button>
+                    <!-- ▼ NEW: 3-dots button opens the side menu -->
+                    <button type="button" class="nav-icon-btn" id="sideMenuOpen" aria-label="القائمة الجانبية"
+                        aria-haspopup="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="5" cy="12" r="1.6"></circle>
+                            <circle cx="12" cy="12" r="1.6"></circle>
+                            <circle cx="19" cy="12" r="1.6"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- ============================================================
+       NEW ▼ SERVICES MEGA DROPDOWN
+       ============================================================ -->
+        <div class="services-mega-menu" id="servicesMenu">
+            <div class="services-mega-panel" id="servicesPanel">
+
+                <div class="mega-grid">
+
+                    <!-- ▸ Column 1: تطوير المواقع -->
+                    <div class="mega-col">
+                        <div class="mega-col-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            </svg>
+                            <span>تطوير المواقع</span>
+                        </div>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                                    <path d="M10 6h4" />
+                                    <path d="M10 10h4" />
+                                    <path d="M10 14h4" />
+                                    <path d="M10 18h4" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">برمجة مواقع شركات</span>
+                                <span class="mega-item-desc">مواقع احترافية تعكس هوية شركتك</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                                    <path
+                                        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">تصميم مواقع كاملة</span>
+                                <span class="mega-item-desc">تصميم عصري متجاوب مع جميع الأجهزة</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="5" height="5" x="3" y="3" rx="1" />
+                                    <rect width="5" height="5" x="16" y="3" rx="1" />
+                                    <rect width="5" height="5" x="3" y="16" rx="1" />
+                                    <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+                                    <path d="M21 21v.01" />
+                                    <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+                                    <path d="M3 12h.01" />
+                                    <path d="M12 3h.01" />
+                                    <path d="M12 16v.01" />
+                                    <path d="M16 12h1" />
+                                    <path d="M21 12v.01" />
+                                    <path d="M12 21v-1" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">تصميم QR Menu للمطاعم والكافيهات</span>
+                                <span class="mega-item-desc">قوائم رقمية تفاعلية بلمسة واحدة</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">استضافة مواقع إلكترونية</span>
+                                <span class="mega-item-desc">استضافة سريعة وآمنة بمعايير عالمية</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- ▸ Column 2: التسويق الإلكتروني -->
+                    <div class="mega-col">
+                        <div class="mega-col-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                                <polyline points="16 7 22 7 22 13" />
+                            </svg>
+                            <span>التسويق الإلكتروني</span>
+                        </div>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1-.3 2.1.3 2.4 1.3Z" />
+                                    <path d="m6.2 5.3 3.1 3.9" />
+                                    <path d="m12.4 3.4 3.1 4" />
+                                    <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">فيديوهات Reels</span>
+                                <span class="mega-item-desc">محتوى قصير يضاعف انتشارك</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m3 11 18-5v12L3 14v-3z" />
+                                    <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">إدارة الإعلانات الممولة</span>
+                                <span class="mega-item-desc">فيسبوك، جوجل، سناب شات وإنستجرام</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">إنشاء فيديوهات موشن جرافيك</span>
+                                <span class="mega-item-desc">حوّل أفكارك إلى رسوم متحركة ملهمة</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+
+                        <a href="#" class="mega-item">
+                            <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                                    <path d="M7 3v18" />
+                                    <path d="M3 7.5h4" />
+                                    <path d="M3 12h18" />
+                                    <path d="M3 16.5h4" />
+                                    <path d="M17 3v18" />
+                                    <path d="M17 7.5h4" />
+                                    <path d="M17 16.5h4" />
+                                </svg></span>
+                            <span class="mega-item-body">
+                                <span class="mega-item-title">قسم المونتاج</span>
+                                <span class="mega-item-desc">مونتاج احترافي يُبرز محتواك المرئي</span>
+                            </span>
+                            <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- ▸ Column 3: أنظمة الأعمال -->
+                    <div class="mega-col mega-col--systems">
+                        <div class="mega-col-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+                                <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+                                <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+                            </svg>
+                            <span>أنظمة الأعمال</span>
+                        </div>
+
+                        <div class="mega-items">
+                            <a href="#" class="mega-item">
+                                <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg></span>
+                                <span class="mega-item-body">
+                                    <span class="mega-item-title">أنظمة CRM لإدارة العملاء</span>
+                                    <span class="mega-item-desc">نظّم علاقاتك وارفع مبيعاتك</span>
+                                </span>
+                                <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                            </a>
+
+                            <a href="#" class="mega-item">
+                                <span class="mega-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="7" height="7" x="3" y="3" rx="1" />
+                                        <rect width="7" height="7" x="14" y="3" rx="1" />
+                                        <rect width="7" height="7" x="14" y="14" rx="1" />
+                                        <rect width="7" height="7" x="3" y="14" rx="1" />
+                                    </svg></span>
+                                <span class="mega-item-body">
+                                    <span class="mega-item-title">أنظمة ERP</span>
+                                    <span class="mega-item-desc">إدارة متكاملة لجميع عمليات شركتك</span>
+                                </span>
+                                <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="mega-promo">
+                            <div class="mega-promo-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                                </svg>
+                                <span>تحتاج نظاماً مخصصاً؟</span>
+                            </div>
+                            <p class="mega-promo-text">نطور أنظمة وحلولاً خاصة تناسب طبيعة عملك تماماً</p>
+                            <a href="#" class="mega-promo-link">
+                                اطلب استشارة مجانية
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mega-footer">
+                    <div class="mega-footer-text">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <path d="M12 17h.01" />
+                        </svg>
+                        <span>لم تجد ما تبحث عنه؟ نقدّم حلولاً مخصصة لكل مشروع</span>
+                    </div>
+                    <a href="/contact" class="mega-cta">
+                        تواصل معنا
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section id="hero"
+        class="-mt-header bg-gradient-odd relative overflow-hidden max-2xl:flex max-2xl:flex-col max-2xl:justify-center">
+
+        <!-- Stars Background -->
+        <div class="pointer-events-none absolute inset-0 z-0" data-v-4fc8ba02="">
+            <div class="stars-theme-light absolute inset-0 dark:hidden" data-v-4fc8ba02="">
+                <div class="stars-layer stars-layer--far" aria-hidden="true" data-v-4fc8ba02=""></div>
+                <div class="stars-layer stars-layer--mid" aria-hidden="true" data-v-4fc8ba02=""></div>
+                <div class="stars-layer stars-layer--near" aria-hidden="true" data-v-4fc8ba02=""></div>
+            </div>
+            <div class="stars-theme-dark absolute inset-0 hidden dark:block" data-v-4fc8ba02="">
+                <div class="stars-layer stars-layer--far" aria-hidden="true" data-v-4fc8ba02=""></div>
+                <div class="stars-layer stars-layer--mid" aria-hidden="true" data-v-4fc8ba02=""></div>
+                <div class="stars-layer stars-layer--near" aria-hidden="true" data-v-4fc8ba02=""></div>
+            </div>
+        </div>
+
+        <!-- Hero Grid Top -->
+        <div class="hero-grid px-4 is-top" aria-hidden="true" data-v-9fa9fe81="">
+            <div class="hero-grid-top container mx-auto" data-v-9fa9fe81="">
+                <div class="pointer-events-none absolute inset-0 z-0 bg-black [mask-image:url('./assets/img/hero-background-grid.png')] [mask-size:100%_auto] [mask-position:center_top] [mask-repeat:no-repeat] dark:hidden"
+                    data-v-9fa9fe81=""></div>
+                <div class="pointer-events-none absolute inset-0 z-0 hidden bg-[url('./assets/img/hero-background-grid.png')] bg-[length:100%_auto] bg-[position:center_top] bg-no-repeat dark:block"
+                    data-v-9fa9fe81=""></div>
+                <div class="lazy-background-image lazy-background-image-maskImage lazy-background-image-loaded hero-grid-top-animation"
+                    style="--background-image:url('./assets/img/hero-background-grid-mask.png');" data-v-9fa9fe81="">
+                    <div data-v-9fa9fe81=""></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div
+            class="hero-content-wrapper 2xl:pt-header relative z-[1] container mx-auto flex flex-col justify-center px-4 pt-[calc(var(--header-height)+2.5rem)]">
+            <!-- Title moved higher with margin-top: -2rem -->
+            <h1
+                class="dark-text-gradient mx-auto max-w-[850px] text-center text-2xl leading-10 font-semibold text-pretty md:text-4xl md:leading-14 2xl:pt-20 2xl:text-5xl 2xl:leading-16">
+                شركة برمجيات تساعدك على بناء تجربة رقمية ناجحة تحقق أهداف مشروعك</h1>
+
+            <p class="text-muted-foreground mx-auto max-w-[400px] text-center md:max-w-[735px]"> من الفكرة إلى الإطلاق..
+                حلول رقمية متكاملة لنجاح مشروعك</p>
+
+            <div class="relative mx-auto flex items-center justify-center mt-4" data-v-c2dae020="">
+                <!-- Glow Bar -->
+                <div class="glow-bar animate-pulse" aria-hidden="true" data-v-c2dae020=""></div>
+
+                <a href="/contact" class="mx-auto">
+                    <button data-slot="button"
+                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-accent text-light-text shadow-xs text-base lg:text-lg font-semibold hover:bg-accent/90 w-fit h-12 px-4 lg:px-8 has-[>svg]:px-6 lg:w-[100%] mx-auto cursor-pointer !text-black dark:!text-white">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="size-[18px]">
+                            <g clip-path="url(#clip0_436_9596)">
+                                <path
+                                    d="M6.61448 0.14032C5.7012 5.10118 4.96083 5.8415 0 6.75478C4.96087 7.66806 5.7012 8.40839 6.61448 13.3692C7.52776 8.40839 8.26809 7.66806 13.229 6.75478C8.26809 5.8415 7.52772 5.10118 6.61448 0.14032Z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M13.7935 9.44659C13.2127 12.6015 12.7418 13.0724 9.58691 13.6531C12.7418 14.2339 13.2127 14.7048 13.7935 17.8597C14.3742 14.7048 14.8451 14.2339 18 13.6531C14.8451 13.0724 14.3743 12.6015 13.7935 9.44659Z"
+                                    fill="currentColor"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_436_9596">
+                                    <rect width="18" height="18" rx="8" fill="currentColor"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        ابدأ الآن
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="size-[18px]">
+                            <g clip-path="url(#clip0_436_9596)">
+                                <path
+                                    d="M6.61448 0.14032C5.7012 5.10118 4.96083 5.8415 0 6.75478C4.96087 7.66806 5.7012 8.40839 6.61448 13.3692C7.52776 8.40839 8.26809 7.66806 13.229 6.75478C8.26809 5.8415 7.52772 5.10118 6.61448 0.14032Z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M13.7935 9.44659C13.2127 12.6015 12.7418 13.0724 9.58691 13.6531C12.7418 14.2339 13.2127 14.7048 13.7935 17.8597C14.3742 14.7048 14.8451 14.2339 18 13.6531C14.8451 13.0724 14.3743 12.6015 13.7935 9.44659Z"
+                                    fill="currentColor"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_436_9596">
+                                    <rect width="18" height="18" rx="8" fill="currentColor"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Marquee Section -->
+        <div class="marquee-section xl:py-section relative z-[2]">
+            <section id="clients" class="overflow-hidden" aria-labelledby="clients-heading" data-v-89521b90="">
+                <div class="sr-only" data-v-89521b90="">
+                    <h2 id="clients-heading" data-v-89521b90="">عملاؤنا الموثوق بهم</h2>
+                    <p data-v-89521b90="">نحن فخورون بالعمل مع الشركات والمؤسسات الرائدة في جميع أنحاء العالم</p>
+                </div>
+                <div class="flex h-[4rem] items-center md:h-[5rem] lg:h-[6rem]" data-v-89521b90="">
+                    <div class="container mx-auto px-4" data-v-89521b90="">
+                        <div class="marquee-container" role="img"
+                            aria-label="Scrolling logos of our trusted client companies" data-v-89521b90="">
+                            <div class="marquee-rtl marquee-content" style="--logo-count:10; --logo-width:200px;"
+                                data-v-89521b90="">
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="AL KATHIRI MOTORS" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="HORIZON" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="NovaTech" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="SMART VISION" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="ORION" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="VERTEX" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="pulse" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="ATLAS GLOBAL" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="SKYLINE" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="MERIDIAN" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="AL KATHIRI MOTORS" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="HORIZON" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="NovaTech" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="SMART VISION" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="ORION" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="VERTEX" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="pulse" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="ATLAS GLOBAL" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="SKYLINE" />
+                                    </div>
+                                </div>
+
+                                <div class="logo-item" aria-hidden="true" data-v-89521b90="">
+                                    <div class="client-brand" data-v-89521b90="">
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="MERIDIAN" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Hero Grid Bottom -->
+        <div class="hero-grid px-4 is-bottom" style="transform:scaleY(-1);" aria-hidden="true" data-v-9fa9fe81="">
+            <div class="hero-grid-top container mx-auto" data-v-9fa9fe81="">
+                <div class="pointer-events-none absolute inset-0 z-0 bg-black [mask-image:url('./assets/img/hero-background-grid.png')] [mask-size:100%_auto] [mask-position:center_top] [mask-repeat:no-repeat] dark:hidden"
+                    data-v-9fa9fe81=""></div>
+                <div class="pointer-events-none absolute inset-0 z-0 hidden bg-[url('./assets/img/hero-background-grid.png')] bg-[length:100%_auto] bg-[position:center_top] bg-no-repeat dark:block"
+                    data-v-9fa9fe81=""></div>
+                <div class="lazy-background-image lazy-background-image-maskImage lazy-background-image-loaded hero-grid-top-animation"
+                    style="--background-image:url('./assets/img/hero-background-grid-mask.png');" data-v-9fa9fe81="">
+                    <div data-v-9fa9fe81=""></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <br><br><br><br><br>
+
+
+    <div class="lang-toast" id="langToast" aria-live="polite">سيتوفر قريبًا</div>
+
+    <!-- ============================================================
+     NEW ▼ SIDE MENU (opens from the 3-dots button)
+     ============================================================ -->
+    <div class="side-menu-backdrop" id="sideMenuBackdrop"></div>
+
+    <aside class="side-menu" id="sideMenu" aria-hidden="true" aria-label="القائمة الجانبية">
+
+        <!-- Drawer header -->
+        <div class="side-menu-header anim-item d1">
+            <!-- ============================================================
+         NEW ▼ CLICK SOLUTIONS LOGO (Side Menu — smaller variant)
+         ============================================================ -->
+            <a href="/" class="flex items-center gap-3" style="text-decoration:none; color: #fff;">
+                <svg width="165" height="24" viewBox="0 0 165 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="h-7 w-auto">
+                    <g clip-path="url(#clip0_451_1815)">
+                        <path d="M21.43 19.66 A10 10 0 1 1 21.43 4.34" stroke="#00BED7" stroke-width="6" fill="none"
+                            stroke-linecap="round"></path>
+                        <path
+                            d="M36.2199 7.18888C36.2202 7.7808 36.4192 8.35544 36.7848 8.82049C37.1505 9.28554 37.6616 9.614 38.2361 9.7531H41.9148L45.4732 9.75919L47.5209 9.76244L48.2998 9.76386C49.9021 9.8546 51.4264 10.4864 52.624 11.5562C53.8216 12.626 54.6219 14.0706 54.8943 15.6544C55.1666 17.2382 54.8951 18.8677 54.1238 20.2771C53.3525 21.6864 52.1271 22.7925 50.6475 23.4148C51.1718 22.5453 51.4908 21.5674 51.5803 20.5557C51.6697 19.5439 51.5272 18.5251 51.1637 17.5769C51.1625 17.5721 51.1609 17.5673 51.159 17.5627C50.7758 16.5973 50.1118 15.7694 49.2531 15.1865C48.3943 14.6037 47.3804 14.2927 46.343 14.294H38.7947C37.2956 14.2813 35.839 13.7935 34.6339 12.9005C33.4287 12.0075 32.537 10.7552 32.0866 9.3232C31.6362 7.89125 31.6502 6.35323 32.1267 4.92977C32.6032 3.50631 33.5177 2.27056 34.7389 1.39978C34.7391 1.39862 34.7397 1.39755 34.7405 1.39673C35.8214 0.624977 37.0974 0.173358 38.4225 0.0935008L39.2671 0.0918775L46.0616 0.0811214L49.4211 0.0825403L53.8003 0.0811214H55.0548V0.138979L54.2868 2.64514C54.1163 3.20155 53.7769 3.69092 53.3157 4.04518C52.8546 4.39945 52.2947 4.601 51.7139 4.62181H51.5166L45.4761 4.62343H38.2311C37.6572 4.76353 37.147 5.0926 36.7823 5.55786C36.4175 6.02311 36.2194 6.59757 36.2197 7.18908"
+                            fill="#00BED7"></path>
+                        <path
+                            d="M51.1631 17.5766C51.1963 17.661 51.2267 17.7467 51.2555 17.8331C51.2263 17.7469 51.1947 17.6612 51.1631 17.5766Z"
+                            fill="#00BED7"></path>
+                        <path
+                            d="M27.684 19.9683C27.684 20.6005 27.4968 21.2186 27.146 21.7443C26.7953 22.27 26.2967 22.6797 25.7135 22.9216C25.1302 23.1636 24.4884 23.2269 23.8691 23.1035C23.2499 22.9802 22.6812 22.6757 22.2347 22.2287C21.7883 21.7816 21.4843 21.212 21.3611 20.5919C21.238 19.9719 21.3012 19.3291 21.5428 18.745C21.7844 18.1609 22.1935 17.6616 22.7185 17.3104C23.2434 16.9591 23.8606 16.7717 24.4919 16.7717C25.3385 16.7717 26.1504 17.1084 26.749 17.7079C27.3477 18.3074 27.684 19.1205 27.684 19.9683Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M48.1459 19.9683C48.1459 20.6005 47.9587 21.2186 47.6079 21.7443C47.2572 22.27 46.7586 22.6797 46.1754 22.9216C45.5921 23.1636 44.9503 23.2269 44.3311 23.1035C43.7119 22.9802 43.1431 22.6757 42.6967 22.2287C42.2502 21.7816 41.9462 21.212 41.8231 20.5919C41.6999 19.9719 41.7631 19.3291 42.0047 18.745C42.2463 18.1609 42.6555 17.6616 43.1804 17.3104C43.7053 16.9591 44.3225 16.7717 44.9538 16.7717C45.8004 16.7717 46.6123 17.1084 47.211 17.7079C47.8096 18.3074 48.1459 19.1205 48.1459 19.9683Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M38.0639 19.9683C38.0639 20.6005 37.8767 21.2186 37.5259 21.7442C37.1752 22.2699 36.6767 22.6797 36.0934 22.9216C35.5101 23.1636 34.8683 23.2269 34.2491 23.1035C33.6299 22.9802 33.0611 22.6758 32.6147 22.2288C32.1683 21.7817 31.8642 21.2121 31.741 20.5921C31.6179 19.972 31.6811 19.3293 31.9226 18.7451C32.1642 18.161 32.5733 17.6618 33.0982 17.3105C33.6231 16.9592 34.2403 16.7717 34.8716 16.7717C35.7182 16.7717 36.5302 17.1084 37.1288 17.7079C37.7275 18.3074 38.0638 19.1205 38.0639 19.9683Z"
+                            fill="currentColor"></path>
+                        <text x="150" y="11.6" font-family="Arial, Helvetica, sans-serif" font-weight="500"
+                            font-size="14.5" letter-spacing="0" fill="currentColor">Click Solutions</text>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_451_1815">
+                            <rect width="151" height="23.9208" fill="currentColor" transform="translate(0 0.0396042)">
+                            </rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            <button type="button" class="side-menu-close" id="sideMenuClose" aria-label="إغلاق القائمة">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main links -->
+        <div class="side-menu-body">
+
+            <a href="#" class="side-menu-link anim-item d2">
+                <span class="side-link-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </span>
+                <span class="side-link-body">
+                    <span class="side-link-title">فريقنا</span>
+                    <span class="side-link-sub">تعرّف على نخبة الخبراء لدينا</span>
+                </span>
+                <svg class="side-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+            </a>
+
+            <a href="#" class="side-menu-link anim-item d3">
+                <span class="side-link-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                </span>
+                <span class="side-link-body">
+                    <span class="side-link-title">اتصل بنا</span>
+                    <span class="side-link-sub">نحن هنا للإجابة على استفساراتك</span>
+                </span>
+                <svg class="side-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+            </a>
+
+            <a href="#" class="side-menu-link anim-item d4">
+                <span class="side-link-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </span>
+                <span class="side-link-body">
+                    <span class="side-link-title">آراء العملاء</span>
+                    <span class="side-link-sub">تجارب حقيقية من عملائنا الكرام</span>
+                </span>
+                <svg class="side-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+            </a>
+
+        </div>
+
+        <div class="side-menu-divider anim-item d4"></div>
+
+        <!-- Services accordion -->
+        <div class="side-menu-services anim-item d5" id="sideServices">
+            <button type="button" class="side-accordion-toggle" id="sideServicesToggle" aria-expanded="false">
+                <span class="side-link-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="7" height="7" x="3" y="3" rx="1" />
+                        <rect width="7" height="7" x="14" y="3" rx="1" />
+                        <rect width="7" height="7" x="14" y="14" rx="1" />
+                        <rect width="7" height="7" x="3" y="14" rx="1" />
+                    </svg>
+                </span>
+                <span class="side-link-body">
+                    <span class="side-link-title">خدماتنا</span>
+                    <span class="side-link-sub">استكشف جميع ما نقدّمه من خدمات</span>
+                </span>
+                <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+
+            <div class="side-accordion-content">
+                <div class="side-accordion-inner">
+                    <div class="side-services-group-label">تطوير المواقع</div>
+                    <a href="#" class="side-service-link">برمجة مواقع شركات</a>
+                    <a href="#" class="side-service-link">تصميم مواقع كاملة</a>
+                    <a href="#" class="side-service-link">تصميم QR Menu للمطاعم والكافيهات</a>
+                    <a href="#" class="side-service-link">استضافة مواقع إلكترونية</a>
+
+                    <div class="side-services-group-label">التسويق الإلكتروني</div>
+                    <a href="#" class="side-service-link">فيديوهات Reels</a>
+                    <a href="#" class="side-service-link">إدارة الإعلانات — فيسبوك، جوجل، سناب شات، إنستجرام</a>
+                    <a href="#" class="side-service-link">إنشاء فيديوهات موشن جرافيك</a>
+                    <a href="#" class="side-service-link">قسم المونتاج</a>
+
+                    <div class="side-services-group-label">أنظمة الأعمال</div>
+                    <a href="#" class="side-service-link">أنظمة CRM لإدارة العملاء</a>
+                    <a href="#" class="side-service-link">أنظمة ERP</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawer footer -->
+        <div class="side-menu-footer anim-item d5">
+            <a href="/contact" class="side-menu-cta">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+                </svg>
+                ابدأ مشروعك الآن
+            </a>
+            <div class="side-menu-socials">
+                <a href="#" class="social-btn" aria-label="فيسبوك"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg></a>
+                <a href="#" class="social-btn" aria-label="إنستجرام"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg></a>
+                <a href="#" class="social-btn" aria-label="تويتر"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                    </svg></a>
+                <a href="#" class="social-btn" aria-label="لينكدإن"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect width="4" height="12" x="2" y="9" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg></a>
+            </div>
+        </div>
+
+    </aside>
+
+
+
+
+
+
+
+    <!-- ============================================================
+     NEW ▼ JAVASCRIPT (dropdown + side menu interactions)
+     ============================================================ -->
+    <script>
+            (function () {
+                "use strict";
+
+                /* ============ 1) قائمة الخدمات المنسدلة (Mega Dropdown) ============ */
+                var header = document.getElementById('siteHeader');
+                var servicesBtn = document.getElementById('servicesBtn');
+                var servicesPanel = document.getElementById('servicesPanel');
+                var closeTimer = null;
+
+                function updateHeaderState() {
+                    if (!header) return;
+                    header.classList.toggle('scrolled', window.scrollY > 12);
+                }
+
+                function openServices() {
+                    if (!header || !servicesBtn) return;
+                    clearTimeout(closeTimer);
+                    header.classList.add('services-open');
+                    servicesBtn.setAttribute('aria-expanded', 'true');
+                }
+
+                function closeServices() {
+                    if (!header || !servicesBtn) return;
+                    clearTimeout(closeTimer);
+                    header.classList.remove('services-open');
+                    servicesBtn.setAttribute('aria-expanded', 'false');
+                }
+
+                function scheduleCloseServices() {
+                    clearTimeout(closeTimer);
+                    closeTimer = setTimeout(closeServices, 200);
+                }
+
+                updateHeaderState();
+                window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+                if (servicesBtn && servicesPanel) {
+                    /* فتح/غلق بالضغط (يعمل على اللمس والماوس) */
+                    servicesBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        header.classList.contains('services-open') ? closeServices() : openServices();
+                    });
+
+                    /* إغلاق القائمة عند الضغط على أي خدمة بداخلها */
+                    servicesPanel.querySelectorAll('a').forEach(function (a) {
+                        a.addEventListener('click', closeServices);
+                    });
+
+                    /* فتح بالـ Hover على أجهزة الماوس فقط */
+                    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                        servicesBtn.addEventListener('mouseenter', openServices);
+                        servicesPanel.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
+                        header.addEventListener('mouseleave', scheduleCloseServices);
+
+                        /* إغلاق عند الوقوف على رابط آخر في النافبار */
+                        document.querySelectorAll('.nav-links .nav-link:not(.nav-dropdown-trigger), .nav-lang, .nav-icon-btn').forEach(function (el) {
+                            el.addEventListener('mouseenter', function () {
+                                if (header.classList.contains('services-open')) scheduleCloseServices();
+                            });
+                        });
+                    }
+                }
+
+                /* ============ 2) القائمة الجانبية (زر النقاط الثلاث) ============ */
+                var sideMenu = document.getElementById('sideMenu');
+                var backdrop = document.getElementById('sideMenuBackdrop');
+                var sideOpenBtn = document.getElementById('sideMenuOpen');
+                var sideCloseBtn = document.getElementById('sideMenuClose');
+                var servicesAcc = document.getElementById('sideServices');
+                var servicesAccBtn = document.getElementById('sideServicesToggle');
+                var langToast = document.getElementById('langToast');
+                var langBtn = document.querySelector('.nav-lang');
+
+                function showLangToast() {
+                    if (!langToast) return;
+                    langToast.classList.add('show');
+                    clearTimeout(showLangToast.timer);
+                    showLangToast.timer = setTimeout(function () {
+                        langToast.classList.remove('show');
+                    }, 1800);
+                }
+
+                if (langBtn) {
+                    langBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        showLangToast();
+                    });
+                }
+
+                var menuClickSound = new Audio('assets/sound/mouse-click.mp3');
+                menuClickSound.preload = 'auto';
+                menuClickSound.volume = 1;
+
+                function playMenuClickSound(type) {
+                    if (!menuClickSound) return;
+                    menuClickSound.currentTime = 0;
+                    menuClickSound.play().catch(function () {});
+                }
+
+                function openSideMenu() {
+                    if (!sideMenu) return;
+                    closeServices();
+                    sideMenu.classList.add('open');
+                    backdrop.classList.add('show');
+                    document.body.classList.add('no-scroll');
+                    sideMenu.setAttribute('aria-hidden', 'false');
+                    playMenuClickSound('open');
+                }
+
+                function closeSideMenu() {
+                    if (!sideMenu) return;
+                    sideMenu.classList.remove('open');
+                    backdrop.classList.remove('show');
+                    document.body.classList.remove('no-scroll');
+                    sideMenu.setAttribute('aria-hidden', 'true');
+                    playMenuClickSound('close');
+                }
+
+                if (sideOpenBtn) {
+                    sideOpenBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        sideMenu.classList.contains('open') ? closeSideMenu() : openSideMenu();
+                    });
+                }
+                if (sideCloseBtn) sideCloseBtn.addEventListener('click', closeSideMenu);
+                if (backdrop) backdrop.addEventListener('click', closeSideMenu);
+
+                /* أكورديون الخدمات داخل القائمة الجانبية */
+                if (servicesAccBtn && servicesAcc) {
+                    servicesAccBtn.addEventListener('click', function () {
+                        var isOpen = servicesAcc.classList.toggle('open');
+                        servicesAccBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    });
+                }
+
+                /* إغلاق القائمة الجانبية عند الضغط على أي رابط بداخلها */
+                if (sideMenu) {
+                    sideMenu.querySelectorAll('a').forEach(function (a) {
+                        a.addEventListener('click', closeSideMenu);
+                    });
+                }
+
+                /* ============ 3) عام: الضغط خارج القوائم + زر Escape ============ */
+                document.addEventListener('click', function (e) {
+                    if (header && header.classList.contains('services-open') && !header.contains(e.target)) {
+                        closeServices();
+                    }
+                    if (sideMenu && sideMenu.classList.contains('open') &&
+                        !sideMenu.contains(e.target) && e.target !== sideOpenBtn) {
+                        closeSideMenu();
+                    }
+                });
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' || e.keyCode === 27) {
+                        closeServices();
+                        closeSideMenu();
+                    }
+                });
+            })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
