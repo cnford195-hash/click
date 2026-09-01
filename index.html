@@ -1932,10 +1932,13 @@
     --btn-hover-bg: rgba(30, 41, 59, 0.9);
 }
 
-
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--bg-main);
+}
 
 .bg-gradient-even {
-   
+    background: radial-gradient(circle at top right, rgba(15, 23, 42, 0.9), var(--bg-main) 40%);
 }
 
 .py-section {
@@ -2156,18 +2159,34 @@
         line-height: 1.4 !important;
     }
     
-    /* تحسين حاوية الأزرار */
+    /* ====== تحسين حاوية الأزرار (متجاوبة مع جميع الهواتف) ====== */
     [data-slot="tabs-list"] {
         gap: 0.5rem !important;
         padding: 0.25rem 0.5rem !important;
-        margin-left: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         flex-wrap: nowrap !important;
         -webkit-overflow-scrolling: touch !important;
         scroll-snap-type: x mandatory !important;
+        scroll-padding: 0.5rem !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+    }
+    
+    /* أول زر يظهر في البداية */
+    [data-slot="tabs-list"] .ws-tab-trigger:first-child {
+        margin-right: 0 !important;
+        scroll-snap-align: start !important;
+    }
+    
+    /* آخر زر */
+    [data-slot="tabs-list"] .ws-tab-trigger:last-child {
+        margin-left: 0 !important;
     }
     
     [data-slot="tabs-list"] .ws-tab-trigger {
         scroll-snap-align: start !important;
+        flex-shrink: 0 !important;
     }
     
     /* تحسين أزرار التمرير */
@@ -2192,7 +2211,75 @@
     }
 }
 
-/* ====== تحسين للشاشات المتوسطة ====== */
+/* ====== تحسين للهواتف الصغيرة جداً (أقل من 400px) ====== */
+@media (max-width: 400px) {
+    .ws-tab-trigger {
+        padding: 0.6rem 0.75rem !important;
+        font-size: 0.75rem !important;
+        min-width: 120px !important;
+    }
+    
+    .ws-tab-trigger .text-center span {
+        font-size: 0.75rem !important;
+    }
+    
+    [data-slot="tabs-list"] {
+        gap: 0.35rem !important;
+        padding: 0.15rem 0.35rem !important;
+        scroll-padding: 0.35rem !important;
+    }
+    
+    .scroll-btn {
+        width: 28px !important;
+        height: 28px !important;
+        padding: 4px !important;
+    }
+    
+    .scroll-btn svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+}
+
+/* ====== تحسين للهواتف المتوسطة (400px - 600px) ====== */
+@media (min-width: 401px) and (max-width: 600px) {
+    .ws-tab-trigger {
+        padding: 0.7rem 0.9rem !important;
+        font-size: 0.8rem !important;
+        min-width: 140px !important;
+    }
+    
+    .ws-tab-trigger .text-center span {
+        font-size: 0.8rem !important;
+    }
+    
+    [data-slot="tabs-list"] {
+        gap: 0.4rem !important;
+        padding: 0.2rem 0.4rem !important;
+        scroll-padding: 0.4rem !important;
+    }
+}
+
+/* ====== تحسين للهواتف الكبيرة والتابلت الصغير (600px - 767px) ====== */
+@media (min-width: 601px) and (max-width: 767px) {
+    .ws-tab-trigger {
+        padding: 0.8rem 1.1rem !important;
+        font-size: 0.85rem !important;
+        min-width: 160px !important;
+    }
+    
+    .ws-tab-trigger .text-center span {
+        font-size: 0.85rem !important;
+    }
+    
+    [data-slot="tabs-list"] {
+        gap: 0.5rem !important;
+        padding: 0.25rem 0.5rem !important;
+        scroll-padding: 0.5rem !important;
+    }
+}
+
+/* ====== تحسين للشاشات المتوسطة (تابلت) ====== */
 @media (min-width: 768px) and (max-width: 1023px) {
     .ws-tab-trigger {
         padding: 0.875rem 1.25rem !important;
@@ -2246,6 +2333,19 @@
 /* ====== إصلاح مشكلة اختفاء الأزرار على الهاتف ====== */
 [data-slot="tabs-list"] {
     scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain !important;
+}
+
+/* ضمان ظهور الزر الأول نشطاً في البداية */
+[data-slot="tabs-list"] .ws-tab-trigger:first-child {
+    scroll-margin-right: 0 !important;
+}
+
+/* إزالة أي مسافات إضافية */
+[data-slot="tabs-list"] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 /* ضمان ظهور المحتوى بشكل صحيح */
@@ -3483,113 +3583,205 @@
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    // ====== 1. تعريف المتغيرات الأساسية ======
+    const tabsContainer = document.getElementById('tabs-container');
+    if (!tabsContainer) {
+        console.error('tabs-container not found');
+        return;
+    }
 
+    const tabTriggers = tabsContainer.querySelectorAll('[role="tab"]');
+    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+    
+    // تعريف container كمرجع لـ tabsContainer
+    const container = tabsContainer;
 
- document.addEventListener('DOMContentLoaded', () => {
-            // ====== 1. وظيفة التبويبات ======
-            const tabsContainer = document.getElementById('tabs-container');
-            if (!tabsContainer) return;
-
-            const tabTriggers = tabsContainer.querySelectorAll('[role="tab"]');
-            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
-
-            function activateTab(activeTab) {
-                tabTriggers.forEach(tab => {
-                    tab.setAttribute('data-state', 'inactive');
-                    tab.setAttribute('aria-selected', 'false');
-                    tab.removeAttribute('data-active');
-                });
-
-                tabPanels.forEach(panel => {
-                    panel.setAttribute('data-state', 'inactive');
-                    panel.classList.remove('ws-active-panel');
-                });
-
-                activeTab.setAttribute('data-state', 'active');
-                activeTab.setAttribute('aria-selected', 'true');
-                activeTab.setAttribute('data-active', '');
-
-                const panelId = activeTab.getAttribute('aria-controls');
-                const activePanel = document.getElementById(panelId);
-
-                if (activePanel) {
-                    activePanel.setAttribute('data-state', 'active');
-                    activePanel.classList.add('ws-active-panel');
-                }
-            }
-
-            tabTriggers.forEach(trigger => {
-                trigger.addEventListener('click', () => activateTab(trigger));
-            });
-
-            // ====== 2. وظيفة أزرار التمرير ======
-            const container = tabsContainer;
-            const scrollLeftBtn = document.getElementById('scroll-left-btn');
-            const scrollRightBtn = document.getElementById('scroll-right-btn');
-
-            function getScrollAmount() {
-                if (window.innerWidth < 1024) {
-                    return container.clientWidth * 0.8;
-                } else {
-                    return 200;
-                }
-            }
-
-            function scrollContainer(direction) {
-                const amount = getScrollAmount();
-                const scrollTarget = direction === 'left' ?
-                    container.scrollLeft - amount :
-                    container.scrollLeft + amount;
-
-                container.scrollTo({
-                    left: scrollTarget,
-                    behavior: 'smooth'
-                });
-            }
-
-            if (scrollLeftBtn) {
-                scrollLeftBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    scrollContainer('left');
-                });
-            }
-
-            if (scrollRightBtn) {
-                scrollRightBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    scrollContainer('right');
-                });
-            }
-
-            // ====== 3. إخفاء/إظهار أزرار التمرير ======
-            function updateButtonsVisibility() {
-                if (window.innerWidth >= 1024) {
-                    if (scrollLeftBtn) scrollLeftBtn.style.display = 'none';
-                    if (scrollRightBtn) scrollRightBtn.style.display = 'none';
-                    return;
-                }
-
-                const canScroll = container.scrollWidth > container.clientWidth;
-                if (scrollLeftBtn) scrollLeftBtn.style.display = canScroll ? 'flex' : 'none';
-                if (scrollRightBtn) scrollRightBtn.style.display = canScroll ? 'flex' : 'none';
-            }
-
-            updateButtonsVisibility();
-            window.addEventListener('resize', updateButtonsVisibility);
-
-            container.addEventListener('scroll', () => {
-                if (window.innerWidth < 1024) {
-                    const atStart = container.scrollLeft <= 10;
-                    const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
-
-                    if (scrollLeftBtn) scrollLeftBtn.style.opacity = atStart ? '0.2' : '1';
-                    if (scrollRightBtn) scrollRightBtn.style.opacity = atEnd ? '0.2' : '1';
-                }
-            });
+    // ====== 2. وظيفة تفعيل التبويب ======
+    function activateTab(activeTab) {
+        tabTriggers.forEach(tab => {
+            tab.setAttribute('data-state', 'inactive');
+            tab.setAttribute('aria-selected', 'false');
+            tab.removeAttribute('data-active');
         });
 
+        tabPanels.forEach(panel => {
+            panel.setAttribute('data-state', 'inactive');
+            panel.classList.remove('ws-active-panel');
+        });
 
+        activeTab.setAttribute('data-state', 'active');
+        activeTab.setAttribute('aria-selected', 'true');
+        activeTab.setAttribute('data-active', '');
 
+        const panelId = activeTab.getAttribute('aria-controls');
+        const activePanel = document.getElementById(panelId);
+
+        if (activePanel) {
+            activePanel.setAttribute('data-state', 'active');
+            activePanel.classList.add('ws-active-panel');
+        }
+    }
+
+    // ====== 3. ربط النقر المباشر على الأزرار ======
+    tabTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => activateTab(trigger));
+    });
+
+    // ====== 4. وظيفة العثور على الزر الأقرب للمنتصف ======
+    function findClosestVisibleTab() {
+        const containerRect = container.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        
+        let closestTab = null;
+        let closestDistance = Infinity;
+        
+        tabTriggers.forEach(tab => {
+            const tabRect = tab.getBoundingClientRect();
+            const tabCenter = tabRect.left + tabRect.width / 2;
+            const distance = Math.abs(tabCenter - containerCenter);
+            
+            const isVisible = tabRect.right > containerRect.left && tabRect.left < containerRect.right;
+            
+            if (isVisible && distance < closestDistance) {
+                closestDistance = distance;
+                closestTab = tab;
+            }
+        });
+        
+        return closestTab;
+    }
+
+    // ====== 5. وظيفة التمرير وتفعيل الزر تلقائياً ======
+    let scrollTimeout = null;
+    
+    function scrollAndActivate(direction) {
+        // التأكد من وجود container
+        if (!container) {
+            console.error('container is not defined');
+            return;
+        }
+        
+        const amount = window.innerWidth < 1024 ? container.clientWidth * 0.8 : 200;
+        const scrollTarget = direction === 'left' ? 
+            container.scrollLeft - amount : 
+            container.scrollLeft + amount;
+
+        // التمرير
+        container.scrollTo({
+            left: scrollTarget,
+            behavior: 'smooth'
+        });
+
+        // إلغاء أي تايمر سابق
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = null;
+        }
+
+        // انتظار انتهاء التمرير ثم تفعيل الزر الأقرب
+        scrollTimeout = setTimeout(() => {
+            const closestTab = findClosestVisibleTab();
+            if (closestTab) {
+                if (closestTab.getAttribute('data-state') !== 'active') {
+                    activateTab(closestTab);
+                }
+            }
+            scrollTimeout = null;
+        }, 500);
+    }
+
+    // ====== 6. الحصول على أزرار التمرير ======
+    let scrollLeftBtn = document.getElementById('scroll-left-btn');
+    let scrollRightBtn = document.getElementById('scroll-right-btn');
+
+    // ====== 7. ربط أزرار التمرير ======
+    if (scrollLeftBtn) {
+        // إزالة المستمعين السابقين عن طريق clone
+        const newLeftBtn = scrollLeftBtn.cloneNode(true);
+        scrollLeftBtn.parentNode.replaceChild(newLeftBtn, scrollLeftBtn);
+        scrollLeftBtn = document.getElementById('scroll-left-btn');
+        
+        scrollLeftBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('تمرير لليسار');
+            scrollAndActivate('left');
+        });
+    }
+
+    if (scrollRightBtn) {
+        const newRightBtn = scrollRightBtn.cloneNode(true);
+        scrollRightBtn.parentNode.replaceChild(newRightBtn, scrollRightBtn);
+        scrollRightBtn = document.getElementById('scroll-right-btn');
+        
+        scrollRightBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('تمرير لليمين');
+            scrollAndActivate('right');
+        });
+    }
+
+    // ====== 8. إخفاء/إظهار أزرار التمرير ======
+    function updateButtonsVisibility() {
+        // التأكد من وجود container
+        if (!container) {
+            console.error('container is not defined in updateButtonsVisibility');
+            return;
+        }
+        
+        if (window.innerWidth >= 1024) {
+            if (scrollLeftBtn) scrollLeftBtn.style.display = 'none';
+            if (scrollRightBtn) scrollRightBtn.style.display = 'none';
+            return;
+        }
+
+        const canScroll = container.scrollWidth > container.clientWidth;
+        if (scrollLeftBtn) {
+            scrollLeftBtn.style.display = canScroll ? 'flex' : 'none';
+        }
+        if (scrollRightBtn) {
+            scrollRightBtn.style.display = canScroll ? 'flex' : 'none';
+        }
+    }
+
+    // ====== 9. تحديث الشفافية عند التمرير ======
+    container.addEventListener('scroll', () => {
+        if (window.innerWidth < 1024) {
+            const atStart = container.scrollLeft <= 10;
+            const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+
+            if (scrollLeftBtn) {
+                scrollLeftBtn.style.opacity = atStart ? '0.2' : '1';
+            }
+            if (scrollRightBtn) {
+                scrollRightBtn.style.opacity = atEnd ? '0.2' : '1';
+            }
+        }
+    });
+
+    // ====== 10. تهيئة الأزرار عند التحميل ======
+    updateButtonsVisibility();
+    window.addEventListener('resize', updateButtonsVisibility);
+
+    // ====== 11. عند تغيير حجم الشاشة ======
+    let resizeTimeout = null;
+    window.addEventListener('resize', () => {
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        resizeTimeout = setTimeout(() => {
+            const visibleTab = findClosestVisibleTab();
+            if (visibleTab && visibleTab.getAttribute('data-state') !== 'active') {
+                activateTab(visibleTab);
+            }
+            resizeTimeout = null;
+        }, 300);
+    });
+
+    console.log('تم تحميل الجافا سكريبت بنجاح');
+});
 
 
 
