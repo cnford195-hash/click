@@ -48,7 +48,9 @@
             height: 100vh;
         }
 
-        html, body, * {
+        html,
+        body,
+        * {
             font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
         }
 
@@ -393,12 +395,8 @@
 
         /* ==================== Clients marquee (data-v-89521b90) ==================== */
         .marquee-container[data-v-89521b90] {
-            -webkit-mask: linear-gradient(
-
-90deg, transparent, #000 10%, #000 90%, transparent);
-            mask: linear-gradient(
-
-90deg, transparent, #000 10%, #000 90%, transparent);
+            -webkit-mask: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            mask: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
             overflow: hidden;
             position: relative;
             width: 100%;
@@ -616,11 +614,30 @@
             font-family: 'Poppins', system-ui, sans-serif;
         }
 
-        h1, h2, h3, h4, h5, h6,
-        p, span, div, a, li, button,
-        input, textarea, select, option, label,
-        .text-sm, .text-base, .text-lg, .text-xl, .text-2xl,
-        .leading-relaxed, .leading-normal,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        div,
+        a,
+        li,
+        button,
+        input,
+        textarea,
+        select,
+        option,
+        label,
+        .text-sm,
+        .text-base,
+        .text-lg,
+        .text-xl,
+        .text-2xl,
+        .leading-relaxed,
+        .leading-normal,
         .nav-link,
         .nav-lang,
         .site-header,
@@ -983,11 +1000,11 @@
                 padding-inline: 0.8rem;
             }
 
-            .site-header .header-inner > a {
+            .site-header .header-inner>a {
                 min-width: 0;
             }
 
-            .site-header .header-inner > a svg {
+            .site-header .header-inner>a svg {
                 width: 200px;
                 height: auto;
                 display: block;
@@ -1894,12 +1911,375 @@
 
 
 
+:root {
+    --bg-main: #050813;
+    --bg-surface: rgba(15, 23, 42, 0.5);
+    --border-surface: rgba(51, 65, 85, 0.5);
+    
+    /* ====== الألوان الجديدة ====== */
+    --btn-border-gradient: linear-gradient(90deg, #00bed7, #c853ef);
+    --tabs-border-gradient: linear-gradient(90deg, #00bed7, #c853ef);
+    --icon-gradient-start: #00bed7;
+    --icon-gradient-middle: #6488e3;
+    
+    /* ألوان مشتقة */
+    --btn-active-bg: #0a1628;
+    --btn-active-shadow: 0 0 40px rgba(0, 190, 215, 0.15), 0 0 80px rgba(200, 83, 239, 0.08);
+    --btn-inactive-bg: rgba(15, 23, 42, 0.6);
+    --btn-inactive-border: rgba(51, 65, 85, 0.6);
+    --btn-inactive-text: #94a3b8;
+    --btn-hover-border: rgba(0, 190, 215, 0.4);
+    --btn-hover-bg: rgba(30, 41, 59, 0.9);
+}
 
 
 
+.bg-gradient-even {
+   
+}
 
+.py-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
 
+.dark-text-gradient {
+    background: linear-gradient(to bottom, #ffffff, #64748b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
+.bg-surface-background {
+    background-color: var(--bg-surface) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.border-surface-border {
+    border-color: var(--border-surface) !important;
+}
+
+.text-foreground {
+    color: #f8fafc;
+}
+
+.text-muted-foreground {
+    color: #94a3b8;
+}
+
+.text-card-foreground {
+    color: #e2e8f0;
+}
+
+.rounded-ws-rounded {
+    border-radius: 1rem;
+}
+
+.ws-no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.ws-no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.ws-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ws-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ws-scrollbar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+/* ====== أنماط الأزرار الجديدة مع الألوان المطلوبة ====== */
+.ws-tab-trigger {
+    position: relative;
+    z-index: 1;
+    background: var(--btn-inactive-bg) !important;
+    border: 1px solid var(--btn-inactive-border) !important;
+    color: var(--btn-inactive-text) !important;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 1rem !important;
+}
+
+/* حالة التمرير (hover) للأزرار غير النشطة */
+.ws-tab-trigger:not([data-state="active"]):hover {
+    background: var(--btn-hover-bg) !important;
+    border-color: var(--btn-hover-border) !important;
+    color: #e2e8f0 !important;
+}
+
+/* ====== الزر النشط ====== */
+.ws-tab-trigger[data-state="active"] {
+    background: var(--btn-active-bg) !important;
+    color: #ffffff !important;
+    border: 1px solid transparent !important;
+    box-shadow: var(--btn-active-shadow), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* الحدود المتدرجة (أزرق فاتح → أرجواني) */
+.ws-tab-trigger[data-state="active"]::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: var(--btn-border-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* توهج خفيف حول الزر النشط بالألوان الجديدة */
+.ws-tab-trigger[data-state="active"]::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: inherit;
+    background: radial-gradient(circle at center, rgba(0, 190, 215, 0.12), rgba(200, 83, 239, 0.06), transparent 70%);
+    z-index: -1;
+    opacity: 0.8;
+    filter: blur(8px);
+}
+
+/* توهج إضافي من الداخل */
+.ws-tab-trigger[data-state="active"] .text-center span {
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(0, 190, 215, 0.2), 0 0 60px rgba(200, 83, 239, 0.1);
+}
+
+/* ====== بطاقة المحتوى ====== */
+[data-slot="card"][data-state="active"] {
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+}
+
+[data-slot="card-content"] svg path {
+    stroke: var(--icon-gradient-start);
+}
+
+[data-slot="card-content"] span {
+    color: var(--icon-gradient-start);
+    background: rgba(0, 190, 215, 0.08);
+    border: 1px solid rgba(0, 190, 215, 0.15);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-fade-right-rtl {
+    -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
+    mask-image: linear-gradient(to left, black 85%, transparent 100%);
+}
+
+@media (min-width: 1024px) {
+    .scroll-fade-right-rtl {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+
+/* ====== الحل الجذري لإخفاء وإظهار التبويبات ====== */
+[role="tabpanel"] {
+    display: none !important;
+}
+
+[role="tabpanel"].ws-active-panel {
+    display: block !important;
+}
+
+/* ====== أزرار التمرير (الأسهم) ====== */
+.scroll-btn {
+    cursor: pointer;
+    z-index: 20;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    background: rgba(10, 22, 40, 0.9) !important;
+    border-color: rgba(0, 190, 215, 0.3) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 50%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-btn:hover {
+    opacity: 1;
+    border-color: rgba(0, 190, 215, 0.8) !important;
+    box-shadow: 0 0 20px rgba(0, 190, 215, 0.15);
+}
+
+.scroll-btn svg {
+    color: #00bed7 !important;
+}
+
+/* ====== تحسينات إضافية للون الأيقونات ====== */
+[data-slot="card-content"] .flex {
+    transition: all 0.3s ease;
+}
+
+[data-slot="card-content"] .flex:hover span {
+    border-color: rgba(200, 83, 239, 0.3) !important;
+    background: rgba(200, 83, 239, 0.08) !important;
+}
+
+[data-slot="card-content"] .flex:hover svg path {
+    stroke: var(--icon-gradient-middle) !important;
+}
+
+/* ====== تحسين تجاوب الأزرار في الهاتف ====== */
+@media (max-width: 767px) {
+    /* جعل الأزرار تأخذ عرض مناسب */
+    .ws-tab-trigger {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.875rem !important;
+        min-width: max-content !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+    
+    .ws-tab-trigger .text-center span {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* تحسين حاوية الأزرار */
+    [data-slot="tabs-list"] {
+        gap: 0.5rem !important;
+        padding: 0.25rem 0.5rem !important;
+        margin-left: 65px !important;
+        flex-wrap: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x mandatory !important;
+    }
+    
+    [data-slot="tabs-list"] .ws-tab-trigger {
+        scroll-snap-align: start !important;
+    }
+    
+    /* تحسين أزرار التمرير */
+    .scroll-btn {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 6px !important;
+    }
+    
+    .scroll-btn svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    
+    /* جعل الأزرار تظهر دائماً على الهاتف */
+    .scroll-btn {
+        opacity: 0.6 !important;
+    }
+    
+    .scroll-btn:hover {
+        opacity: 1 !important;
+    }
+}
+
+/* ====== تحسين للشاشات المتوسطة ====== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .ws-tab-trigger {
+        padding: 0.875rem 1.25rem !important;
+        font-size: 0.95rem !important;
+        min-width: max-content !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .ws-tab-trigger .text-center span {
+        font-size: 0.95rem !important;
+    }
+    
+    [data-slot="tabs-list"] {
+        gap: 0.75rem !important;
+        padding: 0.25rem 0.5rem !important;
+        flex-wrap: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+}
+
+/* ====== تحسين للشاشات الكبيرة (ديسكتوب) ====== */
+@media (min-width: 1024px) {
+    .ws-tab-trigger {
+        padding: 1.5rem 1.25rem !important;
+        font-size: 1rem !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .ws-tab-trigger .text-center span {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    [data-slot="tabs-list"] {
+        gap: 1.5rem !important;
+        padding: 0 !important;
+        flex-wrap: wrap !important;
+        flex-direction: column !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        height: 29.5625rem !important;
+    }
+    
+    /* إخفاء أزرار التمرير على الديسكتوب */
+    .scroll-btn {
+        display: none !important;
+    }
+}
+
+/* ====== إصلاح مشكلة اختفاء الأزرار على الهاتف ====== */
+[data-slot="tabs-list"] {
+    scroll-behavior: smooth !important;
+}
+
+/* ضمان ظهور المحتوى بشكل صحيح */
+.ws-active-panel {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تحسين ظهور الحاوية على الهاتف */
+@media (max-width: 767px) {
+    [data-slot="tabs"] {
+        min-height: auto !important;
+    }
+    
+    [data-slot="card"] {
+        min-height: 20rem !important;
+        height: auto !important;
+    }
+    
+    .py-section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
 
         /* ============================================================= */
     </style>
@@ -2404,121 +2784,141 @@
                                 data-v-89521b90="">
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="AL KATHIRI MOTORS" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="AL KATHIRI MOTORS" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="HORIZON" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="HORIZON" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="NovaTech" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="NovaTech" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="SMART VISION" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="SMART VISION" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="ORION" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="ORION" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="VERTEX" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="VERTEX" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="pulse" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="pulse" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="ATLAS GLOBAL" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="ATLAS GLOBAL" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="SKYLINE" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="SKYLINE" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="MERIDIAN" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="MERIDIAN" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="AL KATHIRI MOTORS" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="AL KATHIRI MOTORS" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="HORIZON" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="HORIZON" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="NovaTech" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="NovaTech" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="SMART VISION" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="SMART VISION" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="ORION" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="ORION" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="VERTEX" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="VERTEX" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="pulse" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="pulse" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand1.png" alt="ATLAS GLOBAL" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand1.png" alt="ATLAS GLOBAL" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="SKYLINE" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="SKYLINE" />
                                     </div>
                                 </div>
 
                                 <div class="logo-item" aria-hidden="true" data-v-89521b90="">
                                     <div class="client-brand" data-v-89521b90="">
-                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100" src="./assets/img/brand5.png" alt="MERIDIAN" />
+                                        <img class="h-16 w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100"
+                                            src="./assets/img/brand5.png" alt="MERIDIAN" />
                                     </div>
                                 </div>
                             </div>
@@ -2543,7 +2943,170 @@
         </div>
 
     </section>
-    <br><br><br><br><br>
+    <br>
+
+
+
+
+   <section id="services" class="bg-gradient-even py-section">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-center">
+                <h2 class="dark-text-gradient pb-[2.5rem] text-center text-[1.75rem] font-bold sm:text-[2rem] md:text-[2.5rem]">خدمات احترافية على يد خبراء</h2>
+            </div>
+
+            <div dir="ltr" data-orientation="vertical" data-slot="tabs" class="flex flex-col gap-2 min-h-[29.5625rem] w-full">
+                <div class="flex flex-col gap-2 lg:flex-row lg:gap-6 rtl:lg:flex-row-reverse">
+
+                    <!-- التبويبات (الأزرار) -->
+                    <div class="relative w-full lg:max-w-[19.8125rem]">
+                        <!-- أزرار التمرير -->
+                        <div class="pointer-events-none absolute inset-0 z-10">
+                            <div id="scroll-left-btn" class="scroll-btn pointer-events-auto absolute top-1/2 -translate-y-1/2 transform shadow-lg transition-colors left-2">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-200">
+                                    <path d="M10.5 13L5.5 8L10.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <div id="scroll-right-btn" class="scroll-btn pointer-events-auto absolute top-1/2 -translate-y-1/2 transform shadow-lg transition-colors right-2">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-200">
+                                    <path d="M5.5 13L10.5 8L5.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- قائمة الأزرار -->
+                        <div data-slot="tabs-list" class="text-muted-foreground items-center rounded-lg p-[3px] rounded-ws-rounded ws-no-scrollbar flex h-auto w-full flex-row gap-3 overflow-x-auto overflow-y-visible bg-transparent transition-[mask] duration-300 will-change-scroll lg:grid lg:h-[29.5625rem] lg:grid-cols-1 lg:flex-col lg:gap-6 lg:overflow-x-visible lg:overflow-y-auto scroll-fade-right-rtl" id="tabs-container" tabindex="0" data-orientation="vertical" dir="rtl" style="outline:none;" role="tablist" aria-orientation="vertical">
+
+                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="true" aria-controls="content-web" data-state="active" data-active="">
+                                <div class="text-center"><span class="text-base leading-6 font-medium">برمجة وتصميم المواقع الإلكترونية</span></div>
+                            </button>
+
+                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-mobile" data-state="inactive">
+                                <div class="text-center"><span class="text-base leading-6 font-medium">برمجة وتصميم تطبيقات الجوال</span></div>
+                            </button>
+
+                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-apps" data-state="inactive">
+                                <div class="text-center"><span class="text-base leading-6 font-medium">الصيانة والدعم الفني</span></div>
+                            </button>
+
+                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-marketing" data-state="inactive">
+                                <div class="text-center"><span class="text-base leading-6 font-medium">التسويق الرقمي</span></div>
+                            </button>
+
+                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-ai" data-state="inactive">
+                                <div class="text-center"><span class="text-base leading-6 font-medium">الذكاء الاصطناعي</span></div>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- المحتوى (البطاقات) -->
+                    <div class="relative flex-1">
+                        <div class="pointer-events-none absolute inset-0 z-10"></div>
+
+                        <!-- بطاقة 1 (مفعلة افتراضياً) -->
+                        <div id="content-web" role="tabpanel" data-state="active" class="ws-active-panel flex-1 outline-none">
+                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
+                                <div data-slot="card-header" class="px-6 pb-6">
+                                    <h3 data-slot="card-title" class="text-2xl font-bold">نحن لا نصمم نطور مواقع... نحن نبني تجارب رقمية</h3>
+                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">في شركة برمجيات ويب ستدي نحول فكرتك إلى تجربة رقمية نابضة بالحياة. نُصمّم مواقع إلكترونية تترك انطباعاً أول لا يُنسى.</p>
+                                </div>
+                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-4 pb-2">
+                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+                                            <p class="leading-relaxed">نضمن لك سرعة تحميل صفحات الموقع لأنها تعتبر من أهم عوامل بقاء الزوار لفترات أطول.</p>
+                                        </div>
+                                        <div class="flex items-center gap-4 pb-2">
+                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+                                            <p class="leading-relaxed">نوفر لك أعلى معايير الأمان لحماية بيانات موقعك ضد محاولات الاختراق.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- بطاقة 2 -->
+                        <div id="content-mobile" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
+                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
+                                <div data-slot="card-header" class="px-6 pb-6">
+                                    <h3 data-slot="card-title" class="text-2xl font-bold">تطبيقات جوال تترك أثراً مستداماً</h3>
+                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نطور تطبيقات أصلية وهجينة تتميز بالأداء العالي والتصميم الجذاب.</p>
+                                </div>
+                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-4 pb-2">
+                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+                                            <p class="leading-relaxed">تصميم واجهات مستخدم تتوافق مع أحدث معايير آبل وجوجل.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- بطاقة 3 -->
+                        <div id="content-apps" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
+                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
+                                <div data-slot="card-header" class="px-6 pb-6">
+                                    <h3 data-slot="card-title" class="text-2xl font-bold">راحة بالك مع صيانة مستمرة</h3>
+                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نقدم خدمات الدعم الفني والصيانة الدورية لضمان استمرارية عمل أنظمتك.</p>
+                                </div>
+                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-4 pb-2">
+                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+                                            <p class="leading-relaxed">مراقبة مستمرة لأداء الأنظمة على مدار الساعة لحل الأخطاء.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- بطاقة 4 -->
+                        <div id="content-marketing" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
+                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
+                                <div data-slot="card-header" class="px-6 pb-6">
+                                    <h3 data-slot="card-title" class="text-2xl font-bold">وصلك لجمهورك المستهدف بذكاء</h3>
+                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نضع استراتيجيات تسويقية مبنية على البيانات لضمان وصول علامتك التجارية.</p>
+                                </div>
+                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-4 pb-2">
+                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+                                            <p class="leading-relaxed">تحسين محركات البحث (SEO) لضمان تصدر موقعك في نتائج جوجل.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- بطاقة 5 -->
+                        <div id="content-ai" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
+                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
+                                <div data-slot="card-header" class="px-6 pb-6">
+                                    <h3 data-slot="card-title" class="text-2xl font-bold">دمج تقنيات المستقبل في عملك</h3>
+                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نستفيد من إمكانيات الذكاء الاصطناعي لتطوير حلول مبتكرة تؤتمت أعمالك.</p>
+                                </div>
+                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-4 pb-2">
+                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+                                            <p class="leading-relaxed">تطوير أنظمة أتمتة العمليات لتقليل التكاليف التشغيلية والأخطاء البشرية.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
 
 
     <div class="lang-toast" id="langToast" aria-live="polite">سيتوفر قريبًا</div>
@@ -2850,7 +3413,7 @@
                 function playMenuClickSound(type) {
                     if (!menuClickSound) return;
                     menuClickSound.currentTime = 0;
-                    menuClickSound.play().catch(function () {});
+                    menuClickSound.play().catch(function () { });
                 }
 
                 function openSideMenu() {
@@ -2922,7 +3485,108 @@
 
 
 
+ document.addEventListener('DOMContentLoaded', () => {
+            // ====== 1. وظيفة التبويبات ======
+            const tabsContainer = document.getElementById('tabs-container');
+            if (!tabsContainer) return;
 
+            const tabTriggers = tabsContainer.querySelectorAll('[role="tab"]');
+            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+            function activateTab(activeTab) {
+                tabTriggers.forEach(tab => {
+                    tab.setAttribute('data-state', 'inactive');
+                    tab.setAttribute('aria-selected', 'false');
+                    tab.removeAttribute('data-active');
+                });
+
+                tabPanels.forEach(panel => {
+                    panel.setAttribute('data-state', 'inactive');
+                    panel.classList.remove('ws-active-panel');
+                });
+
+                activeTab.setAttribute('data-state', 'active');
+                activeTab.setAttribute('aria-selected', 'true');
+                activeTab.setAttribute('data-active', '');
+
+                const panelId = activeTab.getAttribute('aria-controls');
+                const activePanel = document.getElementById(panelId);
+
+                if (activePanel) {
+                    activePanel.setAttribute('data-state', 'active');
+                    activePanel.classList.add('ws-active-panel');
+                }
+            }
+
+            tabTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => activateTab(trigger));
+            });
+
+            // ====== 2. وظيفة أزرار التمرير ======
+            const container = tabsContainer;
+            const scrollLeftBtn = document.getElementById('scroll-left-btn');
+            const scrollRightBtn = document.getElementById('scroll-right-btn');
+
+            function getScrollAmount() {
+                if (window.innerWidth < 1024) {
+                    return container.clientWidth * 0.8;
+                } else {
+                    return 200;
+                }
+            }
+
+            function scrollContainer(direction) {
+                const amount = getScrollAmount();
+                const scrollTarget = direction === 'left' ?
+                    container.scrollLeft - amount :
+                    container.scrollLeft + amount;
+
+                container.scrollTo({
+                    left: scrollTarget,
+                    behavior: 'smooth'
+                });
+            }
+
+            if (scrollLeftBtn) {
+                scrollLeftBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    scrollContainer('left');
+                });
+            }
+
+            if (scrollRightBtn) {
+                scrollRightBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    scrollContainer('right');
+                });
+            }
+
+            // ====== 3. إخفاء/إظهار أزرار التمرير ======
+            function updateButtonsVisibility() {
+                if (window.innerWidth >= 1024) {
+                    if (scrollLeftBtn) scrollLeftBtn.style.display = 'none';
+                    if (scrollRightBtn) scrollRightBtn.style.display = 'none';
+                    return;
+                }
+
+                const canScroll = container.scrollWidth > container.clientWidth;
+                if (scrollLeftBtn) scrollLeftBtn.style.display = canScroll ? 'flex' : 'none';
+                if (scrollRightBtn) scrollRightBtn.style.display = canScroll ? 'flex' : 'none';
+            }
+
+            updateButtonsVisibility();
+            window.addEventListener('resize', updateButtonsVisibility);
+
+            container.addEventListener('scroll', () => {
+                if (window.innerWidth < 1024) {
+                    const atStart = container.scrollLeft <= 10;
+                    const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+
+                    if (scrollLeftBtn) scrollLeftBtn.style.opacity = atStart ? '0.2' : '1';
+                    if (scrollRightBtn) scrollRightBtn.style.opacity = atEnd ? '0.2' : '1';
+                }
+            });
+        });
 
 
 
