@@ -9,6 +9,10 @@
     <!-- Matching the live site: Almarai for Arabic UI text, Poppins for the Latin logo wordmark -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- مكتبة Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
@@ -1911,475 +1915,126 @@
 
 
 
-:root {
-    --bg-main: #050813;
-    --bg-surface: rgba(15, 23, 42, 0.5);
-    --border-surface: rgba(51, 65, 85, 0.5);
-    
-    /* ====== الألوان الجديدة ====== */
-    --btn-border-gradient: linear-gradient(90deg, #00bed7, #c853ef);
-    --tabs-border-gradient: linear-gradient(90deg, #00bed7, #c853ef);
-    --icon-gradient-start: #00bed7;
-    --icon-gradient-middle: #6488e3;
-    
-    /* ألوان مشتقة */
-    --btn-active-bg: #0a1628;
-    --btn-active-shadow: 0 0 40px rgba(0, 190, 215, 0.15), 0 0 80px rgba(200, 83, 239, 0.08);
-    --btn-inactive-bg: rgba(15, 23, 42, 0.6);
-    --btn-inactive-border: rgba(51, 65, 85, 0.6);
-    --btn-inactive-text: #94a3b8;
-    --btn-hover-border: rgba(0, 190, 215, 0.4);
-    --btn-hover-bg: rgba(30, 41, 59, 0.9);
-}
 
-body {
-    font-family: 'Tajawal', sans-serif;
-    background-color: var(--bg-main);
-}
 
-.bg-gradient-even {
-    background: radial-gradient(circle at top right, rgba(15, 23, 42, 0.9), var(--bg-main) 40%);
-}
 
-.py-section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-}
 
-.dark-text-gradient {
-    background: linear-gradient(to bottom, #ffffff, #64748b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
 
-.bg-surface-background {
-    background-color: var(--bg-surface) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
 
-.border-surface-border {
-    border-color: var(--border-surface) !important;
-}
 
-.text-foreground {
-    color: #f8fafc;
-}
 
-.text-muted-foreground {
-    color: #94a3b8;
-}
 
-.text-card-foreground {
-    color: #e2e8f0;
-}
+        /* كلاس النص المتدرج */
+        .dark-text-gradient {
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.rounded-ws-rounded {
-    border-radius: 1rem;
-}
+        .text-primary {
+            color: #cbd5e1;
+        }
 
-.ws-no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
+        .swiper {
+            padding: 1rem 0.25rem;
+            overflow: hidden;
+            /* ✅ hidden بدل visible عشان يمنع سكرول أفقي غير مرغوب على الموبايل */
+            width: 100%;
+        }
 
-.ws-no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
+        .swiper-wrapper {
+            align-items: stretch;
+        }
 
-.ws-scrollbar::-webkit-scrollbar {
-    width: 4px;
-}
+        /* ✅ لا تفرض width هنا خالص — سيبها لـ Swiper JS يحسبها حسب slidesPerView */
+        .swiper-slide {
+            height: auto;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-.ws-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
+        /* ✅ الكارت نفسه ياخد كل عرض السلايد المحسوب من Swiper */
+        .service-card {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
 
-.ws-scrollbar::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 4px;
-}
+        .service-card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-gradient-text, linear-gradient(90deg, oklch(68.3% 0 0), oklch(100% 0 0) 50%, oklch(68.3% 0 0)));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 10px rgba(34, 201, 224, 0.38));
+        }
 
-/* ====== أنماط الأزرار الجديدة مع الألوان المطلوبة ====== */
-.ws-tab-trigger {
-    position: relative;
-    z-index: 1;
-    background: var(--btn-inactive-bg) !important;
-    border: 1px solid var(--btn-inactive-border) !important;
-    color: var(--btn-inactive-text) !important;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 1rem !important;
-}
+        .service-card-icon svg {
+            stroke: url(#service-icon-gradient);
+            fill: none;
+        }
 
-/* حالة التمرير (hover) للأزرار غير النشطة */
-.ws-tab-trigger:not([data-state="active"]):hover {
-    background: var(--btn-hover-bg) !important;
-    border-color: var(--btn-hover-border) !important;
-    color: #e2e8f0 !important;
-}
+        /* تنسيق قائمة التسويق */
+        .marketing-list li {
+            position: relative;
+            padding-right: 15px;
+            margin-bottom: 5px;
+        }
 
-/* ====== الزر النشط ====== */
-.ws-tab-trigger[data-state="active"] {
-    background: var(--btn-active-bg) !important;
-    color: #ffffff !important;
-    border: 1px solid transparent !important;
-    box-shadow: var(--btn-active-shadow), 0 8px 32px rgba(0, 0, 0, 0.4);
-}
+        .marketing-list li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--icon-gradient-start), var(--icon-gradient-end));
+        }
 
-/* الحدود المتدرجة (أزرق فاتح → أرجواني) */
-.ws-tab-trigger[data-state="active"]::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    padding: 1.5px;
-    border-radius: inherit;
-    background: var(--btn-border-gradient);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
+        /* ✅ ضبط المحتوى الداخلي فقط (من غير أي width overrides) */
+        @media (max-width: 768px) {
 
-/* توهج خفيف حول الزر النشط بالألوان الجديدة */
-.ws-tab-trigger[data-state="active"]::after {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    border-radius: inherit;
-    background: radial-gradient(circle at center, rgba(0, 190, 215, 0.12), rgba(200, 83, 239, 0.06), transparent 70%);
-    z-index: -1;
-    opacity: 0.8;
-    filter: blur(8px);
-}
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
 
-/* توهج إضافي من الداخل */
-.ws-tab-trigger[data-state="active"] .text-center span {
-    color: #ffffff;
-    text-shadow: 0 0 30px rgba(0, 190, 215, 0.2), 0 0 60px rgba(200, 83, 239, 0.1);
-}
+            .service-card h3 {
+                font-size: 1rem;
+            }
 
-/* ====== بطاقة المحتوى ====== */
-[data-slot="card"][data-state="active"] {
-    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
-}
+            .service-card p {
+                font-size: 0.8rem;
+            }
 
-[data-slot="card-content"] svg path {
-    stroke: var(--icon-gradient-start);
-}
+            .service-card-icon svg {
+                width: 34px;
+                height: 34px;
+            }
 
-[data-slot="card-content"] span {
-    color: var(--icon-gradient-start);
-    background: rgba(0, 190, 215, 0.08);
-    border: 1px solid rgba(0, 190, 215, 0.15);
-    border-radius: 8px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            .marketing-list li {
+                font-size: 0.75rem;
+            }
+        }
 
-.scroll-fade-right-rtl {
-    -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
-    mask-image: linear-gradient(to left, black 85%, transparent 100%);
-}
+        @media (max-width: 480px) {
+            .service-card h3 {
+                font-size: 0.9rem;
+            }
 
-@media (min-width: 1024px) {
-    .scroll-fade-right-rtl {
-        -webkit-mask-image: none;
-        mask-image: none;
-    }
-}
+            .service-card p {
+                font-size: 0.72rem;
+            }
 
-/* ====== الحل الجذري لإخفاء وإظهار التبويبات ====== */
-[role="tabpanel"] {
-    display: none !important;
-}
-
-[role="tabpanel"].ws-active-panel {
-    display: block !important;
-}
-
-/* ====== أزرار التمرير (الأسهم) ====== */
-.scroll-btn {
-    cursor: pointer;
-    z-index: 20;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    background: rgba(10, 22, 40, 0.9) !important;
-    border-color: rgba(0, 190, 215, 0.3) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 50%;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.scroll-btn:hover {
-    opacity: 1;
-    border-color: rgba(0, 190, 215, 0.8) !important;
-    box-shadow: 0 0 20px rgba(0, 190, 215, 0.15);
-}
-
-.scroll-btn svg {
-    color: #00bed7 !important;
-}
-
-/* ====== تحسينات إضافية للون الأيقونات ====== */
-[data-slot="card-content"] .flex {
-    transition: all 0.3s ease;
-}
-
-[data-slot="card-content"] .flex:hover span {
-    border-color: rgba(200, 83, 239, 0.3) !important;
-    background: rgba(200, 83, 239, 0.08) !important;
-}
-
-[data-slot="card-content"] .flex:hover svg path {
-    stroke: var(--icon-gradient-middle) !important;
-}
-
-/* ====== تحسين تجاوب الأزرار في الهاتف ====== */
-@media (max-width: 767px) {
-    /* جعل الأزرار تأخذ عرض مناسب */
-    .ws-tab-trigger {
-        padding: 0.75rem 1rem !important;
-        font-size: 0.875rem !important;
-        min-width: max-content !important;
-        flex-shrink: 0 !important;
-        white-space: nowrap !important;
-    }
-    
-    .ws-tab-trigger .text-center span {
-        font-size: 0.85rem !important;
-        line-height: 1.4 !important;
-    }
-    
-    /* ====== تحسين حاوية الأزرار (متجاوبة مع جميع الهواتف) ====== */
-    [data-slot="tabs-list"] {
-        gap: 0.5rem !important;
-        padding: 0.25rem 0.5rem !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        flex-wrap: nowrap !important;
-        -webkit-overflow-scrolling: touch !important;
-        scroll-snap-type: x mandatory !important;
-        scroll-padding: 0.5rem !important;
-        justify-content: flex-start !important;
-        width: 100% !important;
-    }
-    
-    /* أول زر يظهر في البداية */
-    [data-slot="tabs-list"] .ws-tab-trigger:first-child {
-        margin-right: 0 !important;
-        scroll-snap-align: start !important;
-    }
-    
-    /* آخر زر */
-    [data-slot="tabs-list"] .ws-tab-trigger:last-child {
-        margin-left: 0 !important;
-    }
-    
-    [data-slot="tabs-list"] .ws-tab-trigger {
-        scroll-snap-align: start !important;
-        flex-shrink: 0 !important;
-    }
-    
-    /* تحسين أزرار التمرير */
-    .scroll-btn {
-        width: 32px !important;
-        height: 32px !important;
-        padding: 6px !important;
-    }
-    
-    .scroll-btn svg {
-        width: 14px !important;
-        height: 14px !important;
-    }
-    
-    /* جعل الأزرار تظهر دائماً على الهاتف */
-    .scroll-btn {
-        opacity: 0.6 !important;
-    }
-    
-    .scroll-btn:hover {
-        opacity: 1 !important;
-    }
-}
-
-/* ====== تحسين للهواتف الصغيرة جداً (أقل من 400px) ====== */
-@media (max-width: 400px) {
-    .ws-tab-trigger {
-        padding: 0.6rem 0.75rem !important;
-        font-size: 0.75rem !important;
-        min-width: 120px !important;
-    }
-    
-    .ws-tab-trigger .text-center span {
-        font-size: 0.75rem !important;
-    }
-    
-    [data-slot="tabs-list"] {
-        gap: 0.35rem !important;
-        padding: 0.15rem 0.35rem !important;
-        scroll-padding: 0.35rem !important;
-    }
-    
-    .scroll-btn {
-        width: 28px !important;
-        height: 28px !important;
-        padding: 4px !important;
-    }
-    
-    .scroll-btn svg {
-        width: 12px !important;
-        height: 12px !important;
-    }
-}
-
-/* ====== تحسين للهواتف المتوسطة (400px - 600px) ====== */
-@media (min-width: 401px) and (max-width: 600px) {
-    .ws-tab-trigger {
-        padding: 0.7rem 0.9rem !important;
-        font-size: 0.8rem !important;
-        min-width: 140px !important;
-    }
-    
-    .ws-tab-trigger .text-center span {
-        font-size: 0.8rem !important;
-    }
-    
-    [data-slot="tabs-list"] {
-        gap: 0.4rem !important;
-        padding: 0.2rem 0.4rem !important;
-        scroll-padding: 0.4rem !important;
-    }
-}
-
-/* ====== تحسين للهواتف الكبيرة والتابلت الصغير (600px - 767px) ====== */
-@media (min-width: 601px) and (max-width: 767px) {
-    .ws-tab-trigger {
-        padding: 0.8rem 1.1rem !important;
-        font-size: 0.85rem !important;
-        min-width: 160px !important;
-    }
-    
-    .ws-tab-trigger .text-center span {
-        font-size: 0.85rem !important;
-    }
-    
-    [data-slot="tabs-list"] {
-        gap: 0.5rem !important;
-        padding: 0.25rem 0.5rem !important;
-        scroll-padding: 0.5rem !important;
-    }
-}
-
-/* ====== تحسين للشاشات المتوسطة (تابلت) ====== */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .ws-tab-trigger {
-        padding: 0.875rem 1.25rem !important;
-        font-size: 0.95rem !important;
-        min-width: max-content !important;
-        flex-shrink: 0 !important;
-    }
-    
-    .ws-tab-trigger .text-center span {
-        font-size: 0.95rem !important;
-    }
-    
-    [data-slot="tabs-list"] {
-        gap: 0.75rem !important;
-        padding: 0.25rem 0.5rem !important;
-        flex-wrap: nowrap !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-}
-
-/* ====== تحسين للشاشات الكبيرة (ديسكتوب) ====== */
-@media (min-width: 1024px) {
-    .ws-tab-trigger {
-        padding: 1.5rem 1.25rem !important;
-        font-size: 1rem !important;
-        width: 100% !important;
-        justify-content: center !important;
-    }
-    
-    .ws-tab-trigger .text-center span {
-        font-size: 1rem !important;
-        line-height: 1.5 !important;
-    }
-    
-    [data-slot="tabs-list"] {
-        gap: 1.5rem !important;
-        padding: 0 !important;
-        flex-wrap: wrap !important;
-        flex-direction: column !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        height: 29.5625rem !important;
-    }
-    
-    /* إخفاء أزرار التمرير على الديسكتوب */
-    .scroll-btn {
-        display: none !important;
-    }
-}
-
-/* ====== إصلاح مشكلة اختفاء الأزرار على الهاتف ====== */
-[data-slot="tabs-list"] {
-    scroll-behavior: smooth !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior-x: contain !important;
-}
-
-/* ضمان ظهور الزر الأول نشطاً في البداية */
-[data-slot="tabs-list"] .ws-tab-trigger:first-child {
-    scroll-margin-right: 0 !important;
-}
-
-/* إزالة أي مسافات إضافية */
-[data-slot="tabs-list"] {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-/* ضمان ظهور المحتوى بشكل صحيح */
-.ws-active-panel {
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* تحسين ظهور الحاوية على الهاتف */
-@media (max-width: 767px) {
-    [data-slot="tabs"] {
-        min-height: auto !important;
-    }
-    
-    [data-slot="card"] {
-        min-height: 20rem !important;
-        height: auto !important;
-    }
-    
-    .py-section {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-    }
-}
+            .marketing-list li {
+                font-size: 0.68rem;
+                padding-right: 12px;
+            }
+        }
 
         /* ============================================================= */
     </style>
@@ -3048,152 +2703,278 @@ body {
 
 
 
-   <section id="services" class="bg-gradient-even py-section">
+
+
+
+
+
+
+
+    <!-- تعريف التدرجات اللونية للاستخدام في الـ SVG -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="card-bg-grad" x1="0" y1="192" x2="374" y2="192" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00BED7" />
+                <stop offset="1" stop-color="#C853EF" />
+            </linearGradient>
+            <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--icon-gradient-start)" />
+                <stop offset="50%" stop-color="var(--icon-gradient-middle)" />
+                <stop offset="100%" stop-color="var(--icon-gradient-end)" />
+            </linearGradient>
+            <linearGradient id="service-icon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="oklch(68.3% 0 0)" />
+                <stop offset="50%" stop-color="oklch(100% 0 0)" />
+                <stop offset="100%" stop-color="oklch(68.3% 0 0)" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <section id="services" class="bg-gradient-even py-24">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-center">
-                <h2 class="dark-text-gradient pb-[2.5rem] text-center text-[1.75rem] font-bold sm:text-[2rem] md:text-[2.5rem]">خدمات احترافية على يد خبراء</h2>
+                <h2
+                    class="dark-text-gradient pb-10 text-center text-[1.75rem] font-bold sm:text-[2rem] md:text-[2.5rem]">
+                    خدماتنا ومنتجاتنا</h2>
             </div>
+            <p class="dark-text-gradient mx-auto block pb-16 text-center lg:w-[800px]">نقدم حلولاً برمجية وتسويقية
+                متكاملة تلبي احتياجات أعمالك، بدءاً من البرمجة والتصميم وحتى إدارة الحملات الإعلانية والمونتاج.</p>
+        </div>
 
-            <div dir="ltr" data-orientation="vertical" data-slot="tabs" class="flex flex-col gap-2 min-h-[29.5625rem] w-full">
-                <div class="flex flex-col gap-2 lg:flex-row lg:gap-6 rtl:lg:flex-row-reverse">
+        <div class="relative overflow-x-hidden">
+            <div class="relative container mx-auto">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
 
-                    <!-- التبويبات (الأزرار) -->
-                    <div class="relative w-full lg:max-w-[19.8125rem]">
-                        <!-- أزرار التمرير -->
-                        <div class="pointer-events-none absolute inset-0 z-10">
-                            <div id="scroll-left-btn" class="scroll-btn pointer-events-auto absolute top-1/2 -translate-y-1/2 transform shadow-lg transition-colors left-2">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-200">
-                                    <path d="M10.5 13L5.5 8L10.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <!-- بطاقة 01: برمجة مواقع شركات -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
                                 </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-7 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        برمجة مواقع شركات</h3>
+                                    <p class="text-primary max-w-[282px] text-center text-sm leading-6 xl:text-base">
+                                        نبني مواقع إلكترونية احترافية تعكس هوية شركتك وتعزز حضورك الرقمي بكفاءة عالية
+                                        وأمان تام.</p>
+                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    01</div>
                             </div>
-                            <div id="scroll-right-btn" class="scroll-btn pointer-events-auto absolute top-1/2 -translate-y-1/2 transform shadow-lg transition-colors right-2">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-200">
-                                    <path d="M5.5 13L10.5 8L5.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </div>
+
+                        <!-- بطاقة 02: تصميم مواقع كاملة -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
                                 </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                                            <path d="M3 9h18M9 21V9" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-7 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        تصميم مواقع كاملة</h3>
+                                    <p class="text-primary max-w-[282px] text-center text-sm leading-6 xl:text-base">
+                                        تصميم واجهات سلسة وعصرية تجمع بين الجماليات وسهولة الاستخدام لتحقيق تجربة مستخدم
+                                        (UX/UI) مثالية.</p>
+                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    02</div>
                             </div>
                         </div>
 
-                        <!-- قائمة الأزرار -->
-                        <div data-slot="tabs-list" class="text-muted-foreground items-center rounded-lg p-[3px] rounded-ws-rounded ws-no-scrollbar flex h-auto w-full flex-row gap-3 overflow-x-auto overflow-y-visible bg-transparent transition-[mask] duration-300 will-change-scroll lg:grid lg:h-[29.5625rem] lg:grid-cols-1 lg:flex-col lg:gap-6 lg:overflow-x-visible lg:overflow-y-auto scroll-fade-right-rtl" id="tabs-container" tabindex="0" data-orientation="vertical" dir="rtl" style="outline:none;" role="tablist" aria-orientation="vertical">
-
-                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="true" aria-controls="content-web" data-state="active" data-active="">
-                                <div class="text-center"><span class="text-base leading-6 font-medium">برمجة وتصميم المواقع الإلكترونية</span></div>
-                            </button>
-
-                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-mobile" data-state="inactive">
-                                <div class="text-center"><span class="text-base leading-6 font-medium">برمجة وتصميم تطبيقات الجوال</span></div>
-                            </button>
-
-                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-apps" data-state="inactive">
-                                <div class="text-center"><span class="text-base leading-6 font-medium">الصيانة والدعم الفني</span></div>
-                            </button>
-
-                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-marketing" data-state="inactive">
-                                <div class="text-center"><span class="text-base leading-6 font-medium">التسويق الرقمي</span></div>
-                            </button>
-
-                            <button data-slot="tabs-trigger" class="ws-tab-trigger w-full px-4 py-4 lg:py-6 transition-all duration-300 inline-flex items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap" role="tab" type="button" aria-selected="false" aria-controls="content-ai" data-state="inactive">
-                                <div class="text-center"><span class="text-base leading-6 font-medium">الذكاء الاصطناعي</span></div>
-                            </button>
-
-                        </div>
-                    </div>
-
-                    <!-- المحتوى (البطاقات) -->
-                    <div class="relative flex-1">
-                        <div class="pointer-events-none absolute inset-0 z-10"></div>
-
-                        <!-- بطاقة 1 (مفعلة افتراضياً) -->
-                        <div id="content-web" role="tabpanel" data-state="active" class="ws-active-panel flex-1 outline-none">
-                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
-                                <div data-slot="card-header" class="px-6 pb-6">
-                                    <h3 data-slot="card-title" class="text-2xl font-bold">نحن لا نصمم نطور مواقع... نحن نبني تجارب رقمية</h3>
-                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">في شركة برمجيات ويب ستدي نحول فكرتك إلى تجربة رقمية نابضة بالحياة. نُصمّم مواقع إلكترونية تترك انطباعاً أول لا يُنسى.</p>
+                        <!-- بطاقة 03: تصميم QR Menu -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
+                                </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="7" height="7" rx="1" />
+                                            <rect x="14" y="3" width="7" height="7" rx="1" />
+                                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                                            <path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 18h2v2h-2zM18 14h3v2h-3z" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-7 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        تصميم QR Menu</h3>
+                                    <p class="text-primary max-w-[282px] text-center text-sm leading-6 xl:text-base">
+                                        قوائم رقمية تفاعلية للمطاعم والكافيهات باستخدام QR Code، سهلة التحديث وأنيقة
+                                        المظهر وتوفر تكلفة الطباعة.</p>
                                 </div>
-                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
-                                    <div class="space-y-6">
-                                        <div class="flex items-center gap-4 pb-2">
-                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
-                                            <p class="leading-relaxed">نضمن لك سرعة تحميل صفحات الموقع لأنها تعتبر من أهم عوامل بقاء الزوار لفترات أطول.</p>
-                                        </div>
-                                        <div class="flex items-center gap-4 pb-2">
-                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
-                                            <p class="leading-relaxed">نوفر لك أعلى معايير الأمان لحماية بيانات موقعك ضد محاولات الاختراق.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    03</div>
                             </div>
                         </div>
 
-                        <!-- بطاقة 2 -->
-                        <div id="content-mobile" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
-                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
-                                <div data-slot="card-header" class="px-6 pb-6">
-                                    <h3 data-slot="card-title" class="text-2xl font-bold">تطبيقات جوال تترك أثراً مستداماً</h3>
-                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نطور تطبيقات أصلية وهجينة تتميز بالأداء العالي والتصميم الجذاب.</p>
+                        <!-- بطاقة 04: استضافة مواقع -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
+                                </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+                                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+                                            <line x1="6" y1="6" x2="6.01" y2="6" />
+                                            <line x1="6" y1="18" x2="6.01" y2="18" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-7 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        استضافة مواقع إلكترونية</h3>
+                                    <p class="text-primary max-w-[282px] text-center text-sm leading-6 xl:text-base">
+                                        خدمات استضافة آمنة وسريعة تضمن استقرار موقعك على مدار الساعة بأعلى معايير الأداء
+                                        والحماية.</p>
                                 </div>
-                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
-                                    <div class="space-y-6">
-                                        <div class="flex items-center gap-4 pb-2">
-                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
-                                            <p class="leading-relaxed">تصميم واجهات مستخدم تتوافق مع أحدث معايير آبل وجوجل.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    04</div>
                             </div>
                         </div>
 
-                        <!-- بطاقة 3 -->
-                        <div id="content-apps" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
-                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
-                                <div data-slot="card-header" class="px-6 pb-6">
-                                    <h3 data-slot="card-title" class="text-2xl font-bold">راحة بالك مع صيانة مستمرة</h3>
-                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نقدم خدمات الدعم الفني والصيانة الدورية لضمان استمرارية عمل أنظمتك.</p>
+                        <!-- بطاقة 05: أنظمة CRM -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
+                                </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                            <circle cx="9" cy="7" r="4" />
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-7 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        أنظمة CRM لإدارة العملاء</h3>
+                                    <p class="text-primary max-w-[282px] text-center text-sm leading-6 xl:text-base">
+                                        أنظمة متكاملة لإدارة علاقات العملاء، تساعدك على تنظيم عمليات البيع ومتابعة
+                                        العملاء بكفاءة عالية.</p>
                                 </div>
-                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
-                                    <div class="space-y-6">
-                                        <div class="flex items-center gap-4 pb-2">
-                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
-                                            <p class="leading-relaxed">مراقبة مستمرة لأداء الأنظمة على مدار الساعة لحل الأخطاء.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    05</div>
                             </div>
                         </div>
 
-                        <!-- بطاقة 4 -->
-                        <div id="content-marketing" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
-                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
-                                <div data-slot="card-header" class="px-6 pb-6">
-                                    <h3 data-slot="card-title" class="text-2xl font-bold">وصلك لجمهورك المستهدف بذكاء</h3>
-                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نضع استراتيجيات تسويقية مبنية على البيانات لضمان وصول علامتك التجارية.</p>
+                        <!-- بطاقة 06: التسويق الإلكتروني (تحتوي على قائمة) -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
+                                </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-8">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 11l18-5v12L3 14v-3z" />
+                                            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-5 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        التسويق الإلكتروني</h3>
+                                    <ul
+                                        class="marketing-list text-primary text-sm leading-7 text-right w-full max-w-[240px] mx-auto">
+                                        <li>فيديوهات Reels احترافية</li>
+                                        <li>إدارة الإعلانات (فيسبوك، جوجل، سناب، إنستجرام)</li>
+                                        <li>إنشاء فيديوهات موشن جرافيك</li>
+                                    </ul>
                                 </div>
-                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
-                                    <div class="space-y-6">
-                                        <div class="flex items-center gap-4 pb-2">
-                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
-                                            <p class="leading-relaxed">تحسين محركات البحث (SEO) لضمان تصدر موقعك في نتائج جوجل.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    06</div>
                             </div>
                         </div>
 
-                        <!-- بطاقة 5 -->
-                        <div id="content-ai" role="tabpanel" data-state="inactive" class="flex-1 outline-none">
-                            <div data-slot="card" class="text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm border-surface-border bg-surface-background min-h-[29.5625rem] gap-0 lg:h-[29.5625rem]" dir="rtl">
-                                <div data-slot="card-header" class="px-6 pb-6">
-                                    <h3 data-slot="card-title" class="text-2xl font-bold">دمج تقنيات المستقبل في عملك</h3>
-                                    <p data-slot="card-description" class="text-muted-foreground mt-4 text-[1.125rem] leading-7">نستفيد من إمكانيات الذكاء الاصطناعي لتطوير حلول مبتكرة تؤتمت أعمالك.</p>
+                        <!-- بطاقة 07: قسم المونتاج -->
+                        <div class="swiper-slide">
+                            <div
+                                class="relative flex min-h-[384px] min-w-[300px] md:min-w-[350px] flex-col items-center pt-12">
+                                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 374 384" fill="none"
+                                    preserveAspectRatio="none">
+                                    <path
+                                        d="M24 0.5H350C362.979 0.5 373.5 11.0213 373.5 24V360C373.5 372.979 362.979 383.5 350 383.5H80.5156C67.9195 383.5 57.5633 373.568 57.0361 360.983L56.8301 356.066C56.3378 344.319 47.5696 334.578 35.9385 332.856L20.5596 330.58C9.03523 328.874 0.5 318.983 0.5 307.333V24C0.5 11.0213 11.0213 0.5 24 0.5Z"
+                                        fill="url(#card-bg-grad)" fill-opacity="0.05" stroke="url(#card-bg-grad)" />
+                                </svg>
+                                <div class="relative z-10 flex h-full flex-col items-center px-6">
+                                    <span class="service-card-icon mb-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                                            viewBox="0 0 24 24" fill="none" stroke="url(#service-icon-gradient)"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <polygon points="23 7 16 12 23 17 23 7" />
+                                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                                        </svg>
+                                    </span>
+                                    <h3
+                                        class="dark-text-gradient mb-7 max-w-[220px] text-center text-xl leading-snug font-bold">
+                                        قسم خاص بالمونتاج</h3>
+                                    <p class="text-primary max-w-[282px] text-center text-sm leading-6 xl:text-base">
+                                        إنتاج ومونتاج فيديوهات احترافية بجودة عالية، من القص واللصق إلى إضافة المؤثرات
+                                        والموسيقى لتسليط الضوء على علامتك.</p>
                                 </div>
-                                <div data-slot="card-content" class="px-6 ws-scrollbar space-y-6 overflow-x-hidden overflow-y-auto">
-                                    <div class="space-y-6">
-                                        <div class="flex items-center gap-4 pb-2">
-                                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.75 10.625L8.75 15.625L16.25 4.375" stroke="currentColor" stroke-width="1.5"></path></svg></span>
-                                            <p class="leading-relaxed">تطوير أنظمة أتمتة العمليات لتقليل التكاليف التشغيلية والأخطاء البشرية.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div
+                                    class="text-primary absolute bottom-0 left-0 grid h-[65px] w-[50px] place-items-center text-center font-bold text-xl">
+                                    07</div>
                             </div>
                         </div>
 
@@ -3581,207 +3362,56 @@ body {
 
 
 
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1.15,
+            centeredSlides: true,
+            spaceBetween: 10,
+            grabCursor: true,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
 
+                0: {
+                    slidesPerView: 1.15,
+                    centeredSlides: true,
+                    spaceBetween: 10,
+                },
+                480: {
+                    slidesPerView: 1.4,
+                    centeredSlides: true,
+                    spaceBetween: 12,
+                },
 
-document.addEventListener('DOMContentLoaded', () => {
-    // ====== 1. تعريف المتغيرات الأساسية ======
-    const tabsContainer = document.getElementById('tabs-container');
-    if (!tabsContainer) {
-        console.error('tabs-container not found');
-        return;
-    }
-
-    const tabTriggers = tabsContainer.querySelectorAll('[role="tab"]');
-    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
-    
-    // تعريف container كمرجع لـ tabsContainer
-    const container = tabsContainer;
-
-    // ====== 2. وظيفة تفعيل التبويب ======
-    function activateTab(activeTab) {
-        tabTriggers.forEach(tab => {
-            tab.setAttribute('data-state', 'inactive');
-            tab.setAttribute('aria-selected', 'false');
-            tab.removeAttribute('data-active');
-        });
-
-        tabPanels.forEach(panel => {
-            panel.setAttribute('data-state', 'inactive');
-            panel.classList.remove('ws-active-panel');
-        });
-
-        activeTab.setAttribute('data-state', 'active');
-        activeTab.setAttribute('aria-selected', 'true');
-        activeTab.setAttribute('data-active', '');
-
-        const panelId = activeTab.getAttribute('aria-controls');
-        const activePanel = document.getElementById(panelId);
-
-        if (activePanel) {
-            activePanel.setAttribute('data-state', 'active');
-            activePanel.classList.add('ws-active-panel');
-        }
-    }
-
-    // ====== 3. ربط النقر المباشر على الأزرار ======
-    tabTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => activateTab(trigger));
-    });
-
-    // ====== 4. وظيفة العثور على الزر الأقرب للمنتصف ======
-    function findClosestVisibleTab() {
-        const containerRect = container.getBoundingClientRect();
-        const containerCenter = containerRect.left + containerRect.width / 2;
-        
-        let closestTab = null;
-        let closestDistance = Infinity;
-        
-        tabTriggers.forEach(tab => {
-            const tabRect = tab.getBoundingClientRect();
-            const tabCenter = tabRect.left + tabRect.width / 2;
-            const distance = Math.abs(tabCenter - containerCenter);
-            
-            const isVisible = tabRect.right > containerRect.left && tabRect.left < containerRect.right;
-            
-            if (isVisible && distance < closestDistance) {
-                closestDistance = distance;
-                closestTab = tab;
-            }
-        });
-        
-        return closestTab;
-    }
-
-    // ====== 5. وظيفة التمرير وتفعيل الزر تلقائياً ======
-    let scrollTimeout = null;
-    
-    function scrollAndActivate(direction) {
-        // التأكد من وجود container
-        if (!container) {
-            console.error('container is not defined');
-            return;
-        }
-        
-        const amount = window.innerWidth < 1024 ? container.clientWidth * 0.8 : 200;
-        const scrollTarget = direction === 'left' ? 
-            container.scrollLeft - amount : 
-            container.scrollLeft + amount;
-
-        // التمرير
-        container.scrollTo({
-            left: scrollTarget,
-            behavior: 'smooth'
-        });
-
-        // إلغاء أي تايمر سابق
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = null;
-        }
-
-        // انتظار انتهاء التمرير ثم تفعيل الزر الأقرب
-        scrollTimeout = setTimeout(() => {
-            const closestTab = findClosestVisibleTab();
-            if (closestTab) {
-                if (closestTab.getAttribute('data-state') !== 'active') {
-                    activateTab(closestTab);
+                640: {
+                    slidesPerView: 2,
+                    centeredSlides: false,
+                    spaceBetween: 60,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    centeredSlides: false,
+                    spaceBetween: 90,
+                },
+                1280: {
+                    slidesPerView: 4,
+                    centeredSlides: false,
+                    spaceBetween: 200,
                 }
             }
-            scrollTimeout = null;
-        }, 500);
-    }
-
-    // ====== 6. الحصول على أزرار التمرير ======
-    let scrollLeftBtn = document.getElementById('scroll-left-btn');
-    let scrollRightBtn = document.getElementById('scroll-right-btn');
-
-    // ====== 7. ربط أزرار التمرير ======
-    if (scrollLeftBtn) {
-        // إزالة المستمعين السابقين عن طريق clone
-        const newLeftBtn = scrollLeftBtn.cloneNode(true);
-        scrollLeftBtn.parentNode.replaceChild(newLeftBtn, scrollLeftBtn);
-        scrollLeftBtn = document.getElementById('scroll-left-btn');
-        
-        scrollLeftBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            console.log('تمرير لليسار');
-            scrollAndActivate('left');
         });
-    }
 
-    if (scrollRightBtn) {
-        const newRightBtn = scrollRightBtn.cloneNode(true);
-        scrollRightBtn.parentNode.replaceChild(newRightBtn, scrollRightBtn);
-        scrollRightBtn = document.getElementById('scroll-right-btn');
-        
-        scrollRightBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            console.log('تمرير لليمين');
-            scrollAndActivate('right');
-        });
-    }
-
-    // ====== 8. إخفاء/إظهار أزرار التمرير ======
-    function updateButtonsVisibility() {
-        // التأكد من وجود container
-        if (!container) {
-            console.error('container is not defined in updateButtonsVisibility');
-            return;
-        }
-        
-        if (window.innerWidth >= 1024) {
-            if (scrollLeftBtn) scrollLeftBtn.style.display = 'none';
-            if (scrollRightBtn) scrollRightBtn.style.display = 'none';
-            return;
-        }
-
-        const canScroll = container.scrollWidth > container.clientWidth;
-        if (scrollLeftBtn) {
-            scrollLeftBtn.style.display = canScroll ? 'flex' : 'none';
-        }
-        if (scrollRightBtn) {
-            scrollRightBtn.style.display = canScroll ? 'flex' : 'none';
-        }
-    }
-
-    // ====== 9. تحديث الشفافية عند التمرير ======
-    container.addEventListener('scroll', () => {
-        if (window.innerWidth < 1024) {
-            const atStart = container.scrollLeft <= 10;
-            const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
-
-            if (scrollLeftBtn) {
-                scrollLeftBtn.style.opacity = atStart ? '0.2' : '1';
-            }
-            if (scrollRightBtn) {
-                scrollRightBtn.style.opacity = atEnd ? '0.2' : '1';
-            }
-        }
-    });
-
-    // ====== 10. تهيئة الأزرار عند التحميل ======
-    updateButtonsVisibility();
-    window.addEventListener('resize', updateButtonsVisibility);
-
-    // ====== 11. عند تغيير حجم الشاشة ======
-    let resizeTimeout = null;
-    window.addEventListener('resize', () => {
-        if (resizeTimeout) {
-            clearTimeout(resizeTimeout);
-        }
-        resizeTimeout = setTimeout(() => {
-            const visibleTab = findClosestVisibleTab();
-            if (visibleTab && visibleTab.getAttribute('data-state') !== 'active') {
-                activateTab(visibleTab);
-            }
-            resizeTimeout = null;
-        }, 300);
-    });
-
-    console.log('تم تحميل الجافا سكريبت بنجاح');
-});
 
 
 
