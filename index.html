@@ -2133,13 +2133,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 0.65rem;
+            min-height: 3.25rem;
             border-radius: 12px;
             padding: 0.9rem 1.8rem;
             color: #fff;
             font-weight: 700;
             background: linear-gradient(90deg, rgba(0, 190, 215, 0.18), rgba(176, 92, 240, 0.18));
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 18px rgba(0, 190, 215, 0.15);
-            transition: all 0.3s ease;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 18px rgba(0, 190, 215, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             overflow: hidden;
         }
 
@@ -2152,8 +2154,10 @@
             background: linear-gradient(90deg, #00BED7 0%, #54d5ff 22%, #7b8ff8 52%, #b05cf0 100%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
             pointer-events: none;
+            animation: wsProjButtonGlow 4s linear infinite;
         }
 
         .ws-proj-btn-border::after {
@@ -2163,16 +2167,82 @@
             border-radius: 10px;
             background: linear-gradient(90deg, rgba(0, 190, 215, 0.24), rgba(176, 92, 240, 0.2));
             z-index: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .ws-proj-btn-border:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 22px rgba(0, 190, 215, 0.2), 0 14px 30px rgba(200, 83, 239, 0.18);
+            transform: translateY(-3px);
+            background: linear-gradient(90deg, rgba(0, 190, 215, 0.28), rgba(176, 92, 240, 0.28));
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 30px rgba(0, 190, 215, 0.28), 0 14px 30px rgba(200, 83, 239, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+        }
+
+        .ws-proj-btn-border:focus-visible {
+            outline: 3px solid rgba(84, 213, 255, 0.9);
+            outline-offset: 4px;
+        }
+
+        .ws-proj-btn-border:active {
+            transform: translateY(-1px) scale(0.98);
         }
 
         .ws-proj-btn-border>* {
             position: relative;
             z-index: 1;
+        }
+
+        .ws-proj-btn-label {
+            position: relative;
+            z-index: 1;
+        }
+
+        .ws-proj-btn-icon {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.7rem;
+            height: 1.7rem;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .ws-proj-btn-icon svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .ws-proj-btn-border:hover .ws-proj-btn-icon {
+            border-color: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-2px);
+        }
+
+        .ws-proj-btn-border:hover .ws-proj-btn-icon svg {
+            transform: translate(-1px, -1px);
+        }
+
+        @keyframes wsProjButtonGlow {
+            0%, 55%, 100% {
+                filter: brightness(1);
+            }
+            72% {
+                filter: brightness(1.35);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ws-proj-btn-border,
+            .ws-proj-btn-border::before,
+            .ws-proj-btn-border::after,
+            .ws-proj-btn-icon,
+            .ws-proj-btn-icon svg {
+                animation: none;
+                transition: none;
+            }
         }
 
         /* أنماط السلايدر الاحترافي */
@@ -3449,7 +3519,16 @@
                             </p>
                             <div>
                                 <a href="https://alali-shipping.net/"
-                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">
+                                    <span class="ws-proj-btn-label">شاهد الموقع</span>
+                                    <span class="ws-proj-btn-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 5h5v5" />
+                                            <path d="M10 14 19 5" />
+                                            <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" />
+                                        </svg>
+                                    </span>
+                                </a>
                             </div>
                         </div>
                         <div class="ws-proj-media">
@@ -3473,7 +3552,16 @@
                             </p>
                             <div>
                                 <a href="https://msknwref.com/"
-                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">
+                                    <span class="ws-proj-btn-label">شاهد الموقع</span>
+                                    <span class="ws-proj-btn-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 5h5v5" />
+                                            <path d="M10 14 19 5" />
+                                            <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" />
+                                        </svg>
+                                    </span>
+                                </a>
                             </div>
                         </div>
                         <div class="ws-proj-media">
@@ -3495,7 +3583,16 @@
                             </p>
                             <div>
                                 <a href="https://damanalengaz.com/"
-                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">
+                                    <span class="ws-proj-btn-label">شاهد الموقع</span>
+                                    <span class="ws-proj-btn-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 5h5v5" />
+                                            <path d="M10 14 19 5" />
+                                            <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" />
+                                        </svg>
+                                    </span>
+                                </a>
                             </div>
                         </div>
                         <div class="ws-proj-media">
@@ -3518,7 +3615,16 @@
                             </p>
                             <div>
                                 <a href="https://energycreatives.com/"
-                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">
+                                    <span class="ws-proj-btn-label">شاهد الموقع</span>
+                                    <span class="ws-proj-btn-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 5h5v5" />
+                                            <path d="M10 14 19 5" />
+                                            <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" />
+                                        </svg>
+                                    </span>
+                                </a>
                             </div>
                         </div>
                         <div class="ws-proj-media">
