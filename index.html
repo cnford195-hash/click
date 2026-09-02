@@ -50,6 +50,7 @@
             margin: 0;
             font-family: 'Almarai', system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
             height: 100vh;
+            overflow-x: hidden;
         }
 
         html,
@@ -1166,6 +1167,27 @@
             overflow: hidden;
         }
 
+        #projects {
+            position: relative;
+            isolation: isolate;
+        }
+
+        #projects::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -10rem;
+            right: 0;
+            left: 0;
+            height: 20rem;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 65% 48% at 50% 50%, rgba(20, 28, 42, .52) 0%, rgba(8, 12, 20, .32) 48%, transparent 86%),
+                linear-gradient(180deg, transparent 0%, rgba(3, 5, 10, .16) 22%, rgba(3, 5, 10, .5) 50%, rgba(3, 5, 10, .16) 78%, transparent 100%);
+            filter: blur(16px);
+            opacity: .9;
+        }
+
         /* =============================================================
    === SAME TEXT GRADIENT AS YOUR REFERENCE CODE ===
    ============================================================= */
@@ -2093,275 +2115,376 @@
         /* ============================================================= */
 
 
-
-
-        #projects-highlights {
-            padding: 5rem 0;
-            color: #ffffff;
-            overflow-x: clip;
-        }
-
-        .dark-text-gradient {
+        /* الأنماط الأصلية المنقولة من كودك */
+        .ws-proj-title-gradient {
+            background: var(--color-gradient-text, linear-gradient(90deg, oklch(68.3% 0 0), oklch(100% 0 0) 50%, oklch(68.3% 0 0)));
+            color: #484848;
+            -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            display: inline-block;
+            font-family: 'Almarai', system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
         }
 
-        .gallery-wrapper {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            min-height: 750px;
-            width: 100%;
-            padding: 0 1rem;
-        }
-
-        .gallery,
-        .gallery-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .gallery {
-            max-width: 1200px;
-        }
-
-        .gallery-container {
-            align-items: center;
-            height: 600px;
-            overflow: hidden;
+        .ws-proj-btn-border {
             position: relative;
-            max-width: 100%;
-        }
-
-        /* فريم الآيفون */
-        .gallery-item {
-            height: 560px;
-            position: absolute;
-            text-align: center;
-            transform-origin: center center;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            /* تأثير انتقالي احترافي وسلس */
-            width: min(320px, 38vw);
-            z-index: 0;
-            padding: 10px 10px 12px;
-            background: linear-gradient(180deg, #141414 0%, #080808 100%);
-            border: 1.5px solid rgba(255, 255, 255, 0.92);
-            border-radius: 30px;
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.08),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.04),
-                inset 0 8px 18px rgba(255, 255, 255, 0.04),
-                0 26px 42px rgba(0, 0, 0, 0.16);
-        }
-
-        /* الكاميرا العلوية */
-        .gallery-item::before {
-            content: "";
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 34%;
-            height: 18px;
-            border-radius: 999px;
-            background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.08),
-                0 0 0 1px rgba(255, 255, 255, 0.04);
-            z-index: 5;
-        }
-
-        .gallery-item::after {
-            content: "";
-            position: absolute;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10%;
-            height: 8px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.13);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18);
-            z-index: 6;
-        }
-
-        .image-wrapper {
-            border-radius: 22px;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
-            background: linear-gradient(180deg, #3a3a3a 0%, #1e1e1e 100%);
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-
-        /* الانعكاس الزجاجي */
-        .image-wrapper::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        /* الشريط السفلي للهاتف */
-        .image-wrapper::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 14px;
-            transform: translateX(-50%);
-            width: 34%;
-            height: 8px;
-            border-radius: 999px;
-            background: rgba(12, 12, 12, 0.82);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 0 1px rgba(255, 255, 255, 0.08);
-            z-index: 3;
-        }
-
-        .gallery-image {
-            border-radius: 18px;
-            height: 100%;
-            object-fit: cover;
-            width: 100%;
-            display: block;
-            background: linear-gradient(180deg, #3a3a3a 0%, #1e1e1e 100%);
-            filter: saturate(0.9) contrast(1.06) brightness(0.92);
-        }
-
-        /* الطبقة المعتمة للهواتف غير النشطة */
-        .inactive-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 2;
-            backdrop-filter: blur(2px);
-        }
-
-        .inactive-overlay-visible {
-            opacity: 1;
-        }
-
-        .gallery-controls {
-            display: flex;
-            justify-content: space-between;
-            left: 50%;
-            padding: 0 12px;
-            pointer-events: none;
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            max-width: 800px;
-            z-index: 100;
-        }
-
-        .gallery-controls button {
-            align-items: center;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            pointer-events: auto;
-            transition: all 0.3s ease;
-            width: 50px;
-        }
-
-        .gallery-controls button:hover {
-            background: #ffffff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transform: scale(1.1);
-        }
-
-        .project-title {
-            display: block;
-            font-size: clamp(1.3rem, 2vw, 1.9rem);
-            font-weight: 800;
-            letter-spacing: 0.03em;
-            margin-bottom: 20px;
-            text-align: center;
-            z-index: 10;
-            background: linear-gradient(135deg, #ffffff 0%, #7adff6 30%, #a76cfd 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 22px rgba(122, 223, 246, 0.15);
-        }
-
-        .project-description {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            justify-content: center;
-            line-height: 1.6;
-            margin: 40px auto 0;
-            max-width: min(720px, 92vw);
-            opacity: 0.9;
-            text-align: center;
-            z-index: 10;
-        }
-
-        .project-link-button {
-            align-items: center;
-            background: linear-gradient(135deg, rgba(0, 190, 215, 0.16), rgba(200, 83, 239, 0.18));
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 18px;
-            box-shadow: 0 12px 32px rgba(0, 190, 215, 0.12);
-            color: #f5f7ff;
             display: inline-flex;
-            gap: 10px;
+            align-items: center;
             justify-content: center;
-            margin: 16px auto 10px;
-            padding: 0.7rem;
+            border-radius: 12px;
+            padding: 0.9rem 1.8rem;
+            color: #fff;
+            font-weight: 700;
+            background: linear-gradient(90deg, rgba(0, 190, 215, 0.18), rgba(176, 92, 240, 0.18));
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 18px rgba(0, 190, 215, 0.15);
             transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .ws-proj-btn-border::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(90deg, #00BED7 0%, #54d5ff 22%, #7b8ff8 52%, #b05cf0 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .ws-proj-btn-border::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(0, 190, 215, 0.24), rgba(176, 92, 240, 0.2));
+            z-index: 0;
+        }
+
+        .ws-proj-btn-border:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 22px rgba(0, 190, 215, 0.2), 0 14px 30px rgba(200, 83, 239, 0.18);
+        }
+
+        .ws-proj-btn-border>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* أنماط السلايدر الاحترافي */
+        .ws-proj-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .ws-proj-slider-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ws-proj-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .ws-proj-slide {
+                flex-direction: column-reverse;
+                gap: 28px;
+                text-align: center;
+                align-items: stretch;
+            }
+
+            .ws-proj-info {
+                order: 2;
+                padding: 0 8px;
+                gap: 14px;
+            }
+
+            .ws-proj-info h3 {
+                font-size: clamp(1.4rem, 5vw, 2rem) !important;
+                line-height: 1.5;
+            }
+
+            .ws-proj-info p {
+                font-size: 1rem !important;
+                line-height: 1.8 !important;
+            }
+
+            .ws-proj-media {
+                order: 1;
+                width: 100%;
+            }
+
+            .ws-proj-media picture {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ws-proj-slider {
+                padding: 0 10px;
+            }
+
+            .ws-proj-nav {
+                gap: 14px;
+                margin-top: 30px;
+                padding: 0 4px;
+            }
+
+            .ws-proj-info h3 {
+                font-size: 1.35rem !important;
+            }
+
+            .ws-proj-info p {
+                font-size: 0.95rem !important;
+            }
+
+            .ws-proj-btn-border {
+                width: 100%;
+                max-width: 220px;
+                margin: 0 auto;
+                padding: 0.8rem 1.2rem;
+                font-size: 1rem !important;
+            }
+
+            .ws-proj-nav {
+                gap: 18px;
+                margin-top: 36px;
+            }
+
+            .ws-proj-nav-btn {
+                width: 46px;
+                height: 46px;
+            }
+
+            .ws-proj-dots {
+                gap: 8px;
+            }
+
+            .ws-proj-dot {
+                width: 28px;
+            }
+        }
+
+        /* الصور مستطيلة بدون أي دوائر */
+        .ws-proj-media {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            order: 2;
+        }
+
+        .ws-proj-media picture {
+            display: block;
+            width: 100%;
+            max-width: 886px;
+        }
+
+        .ws-proj-media picture img {
+            width: 100%;
+            height: auto;
+        }
+
+        .ws-proj-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            order: 1;
+        }
+
+        /* أدوات التحكم */
+        .ws-proj-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .ws-proj-nav-btn {
             width: 52px;
             height: 52px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            /* الأزرار دائرية فقط، الصور لا */
+            border: 1px solid rgba(0, 190, 215, 0.42);
+            background: linear-gradient(145deg, rgba(0, 190, 215, 0.16), rgba(255, 255, 255, 0.04));
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .project-link-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 36px rgba(0, 190, 215, 0.2);
+        .ws-proj-nav-btn:hover {
+            background: linear-gradient(145deg, #00BED7, #0b8fa3);
+            border-color: #00BED7;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(0, 190, 215, 0.25);
         }
 
-        .project-description a {
-            display: inline-block;
-            margin: 0 auto;
-            padding: 0.65rem 1.5rem;
-            border: 1px solid #00BED7;
-            color: #00BED7;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
+        .ws-proj-nav-btn:focus-visible {
+            outline: 3px solid rgba(255, 255, 255, 0.9);
+            outline-offset: 4px;
         }
 
-        .project-description a:hover {
+        .ws-proj-nav-btn:active {
+            transform: translateY(0) scale(0.94);
+        }
+
+        .ws-proj-dots {
+            display: flex;
+            gap: 12px;
+        }
+
+        .ws-proj-dot {
+            width: 40px;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ws-proj-dot-active {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .ws-proj-dot-active::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 0%;
             background: #00BED7;
-            color: #0f172a;
+            animation: wsProjProgressFill 5s linear forwards;
         }
 
-        @media (max-width: 768px) {
-            .gallery-container {
-                height: 450px;
+        @keyframes wsProjProgressFill {
+            to {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ws-proj-nav {
+                gap: 12px;
+                margin-top: 30px;
+                padding: 0 2px;
             }
 
-            .gallery-item {
-                width: min(252px, 62vw);
-                height: 400px;
-            }
-
-            .gallery-controls button {
-                height: 40px;
+            .ws-proj-nav-btn {
                 width: 40px;
+                height: 40px;
+            }
+
+            .ws-proj-nav-btn svg {
+                width: 19px;
+                height: 19px;
+            }
+
+            .ws-proj-dots {
+                gap: 5px;
+            }
+
+            .ws-proj-dot {
+                width: 14px;
+                flex: 0 1 14px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .ws-proj-slider {
+                padding: 0;
+                touch-action: pan-y;
+            }
+
+            .ws-proj-slider-track {
+                will-change: transform;
+            }
+
+            .ws-proj-slide {
+                gap: 20px;
+            }
+
+            .ws-proj-media picture {
+                width: 100%;
+                margin-inline: auto;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                border: 1px solid rgba(34, 201, 224, 0.16);
+                border-radius: 14px;
+                box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+            }
+
+            .ws-proj-media picture img {
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .ws-proj-info {
+                gap: 12px;
+                padding: 0 12px;
+            }
+
+            .ws-proj-nav {
+                margin-inline: auto;
+                max-width: 300px;
+                padding: 8px 10px;
+                border: 1px solid rgba(34, 201, 224, 0.12);
+                border-radius: 999px;
+                background: rgba(7, 13, 25, 0.5);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .ws-proj-slider {
+                padding-inline: 8px;
+            }
+
+            .ws-proj-media picture {
+                max-width: 720px;
+                aspect-ratio: 16 / 10;
+                overflow: hidden;
+                border-radius: 16px;
+            }
+
+            .ws-proj-media picture img {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .ws-proj-info {
+                max-width: 720px;
+                margin-inline: auto;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .ws-proj-media {
+                flex: 1.08;
+            }
+
+            .ws-proj-info {
+                flex: 0.92;
             }
         }
     </style>
@@ -2463,7 +2586,7 @@
                         </button>
                     </div>
 
-                    <a href="/projects" class="nav-link">مشاريعنا</a>
+                    <a href="#projects" class="nav-link">مشاريعنا</a>
                     <a href="/about" class="nav-link">من نحن</a>
                 </div>
 
@@ -3295,126 +3418,144 @@
 
 
 
-    <section id="projects-highlights">
+
+
+
+    <section id="projects" class="bg-gradient-even py-24">
         <div class="container mx-auto px-4">
-            <div class="flex items-center justify-center">
-                <h2
-                    class="dark-text-gradient pb-10 text-center text-[1.75rem] font-bold sm:text-[2rem] md:text-[2.5rem]">
-                    أهم أعمالنا في برمجة وتصميم المواقع
+
+            <!-- رأس القسم -->
+            <div class="flex flex-col items-center justify-center gap-4 mb-16">
+                <h2 class="dark-text-gradient text-center text-[1.5rem] font-bold sm:text-[1.8rem] md:text-[2.5rem]">
+                    أهم أعمالنا في برمجة و تصميم المواقع
                 </h2>
+                <p class="text-slate-400 text-lg text-center max-w-2xl">
+                    اطلع بنفسك على بعض من أهم مشاريعنا وإنجازاتنا
+                </p>
             </div>
-            <p class="pb-8 text-center text-slate-400">اطلع بنفسك على بعض من أهم مشاريعنا وإنجازاتنا</p>
-        </div>
 
-        <div class="project-showcase">
-            <div class="gallery-wrapper">
-                <h3 class="project-title" id="projectTitle">أعمال ديم</h3>
+            <!-- السلايدر -->
+            <div class="ws-proj-slider" id="projectSwiper">
+                <div class="ws-proj-slider-track" id="swiperWrapper">
 
-                <div class="gallery">
-                    <div class="gallery-container" id="gallery-1">
-                        <div class="gallery-item gallery-item-1">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
+                    <!-- شريحة 1: طريق العلي | شركة شحن دولي -->
+                    <div class="ws-proj-slide">
+                        <div class="ws-proj-info">
+                            <h3 class="ws-proj-title-gradient text-3xl md:text-4xl font-bold">طريق العلي | شركة شحن دولي
+                            </h3>
+                            <p class="whitespace-pre-line text-slate-300 text-lg leading-relaxed">
+                                شركة طريق العلي للشحن الدولي والتخليص الجمركي - رائدون في الشحن البري من مصر إلى
+                                السعودية ودول الخليج. خدمات لوجستية متكاملة، تأمين شحنات، وسرعة في التنفيذ
+                            </p>
+                            <div>
+                                <a href="https://alali-shipping.net/"
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
                             </div>
                         </div>
-                        <div class="gallery-item gallery-item-2">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gallery-item-3">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gallery-item-4">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gallery-item-5">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gallery-item-6">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gallery-item-7">
-                            <div class="image-wrapper">
-                                <img class="gallery-image" alt="مشروع" src="./assets/img/projects/projects1.png">
-                                <div class="inactive-overlay"></div>
-                            </div>
-                        </div>
-
-                        <div class="gallery-controls">
-                            <button aria-label="السلايد السابق" class="prev-btn">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M15.75 4.5L8.25 12L15.75 19.5" stroke="url(#paint_prev_1)"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    <defs>
-                                        <linearGradient id="paint_prev_1" x1="15.75" y1="12" x2="8.25" y2="12"
-                                            gradientUnits="userSpaceOnUse">
-                                            <stop stop-color="#00BED7" />
-                                            <stop offset="0.5" stop-color="#6489E3" />
-                                            <stop offset="1" stop-color="#C853EF" />
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
-                            </button>
-                            <button aria-label="السلايد التالي" class="next-btn">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M8.25 4.5L15.75 12L8.25 19.5" stroke="url(#paint_next_1)"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    <defs>
-                                        <linearGradient id="paint_next_1" x1="8.25" y1="12" x2="15.75" y2="12"
-                                            gradientUnits="userSpaceOnUse">
-                                            <stop stop-color="#00BED7" />
-                                            <stop offset="0.5" stop-color="#6489E3" />
-                                            <stop offset="1" stop-color="#C853EF" />
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
-                            </button>
+                        <div class="ws-proj-media">
+                            <picture>
+                                <source type="image/png" srcset="assets/img/projects/projects1.png">
+                                <img width="882" height="570" alt="طريق العلي | شركة شحن دولي"
+                                    src="assets/img/projects/projects1.png">
+                            </picture>
                         </div>
                     </div>
+
+                    <!-- شريحة 2: مسكن وريف للخدمات العقارية -->
+                    <div class="ws-proj-slide">
+                        <div class="ws-proj-info">
+                            <h3 class="ws-proj-title-gradient text-3xl md:text-4xl font-bold">مسكن وريف للخدمات العقارية
+                            </h3>
+                            <p class="whitespace-pre-line text-slate-300 text-lg leading-relaxed">
+                                مسكن وريف للخدمات العقارية نؤمن بأن المنزل ليس مجرد مكان للسكن، وإنما هو حلم يتحقق
+                                وذاكرة تُبنى. لذلك نلتزم بتقديم حلول عقارية متكاملة تلبي احتياجات عملائنا بجودة عالية
+                                وشفافية تامة.
+                            </p>
+                            <div>
+                                <a href="https://msknwref.com/"
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                            </div>
+                        </div>
+                        <div class="ws-proj-media">
+                            <picture>
+                                <source type="image/png" srcset="assets/img/projects/projects2.png">
+                                <img width="862" height="572" alt="مسكن وريف للخدمات العقارية"
+                                    src="assets/img/projects/projects2.png">
+                            </picture>
+                        </div>
+                    </div>
+
+                    <!-- شريحة 3: شركة ضمان الإنجاز -->
+                    <div class="ws-proj-slide">
+                        <div class="ws-proj-info">
+                            <h3 class="ws-proj-title-gradient text-3xl md:text-4xl font-bold">شركة ضمان الإنجاز</h3>
+                            <p class="whitespace-pre-line text-slate-300 text-lg leading-relaxed">
+                                شركة ضمان الإنجاز للمقاولات على أسس مهنية ومعايير فريدة وبخبرة عميقة في مجال المقاولات
+                                والإنشاءات. نحرص على التطوير المستمر ورفع كفاءة منظومتنا بسياسات وخطط استراتيجية
+                            </p>
+                            <div>
+                                <a href="https://damanalengaz.com/"
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                            </div>
+                        </div>
+                        <div class="ws-proj-media">
+                            <picture>
+                                <source type="image/png" srcset="assets/img/projects/projects3.png">
+                                <img width="862" height="572" alt="شركة ضمان الإنجاز"
+                                    src="assets/img/projects/projects3.png">
+                            </picture>
+                        </div>
+                    </div>
+
+                    <!-- شريحة 4: شركة إبداع الطاقة -->
+                    <div class="ws-proj-slide">
+                        <div class="ws-proj-info">
+                            <h3 class="ws-proj-title-gradient text-3xl md:text-4xl font-bold">شركة إبداع الطاقة</h3>
+                            <p class="whitespace-pre-line text-slate-300 text-lg leading-relaxed">
+                                شركة إبداع الطاقة هي شركة متخصصة في تقديم حلول الطاقة المتكاملة، حيث نعمل على تأجير
+                                وصيانة المولدات الكهربائية وفق أعلى المعايير الفنية والهندسية، لنضمن استمرارية الأعمال
+                                بكفاءة وموثوقية.
+                            </p>
+                            <div>
+                                <a href="https://energycreatives.com/"
+                                    class="ws-proj-btn-border mx-auto md:mx-0 w-fit px-8 py-3 text-lg">شاهد الموقع</a>
+                            </div>
+                        </div>
+                        <div class="ws-proj-media">
+                            <picture>
+                                <source type="image/png" srcset="assets/img/projects/projects4.png">
+                                <img width="862" height="572" alt="شركة إبداع الطاقة"
+                                    src="assets/img/projects/projects4.png">
+                            </picture>
+                        </div>
+                    </div>
+
                 </div>
 
-                <a id="projectLink" href="https://deemworks.com/" target="_blank" rel="noopener noreferrer"
-                    class="project-link-button" aria-label="عرض رابط مشروع">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path
-                            d="M10.5 13.5L20 4M16 4H20V8M20 13.5V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10.5"
-                            stroke="url(#project-link-grad-1)" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <defs>
-                            <linearGradient id="project-link-grad-1" x1="4" y1="4" x2="20" y2="20"
-                                gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#00BED7" />
-                                <stop offset="0.5" stop-color="#6EA8FF" />
-                                <stop offset="1" stop-color="#C853EF" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </a>
-                <div class="project-description">
-                    <p id="projectDescription">نقدم حلولاً متكاملة في مجال التشطيبات الداخلية، الدهانات، الديكورات،
-                        الأرضيات، جبس بورد، تصميم داخلي، كهرباء، أعمال حديد، خزانات فايبر جلاس، تنسيق حدائق</p>
-                    <a id="projectMoreLink" href="https://deemworks.com/" target="_blank" rel="noopener noreferrer">اعرف
-                        المزيد</a>
+                <!-- أدوات التحكم -->
+                <div class="ws-proj-nav">
+                    <button type="button" class="ws-proj-nav-btn" id="prevBtn" aria-label="المشروع السابق"
+                        title="المشروع السابق">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="ws-proj-dots" id="pagination" aria-label="التنقل بين المشاريع"></div>
+
+                    <button type="button" class="ws-proj-nav-btn" id="nextBtn" aria-label="المشروع التالي"
+                        title="المشروع التالي">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
                 </div>
             </div>
+
         </div>
     </section>
-
 
 
 
@@ -3849,152 +3990,98 @@
 
 
 
-        // ==========================================
-        // نظام المشاريع (5 مشاريع) - تأثير الآيفون الانزلاقي
-        // ==========================================
-        const projectData = [
-            {
-                title: '"ديـم للإنشاءات"',
-                description: 'نقدم حلولاً متكاملة في مجال التشطيبات الداخلية، الدهانات، الديكورات، الأرضيات، جبس بورد، تصميم داخلي، كهرباء، أعمال حديد، خزانات فايبر جلاس، تنسيق حدائق',
-                link: 'https://deemworks.com/',
-                moreLink: 'https://deemworks.com/',
-                ariaLabel: 'عرض رابط مشروع "ديـم للإنشاءات"',
-                image: './assets/img/projects/projects1.png?v=20260902'
-            },
-            {
-                title: '"طريق العلي"',
-                description: 'شركة طريق العلي للشحن الدولي والتخليص الجمركي - رائدون في الشحن البري من مصر إلى السعودية ودول الخليج',
-                link: 'https://alali-shipping.net/',
-                moreLink: 'https://alali-shipping.net/',
-                ariaLabel: 'عرض رابط مشروع "طريق العلي"',
-                image: './assets/img/projects/projects2.png?v=20260902'
-            },
-            {
-                title: '"النخبة ستور"',
-                description: 'منصة إلكترونية متكاملة لتجار التجزئة، توفر تجربة شراء سلسة مع أنظمة دفع آمنة وإدارة مخزون ذكية',
-                link: 'https://example.com/nokhba',
-                moreLink: 'https://example.com/nokhba',
-                ariaLabel: 'عرض رابط مشروع "النخبة ستور"',
-                image: './assets/img/projects/projects3.png?v=20260902'
-            },
-            {
-                title: '"طبيبي كير"',
-                description: 'تطبيق ويب طبي يربط المرضى بالأطباء عبر مكالمات فيديو آمنة، مع إدارة المواعيد وتخزين السجلات الطبية رقمياً',
-                link: 'https://example.com/tabibi',
-                moreLink: 'https://example.com/tabibi',
-                ariaLabel: 'عرض رابط مشروع "طبيبي كير"',
-                image: './assets/img/projects/projects4.png?v=20260902'
-            },
-            {
-                title: '"البناء الحديث"',
-                description: 'موقع تعريفي لمؤسسة مقاولات، يعرض مشاريعهم السابقة باستخدام خرائط تفاعلية ثلاثية الأبعاد ومعرض صور ديناميكي',
-                link: 'https://example.com/modern-build',
-                moreLink: 'https://example.com/modern-build',
-                ariaLabel: 'عرض رابط مشروع "البناء الحديث"',
-                image: './assets/img/projects/projects5.png?v=20260902'
-            }
-        ];
 
-        function initGallery(containerId) {
-            const galleryContainer = document.getElementById(containerId);
-            if (!galleryContainer) return;
+        const swiperWrapper = document.getElementById('swiperWrapper');
+        // تم تعديل الكلاس هنا
+        const slides = document.querySelectorAll('.ws-proj-slide');
+        const pagination = document.getElementById('pagination');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-            const galleryItems = Array.from(galleryContainer.querySelectorAll('.gallery-item'));
-            const prevBtn = galleryContainer.querySelector('.prev-btn');
-            const nextBtn = galleryContainer.querySelector('.next-btn');
-            const titleEl = document.getElementById('projectTitle');
-            const descriptionEl = document.getElementById('projectDescription');
-            const linkEl = document.getElementById('projectLink');
-            const moreLinkEl = document.getElementById('projectMoreLink');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoplayInterval;
 
-            let activeProjectIndex = 0;
-            let currentShift = 0; // لتتبع حركة الانزلاق المستمرة
-            const totalItems = galleryItems.length; // 7 عناصر فعلية في HTML
-
-            function updateGallery() {
-                galleryItems.forEach((item, index) => {
-                    // حساب الموضع الانزلاقي للعنصر
-                    let pos = index - currentShift;
-
-                    // تطبيق الأرقام بشكل دائري (Infinite Loop) للحفاظ على الـ 7 عناصر تتحرك باستمرار
-                    if (pos > 3) pos -= totalItems;
-                    if (pos < -3) pos += totalItems;
-
-                    // المتغيرات الخاصة بالتحريك (مطابقة للتصميم الأصلي)
-                    let translateX = 0;
-                    let scale = 1;
-                    let opacity = 1;
-                    let zIndex = 10;
-
-                    if (pos === 0) { translateX = 0; scale = 1; opacity = 1; zIndex = 10; }
-                    else if (pos === 1) { translateX = 78; scale = 0.9; opacity = 0.8; zIndex = 5; }
-                    else if (pos === 2) { translateX = 150; scale = 0.8; opacity = 0.5; zIndex = 4; }
-                    else if (pos === 3) { translateX = 215; scale = 0.7; opacity = 0; zIndex = 3; }
-                    else if (pos === -1) { translateX = -78; scale = 0.9; opacity = 0.8; zIndex = 5; }
-                    else if (pos === -2) { translateX = -150; scale = 0.8; opacity = 0.5; zIndex = 4; }
-                    else if (pos === -3) { translateX = -215; scale = 0.7; opacity = 0; zIndex = 3; }
-                    else { opacity = 0; zIndex = 0; }
-
-                    // تطبيق التحريك بأمان
-                    item.style.transform = `translateX(${translateX}%) scale(${scale})`;
-                    item.style.opacity = opacity;
-                    item.style.zIndex = zIndex;
-
-                    // إظهار أو إخفاء الطبقة المعتمة (الطبقة الشفافة فوق الهواتف غير النشطة)
-                    const overlay = item.querySelector('.inactive-overlay');
-                    if (pos === 0) {
-                        overlay.classList.remove('inactive-overlay-visible');
-                    } else {
-                        overlay.classList.add('inactive-overlay-visible');
-                    }
-
-                    // تحديث الصورة المعروضة داخل كل إطار بناءً على ترتيب المشروع
-                    let projIdx = activeProjectIndex + pos;
-                    projIdx = ((projIdx % projectData.length) + projectData.length) % projectData.length;
-
-                    const project = projectData[projIdx];
-                    const img = item.querySelector('.gallery-image');
-
-                    if (img) {
-                        const expectedSrc = project.image.split('?')[0];
-                        const currentSrc = img.getAttribute('src').split('?')[0];
-
-                        // تغيير الصورة فقط إذا كانت مختلفة لتجنب الوميض (Flickering)
-                        if (currentSrc !== expectedSrc) {
-                            img.src = project.image;
-                            img.alt = project.title;
-                        }
-                    }
-                });
-
-                // تحديث النصوص والروابط للمشروع المركزي
-                const activeProject = projectData[activeProjectIndex];
-                if (activeProject) {
-                    titleEl.textContent = activeProject.title;
-                    descriptionEl.textContent = activeProject.description;
-                    linkEl.href = activeProject.link;
-                    linkEl.setAttribute('aria-label', activeProject.ariaLabel);
-                    moreLinkEl.href = activeProject.moreLink;
-                }
-            }
-
-            nextBtn.addEventListener('click', () => {
-                activeProjectIndex = (activeProjectIndex + 1) % projectData.length;
-                currentShift++;
-                updateGallery();
+        slides.forEach((_, index) => {
+            const bullet = document.createElement('button');
+            bullet.type = 'button';
+            bullet.className = 'ws-proj-dot';
+            bullet.setAttribute('aria-label', `الانتقال إلى المشروع ${index + 1}`);
+            if (index === 0) bullet.classList.add('ws-proj-dot-active');
+            bullet.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoplay();
             });
+            pagination.appendChild(bullet);
+        });
 
-            prevBtn.addEventListener('click', () => {
-                activeProjectIndex = (activeProjectIndex - 1 + projectData.length) % projectData.length;
-                currentShift--;
-                updateGallery();
-            });
+        const bullets = pagination.querySelectorAll('.ws-proj-dot');
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-            // تشغيل أولي
-            updateGallery();
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) < 45) return;
+            swipeDistance < 0 ? nextSlide() : prevSlide();
+            resetAutoplay();
         }
 
-        initGallery('gallery-1'); 
+        swiperWrapper.addEventListener('pointerdown', (event) => {
+            if (event.pointerType === 'mouse') return;
+            touchStartX = event.clientX;
+            touchEndX = event.clientX;
+        });
+
+        swiperWrapper.addEventListener('pointerup', (event) => {
+            if (event.pointerType === 'mouse') return;
+            touchEndX = event.clientX;
+            handleSwipe();
+        });
+
+        function goToSlide(index) {
+            currentIndex = index;
+            // في الـ RTL التحريك للسلايدر يكون بعكس الاتجاه المعتاد
+            swiperWrapper.style.transform = `translateX(${currentIndex * 100}%)`;
+            bullets.forEach((bullet, bulletIndex) => {
+                bullet.classList.toggle('ws-proj-dot-active', bulletIndex === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            goToSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            goToSlide(currentIndex);
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoplay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoplay();
+        });
+
+        // بدء التشغيل التلقائي
+        startAutoplay();
+
+
+
+
     </script>
 
 </body>
